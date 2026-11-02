@@ -1,10 +1,11 @@
 // Teste headless v1.3.1: lista de conjuntos redesenhada (sem quebras, +N); v1.3: cabeçalho novo das questões; v1.2.1: sessões por modo (trocar de aba não zera), retomar após reabrir, filtros, migração schema 3→4; confirmação, migração (v1.0 e v1.1), tema, idioma, exportar/importar, zerar
 const puppeteer = require('puppeteer-core'); const fs = require('fs');
-const SRC = '/workspace/treino-app/src/';
-const html = fs.readFileSync(SRC + 'index.html', 'utf8')
-  .replace('/*__DATA__*/null', fs.readFileSync(SRC + 'data.json', 'utf8').replace(/<\//g, '<\\/'))
+const path = require('path');
+const SRC = path.join(__dirname);
+const html = fs.readFileSync(path.join(SRC, 'index.html'), 'utf8')
+  .replace('/*__DATA__*/null', fs.readFileSync(path.join(SRC, 'data.json'), 'utf8').replace(/<\//g, '<\\/'))
   .replace('/*__VER__*/"dev"', '"1.3.1"');
-const D = JSON.parse(fs.readFileSync(SRC + 'data.json'));
+const D = JSON.parse(fs.readFileSync(path.join(SRC, 'data.json')));
 let store = '', backups = [], named = [], exported = null, importFile = null, darkTitle = [], savedAt = null, errors = [], pass = 0, fail = 0;
 const ok = (cond, msg) => { if (cond) pass++; else { fail++; console.log('  FALHOU:', msg); } };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
