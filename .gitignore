@@ -1,0 +1,32 @@
+# Build outputs
+*.exe
+*.syso
+*.bak
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test outputs
+node_modules/
+screenshots/
+shots/
+
+# Local data
+progresso*.json
+*.log
+
+# Release packages (use GitHub Releases)
+*.zip
+release/
+dist/
+
+# Temp files
+*.tmp

@@ -1,0 +1,1436 @@
+{
+ "meta": {
+  "title": "Treino TalTech: GRE + TOEFL",
+  "version": 2,
+  "updated": "2026-11-02",
+  "note": "Vocab, SE/TC, quant, TOEFL writing and speaking prompts are original practice items (not ETS items). GRE Issue prompts are quoted verbatim from the official ETS Issue pool (https://www.ets.org/pdfs/gre/issue-pool.pdf). Rubric summaries from ETS scoring guides.",
+  "ipaNote": "IPA americano (General American), transcrição ampla; conferido com Wiktionary (variantes GA/US)."
+ },
+ "vocab": [
+  {
+   "id": "v1",
+   "set": 1,
+   "word": "abate",
+   "definition": "to become weaker or less intense; to die down",
+   "pt": "diminuir, abrandar",
+   "example": "The storm finally began to abate after midnight.",
+   "ipa": "/əˈbeɪt/"
+  },
+  {
+   "id": "v2",
+   "set": 1,
+   "word": "aberrant",
+   "definition": "different from what is normal or accepted; abnormal",
+   "pt": "anômalo, aberrante",
+   "example": "The lab reran the test because one result was clearly aberrant.",
+   "ipa": "/əˈbɛrənt/"
+  },
+  {
+   "id": "v3",
+   "set": 1,
+   "word": "alacrity",
+   "definition": "quick and cheerful eagerness; readiness",
+   "pt": "prontidão entusiasmada",
+   "example": "She accepted the invitation with alacrity.",
+   "ipa": "/əˈlækrəti/"
+  },
+  {
+   "id": "v4",
+   "set": 1,
+   "word": "ameliorate",
+   "definition": "to make a bad situation better; to improve",
+   "pt": "melhorar, amenizar",
+   "example": "The new policy was meant to ameliorate conditions in overcrowded schools.",
+   "ipa": "/əˈmiljəˌreɪt/"
+  },
+  {
+   "id": "v5",
+   "set": 1,
+   "word": "anomaly",
+   "definition": "an unusual case that does not fit the normal pattern; an irregularity",
+   "pt": "anomalia",
+   "example": "A warm day in the middle of a cold winter is an anomaly.",
+   "ipa": "/əˈnɑməli/"
+  },
+  {
+   "id": "v6",
+   "set": 1,
+   "word": "assuage",
+   "definition": "to calm or ease an unpleasant feeling; to soothe",
+   "pt": "aliviar, apaziguar",
+   "example": "Nothing the doctor said could assuage his fears.",
+   "ipa": "/əˈsweɪdʒ/"
+  },
+  {
+   "id": "v7",
+   "set": 1,
+   "word": "audacious",
+   "definition": "willing to take bold risks; daring",
+   "pt": "audacioso, ousado",
+   "example": "The startup's audacious plan surprised even its investors.",
+   "ipa": "/ɔˈdeɪʃəs/"
+  },
+  {
+   "id": "v8",
+   "set": 1,
+   "word": "austere",
+   "definition": "strict and serious; also, plain and without decoration",
+   "pt": "austero, sóbrio",
+   "example": "The monks lived in austere rooms with no furniture but a bed.",
+   "ipa": "/ɔˈstɪr/"
+  },
+  {
+   "id": "v9",
+   "set": 1,
+   "word": "banal",
+   "definition": "dull and unoriginal; commonplace",
+   "pt": "banal, trivial",
+   "example": "The film's dialogue was so banal that the audience laughed at it.",
+   "ipa": "/bəˈnɑl/"
+  },
+  {
+   "id": "v10",
+   "set": 1,
+   "word": "belie",
+   "definition": "to give a false idea of something; to contradict",
+   "pt": "desmentir, disfarçar",
+   "example": "His relaxed smile belied the stress he was under.",
+   "ipa": "/bɪˈlaɪ/"
+  },
+  {
+   "id": "v11",
+   "set": 1,
+   "word": "bolster",
+   "definition": "to support or strengthen",
+   "pt": "reforçar, sustentar",
+   "example": "New data bolstered the researchers' hypothesis.",
+   "ipa": "/ˈboʊlstər/"
+  },
+  {
+   "id": "v12",
+   "set": 1,
+   "word": "candor",
+   "definition": "the quality of being open and honest; frankness",
+   "pt": "franqueza, sinceridade",
+   "example": "I appreciated the candor of her feedback.",
+   "ipa": "/ˈkændər/"
+  },
+  {
+   "id": "v13",
+   "set": 1,
+   "word": "capricious",
+   "definition": "changing mood or behavior suddenly, for no reason; unpredictable",
+   "pt": "caprichoso, volúvel",
+   "example": "The team struggled under a capricious manager who changed priorities daily.",
+   "ipa": "/kəˈprɪʃəs/"
+  },
+  {
+   "id": "v14",
+   "set": 1,
+   "word": "castigate",
+   "definition": "to criticize or scold severely; to rebuke",
+   "pt": "repreender duramente",
+   "example": "The editorial castigated the government for its slow response.",
+   "ipa": "/ˈkæstɪˌɡeɪt/"
+  },
+  {
+   "id": "v15",
+   "set": 1,
+   "word": "cogent",
+   "definition": "clear, logical, and convincing",
+   "pt": "convincente, consistente",
+   "example": "She made a cogent case for extending the deadline.",
+   "ipa": "/ˈkoʊdʒənt/"
+  },
+  {
+   "id": "v16",
+   "set": 2,
+   "word": "conciliatory",
+   "definition": "meant to make peace or calm anger; peacemaking",
+   "pt": "conciliador",
+   "example": "After the argument, he sent a conciliatory message.",
+   "ipa": "/kənˈsɪliəˌtɔri/"
+  },
+  {
+   "id": "v17",
+   "set": 2,
+   "word": "corroborate",
+   "definition": "to confirm a statement or theory with evidence; to back up",
+   "pt": "corroborar, confirmar",
+   "example": "Two witnesses corroborated the driver's account.",
+   "ipa": "/kəˈrɑbəˌreɪt/"
+  },
+  {
+   "id": "v18",
+   "set": 2,
+   "word": "deride",
+   "definition": "to express contempt for; to ridicule",
+   "pt": "ridicularizar, zombar",
+   "example": "Critics derided the proposal as unrealistic.",
+   "ipa": "/dɪˈraɪd/"
+  },
+  {
+   "id": "v19",
+   "set": 2,
+   "word": "diatribe",
+   "definition": "an angry, bitter verbal attack; a rant",
+   "pt": "diatribe, ataque verbal",
+   "example": "The speech turned into a diatribe against the media.",
+   "ipa": "/ˈdaɪəˌtraɪb/"
+  },
+  {
+   "id": "v20",
+   "set": 2,
+   "word": "diffident",
+   "definition": "shy because of a lack of self-confidence; timid",
+   "pt": "tímido, inseguro",
+   "example": "The diffident student rarely spoke in class.",
+   "ipa": "/ˈdɪfɪdənt/"
+  },
+  {
+   "id": "v21",
+   "set": 2,
+   "word": "disparate",
+   "definition": "very different from each other; unlike",
+   "pt": "díspar, heterogêneo",
+   "example": "The book connects disparate fields such as biology and economics.",
+   "ipa": "/ˈdɪspərət/"
+  },
+  {
+   "id": "v22",
+   "set": 2,
+   "word": "dogmatic",
+   "definition": "insisting that one's opinions are true beyond question; rigid",
+   "pt": "dogmático",
+   "example": "His dogmatic attitude made discussion impossible.",
+   "ipa": "/dɔɡˈmætɪk/"
+  },
+  {
+   "id": "v23",
+   "set": 2,
+   "word": "eclectic",
+   "definition": "taking ideas or styles from many different sources; varied",
+   "pt": "eclético",
+   "example": "Her playlist is eclectic, mixing jazz, samba and metal.",
+   "ipa": "/ɪˈklɛktɪk/"
+  },
+  {
+   "id": "v24",
+   "set": 2,
+   "word": "efficacy",
+   "definition": "the ability to produce the intended result; effectiveness",
+   "pt": "eficácia",
+   "example": "Trials are testing the efficacy of the new vaccine.",
+   "ipa": "/ˈɛfɪkəsi/"
+  },
+  {
+   "id": "v25",
+   "set": 2,
+   "word": "enervate",
+   "definition": "to make someone feel weak and tired; to drain",
+   "pt": "enfraquecer, esgotar",
+   "example": "The heat enervated the hikers. (Atenção: NÃO significa 'energizar'.)",
+   "ipa": "/ˈɛnərˌveɪt/"
+  },
+  {
+   "id": "v26",
+   "set": 2,
+   "word": "ephemeral",
+   "definition": "lasting a very short time; fleeting",
+   "pt": "efêmero, passageiro",
+   "example": "Social media fame is often ephemeral.",
+   "ipa": "/ɪˈfɛmərəl/"
+  },
+  {
+   "id": "v27",
+   "set": 2,
+   "word": "equivocate",
+   "definition": "to avoid giving a clear answer on purpose; to hedge",
+   "pt": "usar evasivas, tergiversar",
+   "example": "When asked about the budget, the minister equivocated.",
+   "ipa": "/ɪˈkwɪvəˌkeɪt/"
+  },
+  {
+   "id": "v28",
+   "set": 2,
+   "word": "erudite",
+   "definition": "having great knowledge from study; learned",
+   "pt": "erudito",
+   "example": "The professor gave an erudite lecture on medieval law.",
+   "ipa": "/ˈɛrjəˌdaɪt/"
+  },
+  {
+   "id": "v29",
+   "set": 2,
+   "word": "exacerbate",
+   "definition": "to make a problem or bad situation worse; to aggravate",
+   "pt": "agravar, piorar",
+   "example": "Cutting staff would only exacerbate the delays.",
+   "ipa": "/ɪɡˈzæsərˌbeɪt/"
+  },
+  {
+   "id": "v30",
+   "set": 2,
+   "word": "extol",
+   "definition": "to praise very highly; to glorify",
+   "pt": "exaltar, enaltecer",
+   "example": "The review extolled the restaurant's desserts.",
+   "ipa": "/ɪkˈstoʊl/"
+  },
+  {
+   "id": "v31",
+   "set": 3,
+   "word": "fastidious",
+   "definition": "very careful about accuracy and detail; hard to please",
+   "pt": "meticuloso, exigente",
+   "example": "A fastidious editor, she checked every comma.",
+   "ipa": "/fæˈstɪdiəs/"
+  },
+  {
+   "id": "v32",
+   "set": 3,
+   "word": "garrulous",
+   "definition": "talking too much, especially about unimportant things; chatty",
+   "pt": "tagarela",
+   "example": "The garrulous passenger talked for the entire flight.",
+   "ipa": "/ˈɡærələs/"
+  },
+  {
+   "id": "v33",
+   "set": 3,
+   "word": "gregarious",
+   "definition": "fond of company; sociable",
+   "pt": "sociável, gregário",
+   "example": "Gregarious people often enjoy working in teams.",
+   "ipa": "/ɡrɪˈɡɛriəs/"
+  },
+  {
+   "id": "v34",
+   "set": 3,
+   "word": "hackneyed",
+   "definition": "used so often that it is no longer interesting; clichéd",
+   "pt": "batido, clichê",
+   "example": "The essay was full of hackneyed expressions.",
+   "ipa": "/ˈhæknid/"
+  },
+  {
+   "id": "v35",
+   "set": 3,
+   "word": "iconoclast",
+   "definition": "a person who attacks traditional beliefs or institutions; a rebel",
+   "pt": "iconoclasta",
+   "example": "As an iconoclast, the economist challenged every accepted model.",
+   "ipa": "/aɪˈkɑnəˌklæst/"
+  },
+  {
+   "id": "v36",
+   "set": 3,
+   "word": "impetuous",
+   "definition": "acting quickly without thinking; rash",
+   "pt": "impetuoso, precipitado",
+   "example": "His impetuous decision to quit cost him dearly.",
+   "ipa": "/ɪmˈpɛtʃuəs/"
+  },
+  {
+   "id": "v37",
+   "set": 3,
+   "word": "innocuous",
+   "definition": "not harmful or offensive; harmless",
+   "pt": "inofensivo, inócuo",
+   "example": "What seemed an innocuous comment upset the client.",
+   "ipa": "/ɪˈnɑkjuəs/"
+  },
+  {
+   "id": "v38",
+   "set": 3,
+   "word": "laconic",
+   "definition": "using very few words; brief",
+   "pt": "lacônico",
+   "example": "Her laconic reply was simply 'No.'",
+   "ipa": "/ləˈkɑnɪk/"
+  },
+  {
+   "id": "v39",
+   "set": 3,
+   "word": "laud",
+   "definition": "to praise highly, especially in public",
+   "pt": "louvar, elogiar",
+   "example": "The mayor lauded the volunteers for their work.",
+   "ipa": "/lɔd/"
+  },
+  {
+   "id": "v40",
+   "set": 3,
+   "word": "mitigate",
+   "definition": "to make something less severe or painful; to lessen",
+   "pt": "mitigar, atenuar",
+   "example": "Planting trees can mitigate the effects of urban heat.",
+   "ipa": "/ˈmɪtɪˌɡeɪt/"
+  },
+  {
+   "id": "v41",
+   "set": 3,
+   "word": "obdurate",
+   "definition": "stubbornly refusing to change one's mind; unyielding",
+   "pt": "obstinado, inflexível",
+   "example": "The obdurate landlord refused every request for repairs.",
+   "ipa": "/ˈɑbdərət/"
+  },
+  {
+   "id": "v42",
+   "set": 3,
+   "word": "obsequious",
+   "definition": "too eager to please or obey; servile",
+   "pt": "servil, bajulador",
+   "example": "The obsequious waiter laughed at all of the manager's jokes.",
+   "ipa": "/əbˈsikwiəs/"
+  },
+  {
+   "id": "v43",
+   "set": 3,
+   "word": "opaque",
+   "definition": "impossible to see through; also, hard to understand",
+   "pt": "opaco, obscuro",
+   "example": "The contract's language was deliberately opaque.",
+   "ipa": "/oʊˈpeɪk/"
+  },
+  {
+   "id": "v44",
+   "set": 3,
+   "word": "paucity",
+   "definition": "a lack of something; scarcity",
+   "pt": "escassez",
+   "example": "A paucity of data made the conclusion uncertain.",
+   "ipa": "/ˈpɔsəti/"
+  },
+  {
+   "id": "v45",
+   "set": 3,
+   "word": "perfunctory",
+   "definition": "done quickly, with little care or effort; routine",
+   "pt": "superficial, feito por obrigação",
+   "example": "He gave the report a perfunctory glance and signed it.",
+   "ipa": "/pərˈfʌŋktəri/"
+  },
+  {
+   "id": "v46",
+   "set": 4,
+   "word": "placate",
+   "definition": "to make an angry person calmer; to pacify",
+   "pt": "aplacar, acalmar",
+   "example": "The company offered refunds to placate angry customers.",
+   "ipa": "/ˈpleɪˌkeɪt/"
+  },
+  {
+   "id": "v47",
+   "set": 4,
+   "word": "pragmatic",
+   "definition": "dealing with things sensibly and realistically; practical",
+   "pt": "pragmático",
+   "example": "We need a pragmatic solution, not a perfect one.",
+   "ipa": "/præɡˈmætɪk/"
+  },
+  {
+   "id": "v48",
+   "set": 4,
+   "word": "prodigal",
+   "definition": "spending money or resources wastefully; extravagant",
+   "pt": "pródigo, esbanjador",
+   "example": "The prodigal heir spent his fortune in two years.",
+   "ipa": "/ˈprɑdɪɡəl/"
+  },
+  {
+   "id": "v49",
+   "set": 4,
+   "word": "propensity",
+   "definition": "a natural tendency to behave in a certain way; inclination",
+   "pt": "propensão, tendência",
+   "example": "He has a propensity to exaggerate.",
+   "ipa": "/prəˈpɛnsəti/"
+  },
+  {
+   "id": "v50",
+   "set": 4,
+   "word": "prosaic",
+   "definition": "ordinary and unimaginative; dull",
+   "pt": "prosaico, sem graça",
+   "example": "The truth behind the legend was quite prosaic.",
+   "ipa": "/proʊˈzeɪɪk/"
+  },
+  {
+   "id": "v51",
+   "set": 4,
+   "word": "quiescent",
+   "definition": "quiet and inactive for a time; dormant",
+   "pt": "inativo, adormecido",
+   "example": "The volcano has been quiescent for centuries.",
+   "ipa": "/kwiˈɛsənt/"
+  },
+  {
+   "id": "v52",
+   "set": 4,
+   "word": "recalcitrant",
+   "definition": "refusing to obey rules or authority; uncooperative",
+   "pt": "recalcitrante, rebelde",
+   "example": "The recalcitrant student ignored every warning.",
+   "ipa": "/rɪˈkælsɪtrənt/"
+  },
+  {
+   "id": "v53",
+   "set": 4,
+   "word": "reticent",
+   "definition": "unwilling to share one's thoughts or feelings; reserved",
+   "pt": "reservado, calado",
+   "example": "She was reticent about her plans after graduation.",
+   "ipa": "/ˈrɛtɪsənt/"
+  },
+  {
+   "id": "v54",
+   "set": 4,
+   "word": "sanction",
+   "definition": "official approval; also, a penalty for breaking a rule",
+   "pt": "sanção (aprovação OU penalidade)",
+   "example": "The trip had the sanction of the school board. (Palavra com dois sentidos opostos.)",
+   "ipa": "/ˈsæŋkʃən/"
+  },
+  {
+   "id": "v55",
+   "set": 4,
+   "word": "soporific",
+   "definition": "causing sleepiness; sleep-inducing",
+   "pt": "soporífero, sonolento",
+   "example": "The lecturer's soporific voice put half the class to sleep.",
+   "ipa": "/ˌsɑpəˈrɪfɪk/"
+  },
+  {
+   "id": "v56",
+   "set": 4,
+   "word": "tacit",
+   "definition": "understood without being said; unspoken",
+   "pt": "tácito, implícito",
+   "example": "There was a tacit agreement not to discuss politics at dinner.",
+   "ipa": "/ˈtæsɪt/"
+  },
+  {
+   "id": "v57",
+   "set": 4,
+   "word": "tenuous",
+   "definition": "very weak or thin; flimsy",
+   "pt": "tênue, frágil",
+   "example": "The link between the two events is tenuous.",
+   "ipa": "/ˈtɛnjuəs/"
+  },
+  {
+   "id": "v58",
+   "set": 4,
+   "word": "vacillate",
+   "definition": "to keep changing between opinions or choices; to waver",
+   "pt": "vacilar, hesitar",
+   "example": "She vacillated between studying law and medicine.",
+   "ipa": "/ˈvæsəˌleɪt/"
+  },
+  {
+   "id": "v59",
+   "set": 4,
+   "word": "venerate",
+   "definition": "to respect someone or something deeply; to revere",
+   "pt": "venerar, reverenciar",
+   "example": "The scientist is venerated by her former students.",
+   "ipa": "/ˈvɛnəˌreɪt/"
+  },
+  {
+   "id": "v60",
+   "set": 4,
+   "word": "zealous",
+   "definition": "showing great energy and enthusiasm for a cause; passionate",
+   "pt": "zeloso, fervoroso",
+   "example": "The zealous volunteers worked through the night.",
+   "ipa": "/ˈzɛləs/"
+  }
+ ],
+ "vocabSentences": [
+  {
+   "id": "s1",
+   "set": 1,
+   "type": "TC",
+   "sentence": "Although the senator's speech was praised for its ___ reasoning, critics noted that it relied on a single outdated study.",
+   "options": [
+    "cogent",
+    "banal",
+    "capricious",
+    "aberrant",
+    "austere"
+   ],
+   "answers": [
+    "cogent"
+   ],
+   "explanation": "'Although' opõe o elogio à crítica; o elogio pede algo positivo sobre o raciocínio: cogent (convincente).",
+   "explanationEn": "'Although' sets the praise against the criticism; the praise calls for something positive about the reasoning: cogent (convincing)."
+  },
+  {
+   "id": "s2",
+   "set": 1,
+   "type": "SE",
+   "sentence": "The new manager's ___ approach surprised the staff, who had expected someone far more cautious.",
+   "options": [
+    "audacious",
+    "daring",
+    "austere",
+    "diffident",
+    "banal",
+    "candid"
+   ],
+   "answers": [
+    "audacious",
+    "daring"
+   ],
+   "explanation": "O contraste com 'far more cautious' pede 'ousado': audacious e daring formam frases equivalentes.",
+   "explanationEn": "The contrast with 'far more cautious' calls for 'bold': audacious and daring produce equivalent sentences."
+  },
+  {
+   "id": "s3",
+   "set": 1,
+   "type": "TC",
+   "sentence": "Far from ___ the tension, the mediator's blunt remarks only intensified it.",
+   "options": [
+    "assuaging",
+    "bolstering",
+    "castigating",
+    "belying",
+    "corroborating"
+   ],
+   "answers": [
+    "assuaging"
+   ],
+   "explanation": "'Far from X… only intensified' = X é o oposto de intensificar: assuaging (aliviar).",
+   "explanationEn": "'Far from X… only intensified' = X is the opposite of intensifying: assuaging (easing)."
+  },
+  {
+   "id": "s4",
+   "set": 1,
+   "type": "SE",
+   "sentence": "Her calm voice ___ the panic she felt; no one in the audience suspected how nervous she was.",
+   "options": [
+    "belied",
+    "masked",
+    "revealed",
+    "betrayed",
+    "bolstered",
+    "abated"
+   ],
+   "answers": [
+    "belied",
+    "masked"
+   ],
+   "explanation": "Ninguém percebeu o nervosismo, então a voz escondeu o pânico: belied e masked. Revealed/betrayed é o par-armadilha (sentido oposto).",
+   "explanationEn": "Nobody noticed the nervousness, so the voice hid the panic: belied and masked. Revealed/betrayed is the trap pair (opposite meaning)."
+  },
+  {
+   "id": "s5",
+   "set": 2,
+   "type": "TC",
+   "sentence": "Visitors found the exhibition ___: it combined Renaissance portraits, street art and video installations.",
+   "options": [
+    "eclectic",
+    "dogmatic",
+    "diffident",
+    "ephemeral",
+    "erudite"
+   ],
+   "answers": [
+    "eclectic"
+   ],
+   "explanation": "Os dois-pontos explicam a palavra: fontes muito variadas = eclectic.",
+   "explanationEn": "The colon explains the word: very varied sources = eclectic."
+  },
+  {
+   "id": "s6",
+   "set": 2,
+   "type": "SE",
+   "sentence": "The fame of most viral videos is ___; within a week, few people remember them.",
+   "options": [
+    "ephemeral",
+    "fleeting",
+    "enduring",
+    "erudite",
+    "disparate",
+    "conciliatory"
+   ],
+   "answers": [
+    "ephemeral",
+    "fleeting"
+   ],
+   "explanation": "'Em uma semana ninguém lembra' = dura pouco: ephemeral e fleeting.",
+   "explanationEn": "'Within a week nobody remembers' = short-lived: ephemeral and fleeting."
+  },
+  {
+   "id": "s7",
+   "set": 2,
+   "type": "TC",
+   "sentence": "Rather than offering a clear answer, the spokesperson continued to ___, leaving reporters more confused than before.",
+   "options": [
+    "equivocate",
+    "extol",
+    "corroborate",
+    "deride",
+    "exacerbate"
+   ],
+   "answers": [
+    "equivocate"
+   ],
+   "explanation": "'Rather than a clear answer' + repórteres confusos = falar de forma ambígua: equivocate.",
+   "explanationEn": "'Rather than a clear answer' + confused reporters = speaking ambiguously: equivocate."
+  },
+  {
+   "id": "s8",
+   "set": 2,
+   "type": "SE",
+   "sentence": "Cutting the maintenance budget will only ___ the problems with the city's aging bridges.",
+   "options": [
+    "exacerbate",
+    "aggravate",
+    "alleviate",
+    "extol",
+    "corroborate",
+    "deride"
+   ],
+   "answers": [
+    "exacerbate",
+    "aggravate"
+   ],
+   "explanation": "'Will only ___ the problems' com corte de verba = piorar: exacerbate e aggravate.",
+   "explanationEn": "'Will only ___ the problems' with a budget cut = make worse: exacerbate and aggravate."
+  },
+  {
+   "id": "s9",
+   "set": 3,
+   "type": "TC",
+   "sentence": "Known for his ___ replies, the coach rarely said more than a few words to reporters.",
+   "options": [
+    "laconic",
+    "garrulous",
+    "gregarious",
+    "obsequious",
+    "impetuous"
+   ],
+   "answers": [
+    "laconic"
+   ],
+   "explanation": "'Rarely said more than a few words' define laconic. Garrulous é o oposto.",
+   "explanationEn": "'Rarely said more than a few words' defines laconic. Garrulous is the opposite."
+  },
+  {
+   "id": "s10",
+   "set": 3,
+   "type": "SE",
+   "sentence": "Despite the new evidence, the committee remained ___, refusing to reconsider its decision.",
+   "options": [
+    "obdurate",
+    "adamant",
+    "innocuous",
+    "perfunctory",
+    "gregarious",
+    "flexible"
+   ],
+   "answers": [
+    "obdurate",
+    "adamant"
+   ],
+   "explanation": "'Refusing to reconsider' = inflexível: obdurate e adamant.",
+   "explanationEn": "'Refusing to reconsider' = inflexible: obdurate and adamant."
+  },
+  {
+   "id": "s11",
+   "set": 3,
+   "type": "TC",
+   "sentence": "The inspector's review was so ___ that she missed several obvious safety violations.",
+   "options": [
+    "perfunctory",
+    "fastidious",
+    "opaque",
+    "hackneyed",
+    "iconoclastic"
+   ],
+   "answers": [
+    "perfunctory"
+   ],
+   "explanation": "Deixar passar problemas óbvios = revisão feita sem cuidado: perfunctory. Fastidious seria o contrário.",
+   "explanationEn": "Missing obvious problems = a careless review: perfunctory. Fastidious would be the opposite."
+  },
+  {
+   "id": "s12",
+   "set": 3,
+   "type": "SE",
+   "sentence": "The speech was full of ___ phrases such as 'think outside the box', which bored the audience.",
+   "options": [
+    "hackneyed",
+    "clichéd",
+    "innovative",
+    "laconic",
+    "opaque",
+    "innocuous"
+   ],
+   "answers": [
+    "hackneyed",
+    "clichéd"
+   ],
+   "explanation": "O exemplo é um clichê que entediou o público: hackneyed e clichéd.",
+   "explanationEn": "The example is a cliché that bored the audience: hackneyed and clichéd."
+  },
+  {
+   "id": "s13",
+   "set": 4,
+   "type": "TC",
+   "sentence": "The lecture was so ___ that several students struggled to stay awake.",
+   "options": [
+    "soporific",
+    "zealous",
+    "recalcitrant",
+    "pragmatic",
+    "tenuous"
+   ],
+   "answers": [
+    "soporific"
+   ],
+   "explanation": "'Struggled to stay awake' = que dá sono: soporific.",
+   "explanationEn": "'Struggled to stay awake' = sleep-inducing: soporific."
+  },
+  {
+   "id": "s14",
+   "set": 4,
+   "type": "SE",
+   "sentence": "The connection between the two events is ___ at best; the evidence linking them is extremely thin.",
+   "options": [
+    "tenuous",
+    "flimsy",
+    "robust",
+    "tacit",
+    "prosaic",
+    "zealous"
+   ],
+   "answers": [
+    "tenuous",
+    "flimsy"
+   ],
+   "explanation": "'Evidence extremely thin' = ligação fraca: tenuous e flimsy.",
+   "explanationEn": "'Evidence extremely thin' = weak link: tenuous and flimsy."
+  },
+  {
+   "id": "s15",
+   "set": 4,
+   "type": "TC",
+   "sentence": "The partners never signed a contract, but they had a ___ agreement that each would cover half the costs.",
+   "options": [
+    "tacit",
+    "prodigal",
+    "quiescent",
+    "reticent",
+    "recalcitrant"
+   ],
+   "answers": [
+    "tacit"
+   ],
+   "explanation": "Acordo existente sem nada escrito ou dito = tacit.",
+   "explanationEn": "An existing agreement with nothing written or said = tacit."
+  },
+  {
+   "id": "s16",
+   "set": 4,
+   "type": "SE",
+   "sentence": "Unable to choose between the two job offers, Marta continued to ___ for weeks.",
+   "options": [
+    "vacillate",
+    "waver",
+    "venerate",
+    "placate",
+    "decide",
+    "sanction"
+   ],
+   "answers": [
+    "vacillate",
+    "waver"
+   ],
+   "explanation": "'Unable to choose' = hesitar entre opções: vacillate e waver.",
+   "explanationEn": "'Unable to choose' = hesitate between options: vacillate and waver."
+  }
+ ],
+ "quant": [
+  {
+   "id": "q1",
+   "type": "QC",
+   "prompt": "Quantity A: 3/7   |   Quantity B: 0.43",
+   "options": [
+    "Quantity A is greater",
+    "Quantity B is greater",
+    "The two quantities are equal",
+    "The relationship cannot be determined from the information given"
+   ],
+   "answer": "Quantity B is greater",
+   "solution": "3/7 ≈ 0.4286 < 0.43.",
+   "solutionEn": "3/7 ≈ 0.4286 < 0.43."
+  },
+  {
+   "id": "q2",
+   "type": "QC",
+   "prompt": "x > 0.   Quantity A: x²   |   Quantity B: x",
+   "options": [
+    "Quantity A is greater",
+    "Quantity B is greater",
+    "The two quantities are equal",
+    "The relationship cannot be determined from the information given"
+   ],
+   "answer": "The relationship cannot be determined from the information given",
+   "solution": "x = 2 → A maior (4 > 2); x = 0.5 → B maior (0.25 < 0.5). Depende de x.",
+   "solutionEn": "x = 2 → A greater (4 > 2); x = 0.5 → B greater (0.25 < 0.5). It depends on x."
+  },
+  {
+   "id": "q3",
+   "type": "QC",
+   "prompt": "Quantity A: the average (arithmetic mean) of 4, 8 and 12   |   Quantity B: the median of 3, 8 and 20",
+   "options": [
+    "Quantity A is greater",
+    "Quantity B is greater",
+    "The two quantities are equal",
+    "The relationship cannot be determined from the information given"
+   ],
+   "answer": "The two quantities are equal",
+   "solution": "Média = 24/3 = 8; mediana = 8.",
+   "solutionEn": "Mean = 24/3 = 8; median = 8."
+  },
+  {
+   "id": "q4",
+   "type": "QC",
+   "prompt": "Quantity A: 20% of 150   |   Quantity B: 25% of 110",
+   "options": [
+    "Quantity A is greater",
+    "Quantity B is greater",
+    "The two quantities are equal",
+    "The relationship cannot be determined from the information given"
+   ],
+   "answer": "Quantity A is greater",
+   "solution": "A = 30; B = 27.5.",
+   "solutionEn": "A = 30; B = 27.5."
+  },
+  {
+   "id": "q5",
+   "type": "QC",
+   "prompt": "Quantity A: (0.9)²   |   Quantity B: 0.9",
+   "options": [
+    "Quantity A is greater",
+    "Quantity B is greater",
+    "The two quantities are equal",
+    "The relationship cannot be determined from the information given"
+   ],
+   "answer": "Quantity B is greater",
+   "solution": "0.9² = 0.81. Número entre 0 e 1 elevado ao quadrado diminui.",
+   "solutionEn": "0.9² = 0.81. Squaring a number between 0 and 1 makes it smaller."
+  },
+  {
+   "id": "q6",
+   "type": "MC",
+   "prompt": "If 3x − 7 = 11, what is the value of x?",
+   "options": [
+    "4",
+    "5",
+    "6",
+    "7",
+    "8"
+   ],
+   "answer": "6",
+   "solution": "3x = 18 → x = 6.",
+   "solutionEn": "3x = 18 → x = 6."
+  },
+  {
+   "id": "q7",
+   "type": "MC",
+   "prompt": "The price of a jacket is increased by 20% and then the new price is decreased by 20%. The final price is what percent of the original price?",
+   "options": [
+    "96%",
+    "98%",
+    "100%",
+    "102%",
+    "104%"
+   ],
+   "answer": "96%",
+   "solution": "1.2 × 0.8 = 0.96 → 96% (queda líquida de 4%).",
+   "solutionEn": "1.2 × 0.8 = 0.96 → 96% (net decrease of 4%)."
+  },
+  {
+   "id": "q8",
+   "type": "MC",
+   "prompt": "A rectangle has a perimeter of 30 and a length of 9. What is its area?",
+   "options": [
+    "45",
+    "54",
+    "63",
+    "81",
+    "135"
+   ],
+   "answer": "54",
+   "solution": "2(9 + w) = 30 → w = 6; área = 9 × 6 = 54.",
+   "solutionEn": "2(9 + w) = 30 → w = 6; area = 9 × 6 = 54."
+  },
+  {
+   "id": "q9",
+   "type": "MC",
+   "prompt": "How many integers from 10 to 50, inclusive, are divisible by 6?",
+   "options": [
+    "5",
+    "6",
+    "7",
+    "8",
+    "9"
+   ],
+   "answer": "7",
+   "solution": "12, 18, 24, 30, 36, 42, 48 → 7.",
+   "solutionEn": "12, 18, 24, 30, 36, 42, 48 → 7."
+  },
+  {
+   "id": "q10",
+   "type": "MC",
+   "prompt": "A right triangle has legs of length 6 and 8. What is the length of the hypotenuse?",
+   "options": [
+    "9",
+    "10",
+    "12",
+    "14",
+    "√48"
+   ],
+   "answer": "10",
+   "solution": "√(36 + 64) = √100 = 10.",
+   "solutionEn": "√(36 + 64) = √100 = 10."
+  },
+  {
+   "id": "q11",
+   "type": "MC",
+   "prompt": "If 2^x = 32, what is the value of 2^(x − 2)?",
+   "options": [
+    "4",
+    "8",
+    "16",
+    "30",
+    "64"
+   ],
+   "answer": "8",
+   "solution": "x = 5 → 2³ = 8 (ou 32/4 = 8).",
+   "solutionEn": "x = 5 → 2³ = 8 (or 32/4 = 8)."
+  },
+  {
+   "id": "q12",
+   "type": "NE",
+   "prompt": "The average of five numbers is 12. Four of the numbers are 10, 14, 9 and 15. What is the fifth number?",
+   "accept": [
+    "12"
+   ],
+   "answer": "12",
+   "solution": "Soma total = 5 × 12 = 60; 10+14+9+15 = 48; 60 − 48 = 12.",
+   "solutionEn": "Total = 5 × 12 = 60; 10+14+9+15 = 48; 60 − 48 = 12."
+  },
+  {
+   "id": "q13",
+   "type": "NE",
+   "prompt": "Pipe A fills a tank in 3 hours and pipe B fills it in 6 hours. Working together, how many hours do they take to fill the tank?",
+   "accept": [
+    "2"
+   ],
+   "answer": "2",
+   "solution": "1/3 + 1/6 = 1/2 do tanque por hora → 2 horas.",
+   "solutionEn": "1/3 + 1/6 = 1/2 of the tank per hour → 2 hours."
+  },
+  {
+   "id": "q14",
+   "type": "NE",
+   "prompt": "Two fair coins are tossed. What is the probability that both land heads? (Give a fraction or decimal.)",
+   "accept": [
+    "1/4",
+    "0.25",
+    ".25"
+   ],
+   "answer": "1/4",
+   "solution": "(1/2) × (1/2) = 1/4.",
+   "solutionEn": "(1/2) × (1/2) = 1/4."
+  },
+  {
+   "id": "q15",
+   "type": "NE",
+   "prompt": "A car travels 150 kilometers in 2.5 hours at a constant speed. What is its speed, in kilometers per hour?",
+   "accept": [
+    "60"
+   ],
+   "answer": "60",
+   "solution": "150 ÷ 2.5 = 60 km/h.",
+   "solutionEn": "150 ÷ 2.5 = 60 km/h."
+  }
+ ],
+ "greIssue": {
+  "minutes": 30,
+  "source": "ETS, GRE Analytical Writing 'Analyze an Issue' Topic Pool, https://www.ets.org/pdfs/gre/issue-pool.pdf",
+  "prompts": [
+   {
+    "statement": "Governments should place few, if any, restrictions on scientific research and development.",
+    "instructions": "Write a response in which you discuss the extent to which you agree or disagree with the recommendation and explain your reasoning for the position you take. In developing and supporting your position, describe specific circumstances in which adopting the recommendation would or would not be advantageous and explain how these examples shape your position."
+   },
+   {
+    "statement": "The best way to teach is to praise positive actions and ignore negative ones.",
+    "instructions": "Write a response in which you discuss the extent to which you agree or disagree with the statement and explain your reasoning for the position you take. In developing and supporting your position, you should consider ways in which the statement might or might not hold true and explain how these considerations shape your position."
+   },
+   {
+    "statement": "Governments should offer college and university education free of charge to all students.",
+    "instructions": "Write a response in which you discuss the extent to which you agree or disagree with the recommendation and explain your reasoning for the position you take. In developing and supporting your position, describe specific circumstances in which adopting the recommendation would or would not be advantageous and explain how these examples shape your position."
+   },
+   {
+    "statement": "The luxuries and conveniences of contemporary life prevent people from developing into truly strong and independent individuals.",
+    "instructions": "Write a response in which you discuss the extent to which you agree or disagree with the statement and explain your reasoning for the position you take. In developing and supporting your position, you should consider ways in which the statement might or might not hold true and explain how these considerations shape your position."
+   },
+   {
+    "statement": "In any field of inquiry, the beginner is more likely than the expert to make important contributions.",
+    "instructions": "Write a response in which you discuss the extent to which you agree or disagree with the statement and explain your reasoning for the position you take. In developing and supporting your position, you should consider ways in which the statement might or might not hold true and explain how these considerations shape your position."
+   },
+   {
+    "statement": "The surest indicator of a great nation is represented not by the achievements of its rulers, artists, or scientists, but by the general welfare of its people.",
+    "instructions": "Write a response in which you discuss the extent to which you agree or disagree with the statement and explain your reasoning for the position you take. In developing and supporting your position, you should consider ways in which the statement might or might not hold true and explain how these considerations shape your position."
+   },
+   {
+    "statement": "In any situation, progress requires discussion among people who have contrasting points of view.",
+    "instructions": "Write a response in which you discuss the extent to which you agree or disagree with the statement and explain your reasoning for the position you take. In developing and supporting your position, you should consider ways in which the statement might or might not hold true and explain how these considerations shape your position."
+   },
+   {
+    "statement": "Educational institutions should dissuade students from pursuing fields of study in which they are unlikely to succeed.",
+    "instructions": "Write a response in which you discuss your views on the policy and explain your reasoning for the position you take. In developing and supporting your position, you should consider the possible consequences of implementing the policy and explain how these consequences shape your position."
+   },
+   {
+    "statement": "Governments should not fund any scientific research whose consequences are unclear.",
+    "instructions": "Write a response in which you discuss the extent to which you agree or disagree with the recommendation and explain your reasoning for the position you take. In developing and supporting your position, describe specific circumstances in which adopting the recommendation would or would not be advantageous and explain how these examples shape your position."
+   },
+   {
+    "statement": "Society should identify those children who have special talents and provide training for them at an early age to develop their talents.",
+    "instructions": "Write a response in which you discuss the extent to which you agree or disagree with the recommendation and explain your reasoning for the position you take. In developing and supporting your position, describe specific circumstances in which adopting the recommendation would or would not be advantageous and explain how these examples shape your position."
+   },
+   {
+    "statement": "It is primarily through our identification with social groups that we define ourselves.",
+    "instructions": "Write a response in which you discuss the extent to which you agree or disagree with the statement and explain your reasoning for the position you take. In developing and supporting your position, you should consider ways in which the statement might or might not hold true and explain how these considerations shape your position."
+   },
+   {
+    "statement": "College students should be encouraged to pursue subjects that interest them rather than the courses that seem most likely to lead to jobs.",
+    "instructions": "Write a response in which you discuss the extent to which you agree or disagree with the recommendation and explain your reasoning for the position you take. In developing and supporting your position, describe specific circumstances in which adopting the recommendation would or would not be advantageous and explain how these examples shape your position."
+   }
+  ],
+  "rubric6": [
+   "articulates a clear and insightful position on the issue in accordance with the assigned task",
+   "develops the position fully with compelling reasons and/or persuasive examples",
+   "sustains a well-focused, well-organized analysis, connecting ideas logically",
+   "conveys ideas fluently and precisely, using effective vocabulary and sentence variety",
+   "demonstrates superior facility with the conventions of standard written English (i.e., grammar, usage and mechanics), but may have minor errors"
+  ],
+  "rubric4": [
+   "presents a clear position on the issue in accordance with the assigned task",
+   "develops the position with relevant reasons and/or examples",
+   "is adequately focused and organized",
+   "demonstrates sufficient control of language to express ideas with acceptable clarity",
+   "generally demonstrates control of the conventions of standard written English, but may have some errors"
+  ],
+  "rubricSource": "https://www.ets.org/gre/test-takers/general-test/prepare/content/analytical-writing/scoring.html"
+ },
+ "toeflWriting": {
+  "sectionMinutes": 23,
+  "sectionItems": 12,
+  "buildSentence": {
+   "items": 10,
+   "note": "10 itens, 1 ponto cada; tempo próprio não informado no material oficial (o resto da seção de ~23 min).",
+   "practice": [
+    {
+     "context": "Why were you late this morning?",
+     "chunks": [
+      "did not",
+      "I usually take",
+      "come",
+      "the bus",
+      "that",
+      "does"
+     ],
+     "answer": "The bus that I usually take did not come.",
+     "extra": "does"
+    },
+    {
+     "context": "Are you joining the study group tonight?",
+     "chunks": [
+      "where",
+      "is meeting",
+      "you",
+      "the group",
+      "know",
+      "do",
+      "are"
+     ],
+     "answer": "Do you know where the group is meeting?",
+     "extra": "are"
+    },
+    {
+     "context": "I just moved to a new apartment.",
+     "chunks": [
+      "far",
+      "the university",
+      "is",
+      "how",
+      "from",
+      "it"
+     ],
+     "answer": "How far is it from the university?",
+     "extra": null
+    },
+    {
+     "context": "What did the professor say about the exam?",
+     "chunks": [
+      "it",
+      "five chapters",
+      "she told us",
+      "would cover",
+      "that",
+      "the first",
+      "will"
+     ],
+     "answer": "She told us that it would cover the first five chapters.",
+     "extra": "will"
+    },
+    {
+     "context": "The conference starts tomorrow.",
+     "chunks": [
+      "begins",
+      "what time",
+      "could you",
+      "the first session",
+      "tell me",
+      "does"
+     ],
+     "answer": "Could you tell me what time the first session begins?",
+     "extra": "does"
+    }
+   ],
+   "noteEn": "10 items, 1 point each; no separate time limit in the official material (it shares the ~23-min section)."
+  },
+  "email": {
+   "minutes": 7,
+   "practice": [
+    {
+     "situation": "You signed up for a weekend photography course at your local community center. Yesterday, the center moved the class from Saturday morning to Thursday evening, when you have to work.",
+     "to": "coordinator@riversidecommunitycenter.org",
+     "subject": "Schedule change for the photography course",
+     "bullets": [
+      "Explain why you signed up for the course.",
+      "Describe the problem the schedule change causes for you.",
+      "Ask about your options."
+     ]
+    },
+    {
+     "situation": "Last week a classmate lent you an expensive textbook. While you were studying at a café, you spilled coffee on it and several pages were damaged.",
+     "to": "daniel.kim@university.edu",
+     "subject": "About your textbook",
+     "bullets": [
+      "Apologize and explain what happened.",
+      "Offer a solution.",
+      "Suggest a time and place to meet."
+     ]
+    }
+   ]
+  },
+  "discussion": {
+   "minutes": 10,
+   "minWords": 100,
+   "practice": [
+    {
+     "professor": "Your professor is teaching a class on urban planning. Professor: Many cities in Europe have turned their historic centers into pedestrian-only zones. Supporters say this makes cities cleaner and safer; opponents say it hurts businesses and makes life harder for some residents. Should cities ban private cars from their central areas? Why or why not?",
+     "students": [
+      {
+       "name": "Ana",
+       "post": "Yes. Car-free centers have less pollution and fewer accidents. When my city closed its main avenue to cars on Sundays, local shops were actually busier because people walked around more."
+      },
+      {
+       "name": "Kevin",
+       "post": "I disagree. Elderly people and people with disabilities depend on cars, and shops still need deliveries. A total ban would make the center less accessible, not more."
+      }
+     ]
+    },
+    {
+     "professor": "Your professor is teaching a class on business management. Professor: Several companies have experimented with a four-day workweek while keeping salaries the same. Should more companies adopt a four-day workweek? Why or why not?",
+     "students": [
+      {
+       "name": "Priya",
+       "post": "I think so. Rested employees are more focused, and companies that tried it reported similar productivity with fewer sick days."
+      },
+      {
+       "name": "Lucas",
+       "post": "It depends on the industry. A hospital or a customer support center can't just close one day a week, so it might be unfair or impossible for many workers."
+      }
+     ]
+    }
+   ]
+  },
+  "rubricEmail5": [
+   "Elaboration that effectively supports the communicative purpose",
+   "Effective syntactic variety and precise, idiomatic word choice",
+   "Consistent use of appropriate social conventions (politeness, register, organization of information, requests, refusals, etc.)",
+   "Almost no lexical or grammatical errors other than those expected from a competent writer under timed conditions"
+  ],
+  "rubricDiscussion5": [
+   "Relevant and well-elaborated explanations, exemplifications and/or details",
+   "Effective use of a variety of syntactic structures and precise, idiomatic word choice",
+   "Almost no lexical or grammatical errors other than those expected from a competent writer under timed conditions"
+  ],
+  "source": "ETS TOEFL iBT Writing Scoring Guide (writing-rubrics.pdf); Updated TOEFL iBT Test Overview; Full-Length Practice Test 1"
+ },
+ "toeflSpeaking": {
+  "sectionMinutes": 8,
+  "sectionItems": 11,
+  "listenRepeat": {
+   "responseSeconds": "8–12",
+   "prep": 0,
+   "practice": [
+    {
+     "scenario": "You are training to give campus tours. Listen to your supervisor and repeat what she says. Repeat only once.",
+     "sentences": [
+      "Welcome to the campus.",
+      "The library is on your left.",
+      "Students can borrow laptops at the front desk.",
+      "The cafeteria closes at eight on weekdays and at six on weekends.",
+      "If you lose your ID card, report it to the security office right away.",
+      "The building that you see across the street was designed by a former student.",
+      "Visitors who would like to attend a lecture should register online at least one day in advance."
+     ]
+    },
+    {
+     "scenario": "You are volunteering at a science museum. Listen to the coordinator and repeat what he says. Repeat only once.",
+     "sentences": [
+      "Tickets are sold at the main entrance.",
+      "Please keep your bags in the lockers.",
+      "The dinosaur exhibit is on the second floor.",
+      "Photography is allowed, but please turn off your flash.",
+      "Guided tours start every hour and last about forty minutes.",
+      "Children under twelve must be accompanied by an adult at all times.",
+      "The planetarium show, which was updated last year, explains how stars are formed."
+     ]
+    }
+   ]
+  },
+  "interview": {
+   "responseSeconds": 45,
+   "prep": 0,
+   "practice": [
+    {
+     "scenario": "You have agreed to take part in a research study about technology and learning. A researcher will ask you some questions.",
+     "questions": [
+      "Do you usually study alone, with friends, or online? Tell me a little about how you study.",
+      "Some people learn best by watching videos, while others prefer reading. Which do you prefer, and why?",
+      "Some people think universities should replace most lectures with online courses. Do you agree? Why or why not?",
+      "Researchers predict that AI tutors will become common in the next ten years. Do you think this will improve education? Why or why not?"
+     ]
+    },
+    {
+     "scenario": "You have agreed to take part in a study about transportation and work. A researcher will ask you some questions.",
+     "questions": [
+      "How do you usually get to work or school?",
+      "What is one thing you would change about public transportation where you live? Why?",
+      "Some companies let employees work from home permanently. Do you think this is a good idea? Why or why not?",
+      "Some cities are considering charging drivers a fee to enter the city center during busy hours. Do you think this policy would be effective? Why or why not?"
+     ]
+    }
+   ]
+  },
+  "rubricRepeat": {
+   "5": "Exact, fully intelligible repetition",
+   "4": "Meaning captured; minor changes (1–2 function words, a related content word, tense/number markers)",
+   "3": "Essentially full, but original meaning not accurately captured",
+   "2": "Significant part missing and/or highly inaccurate",
+   "1": "Very little of the prompt, or largely unintelligible",
+   "0": "No response / unintelligible / not English / unrelated"
+  },
+  "rubricInterview": {
+   "5": "On topic, well elaborated; good pace; easily intelligible; range of accurate grammar and vocabulary",
+   "4": "On topic and elaborated (may lack connectors); generally good pace; occasional words need minor effort; grammar/vocabulary adequate most of the time",
+   "3": "Generally on topic, limited elaboration; choppy pace, frequent fillers; intelligibility sometimes affected; limited range",
+   "2": "Minimally connected; little relevant elaboration; limited intelligibility",
+   "1": "Only vaguely connected; mostly unintelligible; isolated words",
+   "0": "No response / unintelligible / not English / unrelated"
+  },
+  "source": "ETS TOEFL iBT Speaking Scoring Guide (speaking-rubrics.pdf); Updated TOEFL iBT Test Overview (8–12 s per Listen and Repeat sentence; 4 interview questions, 45 s each; no preparation time)"
+ },
+ "milestones": [
+  [
+   "S1 · 2–8/nov",
+   "Diagnóstico TOEFL (Full-Length Practice Test 1) + agendar o TOEFL",
+   "W1 · Nov 2–8",
+   "TOEFL diagnostic (Full-Length Practice Test 1) + book the TOEFL"
+  ],
+  [
+   "S2 · 9–15/nov",
+   "Teacher Practice Test 1 (Writing + Speaking) + 3 redações longas",
+   "W2 · Nov 9–15",
+   "Teacher Practice Test 1 (Writing + Speaking) + 3 long essays"
+  ],
+  [
+   "S3 · 16–22/nov",
+   "Teacher Practice Test 2 completo",
+   "W3 · Nov 16–22",
+   "Teacher Practice Test 2, complete"
+  ],
+  [
+   "S4 · 23–29/nov",
+   "Teacher Practice Test 3 completo",
+   "W4 · Nov 23–29",
+   "Teacher Practice Test 3, complete"
+  ],
+  [
+   "S5 · 30/nov–6/dez",
+   "Full-Length Practice Test 2 em condições reais",
+   "W5 · Nov 30–Dec 6",
+   "Full-Length Practice Test 2 under real conditions"
+  ],
+  [
+   "S6 · 7–13/dez",
+   "TOEFL (se 13/dez) ou Teacher Practice Test 4",
+   "W6 · Dec 7–13",
+   "TOEFL (if Dec 13) or Teacher Practice Test 4"
+  ],
+  [
+   "S7 · 14–20/dez",
+   "TOEFL (se 20/dez) / POWERPREP Online 1",
+   "W7 · Dec 14–20",
+   "TOEFL (if Dec 20) / POWERPREP Online 1"
+  ],
+  [
+   "S8 · 21–27/dez",
+   "Practice Book: Verbal + Issue; ver nota do TOEFL",
+   "W8 · Dec 21–27",
+   "Practice Book: Verbal + Issue; check TOEFL score"
+  ],
+  [
+   "S9 · 28/dez–3/jan",
+   "3 Issues de 30 min",
+   "W9 · Dec 28–Jan 3",
+   "3 timed 30-min Issues"
+  ],
+  [
+   "S10 · 4–10/jan",
+   "Practice Book: Quant + 2 Issues; agendar o GRE",
+   "W10 · Jan 4–10",
+   "Practice Book: Quant + 2 Issues; book the GRE"
+  ],
+  [
+   "S11 · 11–17/jan",
+   "POWERPREP Online 2 cronometrado",
+   "W11 · Jan 11–17",
+   "POWERPREP Online 2, timed"
+  ],
+  [
+   "S12 · 18–24/jan",
+   "GRE ~24/jan (enviar a TalTech, DI 5019)",
+   "W12 · Jan 18–24",
+   "GRE ~Jan 24 (send to TalTech, DI 5019)"
+  ],
+  [
+   "S13 · 25–31/jan",
+   "Notas oficiais ~1–3/fev; decidir refação",
+   "W13 · Jan 25–31",
+   "Official scores ~Feb 1–3; decide on a retake"
+  ]
+ ]
+}

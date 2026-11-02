@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Treino TalTech — GRE + TOEFL</title>
+<style>
+:root,[data-theme=light]{color-scheme:light;
+ --bg:#f4f6fa;--card:#fff;--ink:#1d2433;--mut:#5d6778;--line:#dde3ec;--field:#fff;
+ --pri:#2457c5;--pri-ink:#fff;--acc:#2457c5;--pri2:#e8eefc;
+ --ok:#1d8a4e;--okb:#e6f6ec;--ok-ink:#0f5130;--bad:#c23b3b;--badb:#fbeaea;--bad-ink:#7a1f1f;--danger:#c23b3b;--danger-ink:#fff;
+ --hdr:#14213d;--hdr-ink:#fff;--hdr-mut:#9fb0d6;--nav-ink:#cfd8ee;--nav-hover:#24345c;--nav-on:#fff;--nav-on-ink:#14213d;
+ --prompt:#f7f9fd;--track:#e8ecf3;--timer:#14213d;--timer-ink:#fff;--timer-low:#c23b3b;--overlay:rgba(10,20,40,.45);--toast:#14213d;--shadow:0 1px 2px rgba(20,33,61,.05)}
+[data-theme=dark]{color-scheme:dark;
+ --bg:#0f141c;--card:#18202d;--ink:#e6ebf3;--mut:#9ba7b9;--line:#2b3749;--field:#111823;
+ --pri:#3b6fe0;--pri-ink:#fff;--acc:#8fb2ff;--pri2:#1d2b47;
+ --ok:#3fbf7a;--okb:#122d1f;--ok-ink:#a8f0c6;--bad:#f07070;--badb:#3a1b1f;--bad-ink:#ffc4c4;--danger:#d9484b;--danger-ink:#fff;
+ --hdr:#0a0e15;--hdr-ink:#f1f4f9;--hdr-mut:#8b98ad;--nav-ink:#c3cde0;--nav-hover:#1b2536;--nav-on:#e6ebf3;--nav-on-ink:#0a0e15;
+ --prompt:#131a25;--track:#2a3547;--timer:#0a0e15;--timer-ink:#f1f4f9;--timer-low:#c23b3b;--overlay:rgba(0,0,0,.6);--toast:#2a3547;--shadow:none}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.5 "Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:var(--hdr);color:var(--hdr-ink);padding:10px 18px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:5}
+header h1{font-size:17px;margin:0;white-space:nowrap}
+#ver{font-weight:400;font-size:12px;color:var(--hdr-mut);cursor:pointer}
+nav{display:flex;gap:2px;flex:none}
+nav button,#gear{background:transparent;color:var(--nav-ink);border:0;padding:7px 12px;border-radius:7px;font:inherit;cursor:pointer;white-space:nowrap}
+nav button.on,#gear.on{background:var(--nav-on);color:var(--nav-on-ink);font-weight:600}
+nav button:hover:not(.on),#gear:hover:not(.on){background:var(--nav-hover)}
+#gear{padding:6px 8px;display:flex;align-items:center}
+#gear svg{width:20px;height:20px}
+#savest{margin-left:auto;font-size:12px;color:var(--hdr-mut);white-space:nowrap;min-width:0;overflow:hidden;text-overflow:ellipsis}
+#gear{flex:none}
+@media(max-width:900px){header{gap:10px;padding:10px 12px}nav button{padding:7px 9px}}
+main{max-width:1000px;margin:0 auto;padding:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:14px;box-shadow:var(--shadow)}
+h2{font-size:19px;line-height:1.3;margin:0 0 12px}h3{font-size:16px;line-height:1.3;margin:16px 0 8px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.mut{color:var(--mut);font-size:13px}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:7px 13px;border-radius:8px;font:inherit;cursor:pointer}
+.btn:hover{border-color:var(--acc)}
+.btn.pri{background:var(--pri);border-color:var(--pri);color:var(--pri-ink)}
+.btn.danger{background:var(--danger);border-color:var(--danger);color:var(--danger-ink)}
+.btn.dangerline{color:var(--bad);border-color:var(--bad)}
+.btn.on{background:var(--pri2);border-color:var(--acc);color:var(--acc);font-weight:600}
+.btn:disabled{opacity:.5;cursor:default}
+.btn.sm{padding:3px 9px;font-size:13px}
+.btn.ghost{background:transparent;border-color:transparent;color:var(--mut)}.btn.ghost:hover{border-color:var(--line);color:var(--ink)}
+.btn.acc{border-color:var(--acc);color:var(--acc);font-weight:600}
+.btn.ic{display:inline-flex;align-items:center;gap:7px}.btn.ic svg{width:16px;height:16px;flex:none}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:10px 12px;line-height:1.4}
+.opt.sel{background:var(--pri2);border-color:var(--acc)}
+.opt.ok{background:var(--okb);border-color:var(--ok)}
+.opt.bad{background:var(--badb);border-color:var(--bad)}
+.q{font-size:17px;line-height:1.45;margin:0 0 14px}
+.qkind{font-size:13px;font-weight:600;color:var(--acc);margin-bottom:4px}
+.qtext{margin:0}.qtext b.w{font-weight:700}
+.qmeta{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--mut);margin:-4px 0 14px;min-height:28px}
+.qmeta .qn{white-space:nowrap;font-weight:600;color:var(--ink)}.qmeta .qscore{white-space:nowrap}.qmeta .btn{white-space:nowrap;margin-right:-8px}.qmeta .pill{flex:none;white-space:nowrap}
+.qprog{flex:1;height:4px;background:var(--track);border-radius:99px;overflow:hidden;min-width:48px}.qprog i{display:block;height:100%;background:var(--acc);border-radius:99px}
+.wunit{display:flex;align-items:center;gap:6px 14px;flex-wrap:wrap;margin-top:12px;padding:2px 0 2px 12px;border-left:3px solid var(--acc)}
+.wunit .wbig{font-size:28px;line-height:1.2;font-weight:650;letter-spacing:-.01em}.wunit .ipa{font-size:16px}
+.aud{display:inline-flex;align-items:stretch;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--card);vertical-align:middle;flex:none}
+.aud .spk{border:0;border-radius:0;margin:0;padding:4px 7px}.aud .spk+.spk{border-left:1px solid var(--line)}.aud .spk.slow{font-size:12px;padding:4px 8px}
+.wunit .aud .spk{padding:6px 10px}.wunit .aud .spk svg{width:18px;height:18px}.wunit .aud .spk.slow{font-size:13px}
+.fb{border-radius:8px;padding:12px;margin-top:12px;line-height:1.5}.fb>div+div{margin-top:6px}.fbh{display:flex;align-items:center;gap:6px 10px;flex-wrap:wrap}.fb .lbl{font-size:13px;opacity:.85;margin-bottom:4px}
+.fb.ok{background:var(--okb);color:var(--ok-ink)}.fb.bad{background:var(--badb);color:var(--bad-ink)}
+.pill{display:inline-block;padding:1px 8px;border-radius:99px;background:var(--pri2);color:var(--acc);font-size:12px;font-weight:600;line-height:1.5}
+textarea{width:100%;min-height:300px;font:15px/1.55 "Segoe UI",system-ui,sans-serif;padding:10px;border:1px solid var(--line);border-radius:8px;resize:vertical;background:var(--field);color:var(--ink)}
+input[type=text],select{font:inherit;padding:6px 9px;max-width:100%;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--acc);outline-offset:-1px}
+.timer{font:600 26px/1 Consolas,monospace;padding:6px 12px;border-radius:8px;background:var(--timer);color:var(--timer-ink);border:1px solid var(--line);min-width:96px;text-align:center}
+.timer.low{background:var(--timer-low);color:#fff}
+.prompt{background:var(--prompt);border-left:4px solid var(--acc);padding:10px 13px;border-radius:6px;margin:8px 0}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}
+th{color:var(--mut);font-weight:600;font-size:13px;white-space:nowrap;vertical-align:bottom}
+td.nw{white-space:nowrap}table.mid td{vertical-align:middle}table.rub td:first-child{width:28px}
+.bar{height:8px;background:var(--track);border-radius:99px;overflow:hidden;min-width:80px}
+.bar i{display:block;height:100%;background:var(--acc)}
+.chips .btn{margin:3px}
+.built{min-height:44px;border:2px dashed var(--line);border-radius:8px;padding:8px;margin:8px 0;font-size:17px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:820px){.grid2{grid-template-columns:1fr}}
+.ms{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--line)}
+.ms input{margin-top:4px;width:18px;height:18px;accent-color:var(--pri)}
+.ms.done span.t{color:var(--mut);text-decoration:line-through}
+#modal{position:fixed;inset:0;background:var(--overlay);display:none;align-items:center;justify-content:center;z-index:20}
+#modal .card{width:min(820px,92vw);max-height:86vh;overflow:auto}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--toast);color:#fff;padding:9px 16px;border-radius:9px;z-index:30;max-width:90vw}
+.big{font-size:22px;font-weight:600}
+.score{font-size:32px;font-weight:650;line-height:1.2;margin:0 0 12px}
+.empty{text-align:center;padding:28px 18px}.empty p{margin:0 0 6px}.empty .btn{margin-top:8px}
+.mhead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px}.mhead h2{margin:0;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mhead .btn{flex:none}
+.tasks{display:flex;gap:8px 18px;flex-wrap:wrap;align-items:center}.tasks .tg{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.tasks .grp{font-size:12px;font-weight:600;color:var(--mut);letter-spacing:.04em}.tasks .btn .mut{font-size:12px;margin-left:4px}.tasks .btn.on .mut{color:inherit;opacity:.8}
+.pn{display:flex;gap:8px;margin-left:auto}.selrow{display:flex;gap:8px;align-items:center}.selrow select{flex:1;min-width:0}.selrow>*{flex:none}.selrow>select{flex:1 1 auto}
+.optgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:6px 12px;margin-top:4px}.optgrid .wb{flex-wrap:nowrap;white-space:nowrap}
+ul.r{margin:4px 0 0 18px;padding:0}
+.seg{display:flex;gap:10px;flex-wrap:wrap}
+.seg .btn{display:flex;align-items:center;gap:9px;padding:8px 14px}
+.sw{width:30px;height:20px;border-radius:5px;border:1px solid #8892a3;display:inline-block;flex:none}
+.sw.light{background:linear-gradient(#14213d 0 30%,#f4f6fa 30%)}
+.sw.dark{background:linear-gradient(#0a0e15 0 30%,#18202d 30%)}
+.sw.system{background:linear-gradient(135deg,#f4f6fa 0 50%,#18202d 50%)}
+.kv{display:grid;grid-template-columns:minmax(130px,auto) 1fr;gap:6px 16px;font-size:14px}
+.kv>span:nth-child(odd){color:var(--mut);white-space:nowrap}
+.spk{display:inline-flex;align-items:center;justify-content:center;gap:3px;border:1px solid var(--line);background:var(--card);color:var(--acc);border-radius:7px;padding:3px 6px;margin-left:6px;cursor:pointer;vertical-align:middle;font:inherit;font-size:11px;line-height:1}.spk:hover{background:var(--pri2)}.spk:focus-visible{outline:2px solid var(--pri);outline-offset:1px}.spk.slow{color:var(--mut)}.chip .spk{border:0;background:transparent;color:inherit;padding:0 0 0 2px;margin-left:2px}.chip .spk svg{width:12px;height:12px}.wb{display:inline-flex;align-items:center;flex-wrap:wrap;gap:2px 8px;vertical-align:middle;line-height:1.3}.wb>.spk,.wb>.aud{margin-left:0}.wbw{display:inline-flex;align-items:center}.ipa{font-family:"Segoe UI","Noto Sans","Charis SIL","Lucida Sans Unicode",sans-serif;font-size:13px;color:var(--mut);font-weight:400}.sayrow{margin-top:10px;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}.sayrow .spk,.sayrow .aud{margin-left:0}.optw{padding:4px 8px;border-radius:7px;border:1px solid transparent}.optw.ok{border-color:var(--ok)}.missed{margin:8px 0}.warnline{color:var(--bad-ink)}
+.chip{display:inline-block;padding:1px 8px;margin:2px 3px 2px 0;border-radius:99px;background:var(--badb);color:var(--bad-ink);border:1px solid var(--bad);font-size:12px}
+.slist{border-top:1px solid var(--line)}
+.srow{display:grid;grid-template-columns:minmax(142px,1fr) minmax(124px,.8fr) minmax(124px,.8fr) minmax(96px,1.6fr) auto;gap:12px;align-items:start;padding:14px 0;border-bottom:1px solid var(--line)}.srow .sact{align-self:center}
+.srow>*{min-width:0}
+.sname .snm{font-weight:650;font-size:14px;line-height:1.35}.sname .srng,.sname .sseen{font-size:12px;line-height:1.4;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sname .seen{color:var(--ink);font-weight:600}
+.slbl{font-size:12px;line-height:1.35;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px}
+.sval{font-size:14px;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-variant-numeric:tabular-nums}.sval.mut{font-size:13px}
+.sbar{height:4px;border-radius:99px;background:var(--track);overflow:hidden;margin-top:6px;max-width:140px}.sbar i{display:block;height:100%;background:var(--acc);border-radius:99px}
+.pend{display:flex;align-items:center;gap:4px;flex-wrap:nowrap;overflow:hidden;min-height:22px;padding-top:1px}.pend.open{flex-wrap:wrap}
+.pend .chip{margin:0;white-space:nowrap;flex:none;line-height:1.5}.pend .chip.hid{display:none}
+.pend .more{flex:none;border:1px solid var(--line);background:var(--card);color:var(--mut);border-radius:99px;font:inherit;font-size:12px;line-height:1.5;padding:1px 8px;cursor:pointer;white-space:nowrap}.pend .more:hover{color:var(--ink);background:var(--pri2)}.pend .more:focus-visible{outline:2px solid var(--pri);outline-offset:1px}
+.sact .btn{white-space:nowrap}
+#settable .legend{margin-top:12px}
+.path{font-family:Consolas,monospace;font-size:13px;word-break:break-all}
+.dz{border:1px solid var(--bad);border-radius:10px;padding:12px 14px;margin-top:14px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.dz b,.danger-t{color:var(--bad)}
+.resume{border-color:var(--acc);background:var(--pri2)}.resume .rt{line-height:1.45}.resume .row{margin-top:10px}.dot{color:var(--acc);font-weight:700}.btn.on .dot{color:inherit}
+</style>
+</head>
+<body>
+<header>
+  <h1>Treino TalTech <span id="ver" data-act="novidades"></span></h1>
+  <nav id="nav"></nav>
+  <span id="savest"></span>
+  <button id="gear" data-act="tab" data-v="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+</header>
+<main id="app"><div class="card">Carregando…</div></main>
+<div id="modal"><div class="card" id="modalc"></div></div>
+<script>
+"use strict";
+const DATA = /*__DATA__*/null;
+const APP_VERSION = /*__VER__*/"dev";
+const SCHEMA = 4; // versão do formato do progresso.json (1 = v1.0, 2 = v1.1, 3 = v1.2, 4 = v1.2.1: sessões em andamento; a v1.3 não muda o formato)
+const DEFAULT_SETTINGS = { theme: "system", language: "pt", autoSpeak: false };
+const NOVIDADES = {
+  "1.1": {
+    pt: ["Botão <b>Confirmar</b> em todas as questões: o clique só marca (dá para trocar); a resposta só conta ao confirmar. <b>Enter</b> confirma e depois avança; teclas <b>1–6</b> escolhem a alternativa.",
+      "Build a Sentence: clique num bloco já colocado para tirá-lo.",
+      "Ícone novo do app.",
+      "Atualizações sem perder nada: é só fechar o app e trocar o .exe. O progresso fica em %APPDATA%\\TreinoTalTech e, antes de converter o arquivo para um formato novo, o app faz um backup (progresso-v1.bak).",
+      "Versão do app visível no topo (clique nela para rever estas novidades)."],
+    en: ["<b>Confirm</b> button on every question: a click only selects (you can change it); the answer counts only when you confirm. <b>Enter</b> confirms and then moves on; keys <b>1–6</b> pick an option.",
+      "Build a Sentence: click a placed chunk to remove it.",
+      "New app icon.",
+      "Updates without losing anything: close the app and replace the .exe. Progress lives in %APPDATA%\\TreinoTalTech and, before converting the file to a new format, the app makes a backup (progresso-v1.bak).",
+      "App version shown at the top (click it to see these notes again)."]
+  },
+  "1.2": {
+    pt: ["Nova tela de <b>Configurações</b> (engrenagem no canto superior direito).",
+      "<b>Tema</b> Claro, Escuro ou Sistema (segue o tema do Windows na hora).",
+      "<b>Dados salvos</b>: ver a pasta, o tamanho e o último salvamento; <b>Exportar backup</b> (.json), <b>Importar backup</b> (com conferência e cópia de segurança antes) e <b>Zerar progresso</b> (pede para digitar ZERAR e faz backup antes).",
+      "<b>Idioma</b> da interface: Português ou English. As questões continuam em inglês; explicações e traduções seguem o idioma escolhido.",
+      "<b>Pronúncia</b> no GRE Vocab: alto-falante ao lado de cada palavra (quiz, revisão, resultado e erros pendentes) com voz americana do Windows; botão <b>devagar</b> (ou segure o alto-falante). Transcrição <b>IPA</b> americana embaixo das 60 palavras. Opção <b>Pronúncia automática</b> em Configurações.",
+      "Frases TC/SE: depois de confirmar, ouça a frase inteira (a lacuna é lida como “blank”) e a pronúncia de cada alternativa.",
+      "Tabela <b>Seu desempenho por conjunto</b> mais clara: faixa de palavras de cada conjunto, palavras vistas, acertos em Definições e Frases TC/SE, erros pendentes e botão <b>Treinar este conjunto</b>."],
+    en: ["New <b>Settings</b> screen (gear at the top right).",
+      "<b>Theme</b>: Light, Dark or System (follows the Windows theme live).",
+      "<b>Saved data</b>: see the folder, size and last save; <b>Export backup</b> (.json), <b>Import backup</b> (checked, with a safety copy first) and <b>Reset progress</b> (asks you to type ZERAR and backs up first).",
+      "Interface <b>language</b>: Português or English. Questions stay in English; explanations and translations follow the chosen language.",
+      "<b>Pronunciation</b> in GRE Vocab: a speaker next to every word (quiz, review, results and pending mistakes) using a US Windows voice; a <b>slow</b> button (or hold the speaker). US <b>IPA</b> under all 60 words. <b>Auto pronunciation</b> option in Settings.",
+      "TC/SE sentences: after confirming, hear the whole sentence (the gap is read as “blank”) and the pronunciation of each choice.",
+      "Clearer <b>Performance by set</b> table: each set's word range, words seen, Definitions and TC/SE accuracy, pending mistakes and a <b>Practise this set</b> button."]
+  },
+  "1.2.1": {
+    pt: ["<b>Correção:</b> trocar de aba (por exemplo, dar uma olhada em <b>Revisar erros</b>) não zera mais a sessão. Definições, Frases TC/SE, Revisar erros e GRE Quant guardam cada um a sua sessão em andamento: ordem das questões, questão atual, respostas e acertos.",
+      "Cada <b>Conjunto</b> (e cada tipo no Quant) tem a sua própria sessão: trocar o filtro no meio não apaga nada; volte ao filtro anterior e continue de onde parou. Filtros com sessão em andamento aparecem com um ponto (•).",
+      "As sessões ficam salvas no progresso: fechou o app no meio? Ao abrir, aparece <b>Continuar sessão (23/60)</b> ou <b>Começar nova sessão</b>. O Build a Sentence também volta no item onde você parou.",
+      "Botão <b>Nova sessão</b> no topo da questão para recomeçar quando quiser. Respostas já confirmadas contam uma vez só, mesmo depois de retomar."],
+    en: ["<b>Fix:</b> switching tabs (e.g. a quick look at <b>Review mistakes</b>) no longer resets your session. Definitions, TC/SE sentences, Review mistakes and GRE Quant each keep their own session in progress: question order, current question, answers and score.",
+      "Each <b>Set</b> (and each Quant type) has its own session: changing the filter mid-way erases nothing; go back to the previous filter and carry on. Filters with a session in progress show a dot (•).",
+      "Sessions are saved with your progress: closed the app mid-way? When you open it you get <b>Continue session (23/60)</b> or <b>Start a new session</b>. Build a Sentence also comes back to the item you were on.",
+      "<b>New session</b> button above the question to restart whenever you like. Answers already confirmed count only once, even after resuming."]
+  },
+  "1.3": {
+    pt: ["<b>Visual novo nas questões:</b> a pergunta fica inteira (“What is the definition of <b>bolster</b>?”, com o “?” colado na palavra) e, logo abaixo, a palavra em destaque com a pronúncia (IPA) ao lado e um só controle de áudio: alto-falante | devagar (segurar o alto-falante também toca devagar).",
+      "Conjunto/tipo, <b>Questão X de 60</b>, uma barra de progresso, os acertos e <b>Nova sessão</b> agora ficam numa linha discreta no topo da questão — em Definições, Frases TC/SE, Revisar erros, GRE Quant e Build a Sentence.",
+      "Retoque geral: espaçamentos e tamanhos de texto padronizados, um só botão principal por tela, ícones no mesmo estilo (sem emojis), tabelas sem quebra de datas, menu do topo sem quebrar em janelas estreitas, abas do Writing agrupadas (GRE / TOEFL), tema claro e escuro revisados.",
+      "Aviso de sessão em andamento no idioma da interface; contagens no singular (“1 rodada”); janela da redação com o título numa linha só."],
+    en: ["<b>New question look:</b> the prompt reads as one sentence (“What is the definition of <b>bolster</b>?”, with the “?” right after the word) and, just below, the word stands out with its pronunciation (IPA) beside it and a single audio control: speaker | slow (holding the speaker also plays it slowly).",
+      "Set/type, <b>Question X of 60</b>, a progress bar, your score and <b>New session</b> now sit in a quiet row at the top of the question — in Definitions, TC/SE sentences, Review mistakes, GRE Quant and Build a Sentence.",
+      "General polish: consistent spacing and text sizes, one primary button per screen, matching icons (no emoji), tables no longer wrap dates, the top menu no longer wraps in narrow windows, Writing tasks grouped (GRE / TOEFL), light and dark themes reviewed.",
+      "The session-in-progress notice follows the interface language; singular counts (“1 round”); the essay window keeps its title on one line."]
+  },
+  "1.3.1": {
+    pt: ["<b>Desempenho por conjunto redesenhado:</b> uma linha por conjunto — nome, faixa de palavras e vistas à esquerda; Definições e Frases TC/SE lado a lado com <b>acertos/tentativas · %</b> e uma barrinha; erros pendentes à direita e o botão <b>Treinar este conjunto</b> centralizado.",
+      "Nada quebra mais em duas linhas (nem em janelas estreitas): no máximo 2 erros aparecem e o resto vira <b>+N</b> — clique para ver todos. O significado dos números está na legenda abaixo da lista."],
+    en: ["<b>Redesigned performance by set:</b> one row per set — name, word range and seen words on the left; Definitions and TC/SE sentences side by side as <b>correct/attempted · %</b> with a small bar; pending mistakes on the right and the <b>Practise this set</b> button centred.",
+      "Nothing wraps onto two lines any more (even in narrow windows): at most 2 mistakes are shown and the rest become <b>+N</b> — click to see them all. What the numbers mean is in the legend below the list."]
+  }
+};
+
+/* ---------- idioma da interface ---------- */
+const LANG = () => (P && P.settings && P.settings.language === "en") ? "en" : "pt";
+const L = (pt, en) => LANG() === "en" ? en : pt;
+const LOC = () => LANG() === "en" ? "en-GB" : "pt-BR";
+
+/* ---------- ponte com o Go (com fallback para navegador comum) ---------- */
+const has = n => typeof window[n] === "function";
+const API = {
+  native: () => has("goSaveProgress"),
+  async load() { if (this.native()) return await window.goLoadProgress(); try { return localStorage.getItem("treinoTalTech") || ""; } catch (e) { return ""; } },
+  async save(s) { if (this.native()) return await window.goSaveProgress(s); try { localStorage.setItem("treinoTalTech", s); } catch (e) {} },
+  async copy(t) {
+    if (has("goCopyText")) return await window.goCopyText(t);
+    if (navigator.clipboard) return await navigator.clipboard.writeText(t);
+    throw new Error(L("Área de transferência indisponível", "Clipboard unavailable"));
+  },
+  async openFolder() { if (has("goOpenDataFolder")) return await window.goOpenDataFolder(); throw new Error(L("Só no app para Windows", "Windows app only")); },
+  async backup(oldSchema) {
+    if (has("goBackupProgress")) return await window.goBackupProgress(oldSchema);
+    try { localStorage.setItem("treinoTalTech-v" + oldSchema + ".bak", localStorage.getItem("treinoTalTech") || ""); } catch (e) {} return "localStorage";
+  },
+  async backupNamed(tag) { // cópia de segurança do arquivo atual antes de importar/zerar
+    if (has("goBackupNamed")) return await window.goBackupNamed(tag);
+    const k = "treinoTalTech-" + tag + ".bak"; localStorage.setItem(k, localStorage.getItem("treinoTalTech") || ""); return k;
+  },
+  async folder() { if (has("goDataFolder")) return await window.goDataFolder(); return L("(navegador: localStorage)", "(browser: localStorage)"); },
+  async info() {
+    if (has("goDataInfo")) return await window.goDataInfo();
+    const s = (() => { try { return localStorage.getItem("treinoTalTech") || ""; } catch (e) { return ""; } })();
+    return { folder: "localStorage", file: "treinoTalTech", size: new Blob([s]).size, modified: "", exists: !!s };
+  },
+  async exportBackup(json, name) { // devolve o caminho salvo, ou "" se cancelado
+    if (has("goExportBackup")) return await window.goExportBackup(json, name);
+    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([json], { type: "application/json" })); a.download = name; document.body.appendChild(a); a.click(); a.remove(); return name;
+  },
+  async importBackup() { // devolve {name, content} ou null se cancelado
+    if (has("goImportBackup")) return await window.goImportBackup();
+    return await new Promise(res => { const i = document.createElement("input"); i.type = "file"; i.accept = ".json,.bak,application/json";
+      i.onchange = () => { const f = i.files[0]; if (!f) return res(null); const r = new FileReader(); r.onload = () => res({ name: f.name, content: String(r.result) }); r.readAsText(f); }; i.click(); });
+  },
+  setDarkTitle(dark) { if (has("goSetDarkTitle")) window.goSetDarkTitle(!!dark).catch(() => {}); }
+};
+
+/* ---------- utilidades ---------- */
+const $ = s => document.querySelector(s);
+const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const pct = (a, t) => t ? Math.round(100 * a / t) : 0;
+const words = t => (t.trim().match(/\S+/g) || []).length;
+const now = () => new Date().toISOString();
+const fmtDT = iso => { const d = new Date(iso); return d.toLocaleDateString(LOC()) + " " + d.toLocaleTimeString(LOC(), {hour:"2-digit", minute:"2-digit"}); };
+const fmtDTs = d => d.toLocaleDateString(LOC()) + " " + d.toLocaleTimeString(LOC(), {hour:"2-digit", minute:"2-digit", second:"2-digit"});
+const fmtD = iso => new Date(iso).toLocaleDateString(LOC());
+const fmtSize = n => n < 1024 ? n + " B" : n < 1048576 ? (n / 1024).toLocaleString(LOC(), {maximumFractionDigits: 1}) + " KB" : (n / 1048576).toLocaleString(LOC(), {maximumFractionDigits: 2}) + " MB";
+const mmss = s => { s = Math.max(0, Math.round(s)); return String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0"); };
+const norm = s => String(s).toLowerCase().replace(/[^a-z0-9'/.\s]/g, " ").replace(/[.]/g, "").replace(/\s+/g, " ").trim();
+const bar = p => `<div class="bar"><i style="width:${p}%"></i></div>`;
+const stamp = () => { const d = new Date(), z = n => String(n).padStart(2, "0"); return `${d.getFullYear()}${z(d.getMonth() + 1)}${z(d.getDate())}-${z(d.getHours())}${z(d.getMinutes())}`; };
+function toast(msg) { const d = document.createElement("div"); d.className = "toast"; d.textContent = msg; document.body.appendChild(d); setTimeout(() => d.remove(), 3200); }
+function beep() { try { const c = new (window.AudioContext || window.webkitAudioContext)(); const o = c.createOscillator(), g = c.createGain(); o.frequency.value = 880; o.connect(g); g.connect(c.destination); g.gain.value = .15; o.start(); setTimeout(() => { o.stop(); c.close(); }, 450); } catch (e) {} }
+/* ---------- voz (Web Speech API; no WebView2 usa as vozes do Windows) ---------- */
+const RATE_NORMAL = .85, RATE_SLOW = .6;
+let VOICES_READY = false;
+function allVoices() { try { return window.speechSynthesis ? speechSynthesis.getVoices() || [] : []; } catch (e) { return []; } }
+function enVoice() {
+  const vs = allVoices();
+  const us = vs.filter(v => /^en[-_]US/i.test(v.lang));
+  return us.find(v => /zira|david|aria|jenny|guy/i.test(v.name) && v.localService) || us.find(v => v.localService) || us[0] || vs.find(v => /^en([-_]|$)/i.test(v.lang)) || null;
+}
+function voicesReady() { // getVoices() pode chegar vazio no início; espera o evento voiceschanged (máx. 1,2 s)
+  return new Promise(res => {
+    if (!window.speechSynthesis) return res([]);
+    if (allVoices().length) { VOICES_READY = true; return res(allVoices()); }
+    let done = false; const fin = () => { if (done) return; done = true; VOICES_READY = true; res(allVoices()); };
+    try { speechSynthesis.addEventListener("voiceschanged", fin, { once: true }); } catch (e) {}
+    setTimeout(fin, 1200);
+  });
+}
+if (window.speechSynthesis) { try { speechSynthesis.addEventListener("voiceschanged", () => { VOICES_READY = true; if (TAB === "settings") render(); }); } catch (e) {} }
+function noVoiceTip() {
+  return L("Nenhuma voz em inglês instalada no Windows. Para adicionar: Configurações do Windows > Hora e idioma > Fala > Adicionar vozes > English (United States). Depois, feche e abra o app.",
+    "No English voice installed in Windows. To add one: Windows Settings > Time & language > Speech > Add voices > English (United States). Then close and reopen the app.");
+}
+// fala texto em inglês; rate .85 (normal) ou .6 (devagar). Sem voz em inglês: mostra a dica e não fala.
+async function sayEn(text, rate) {
+  if (!window.speechSynthesis) { toast(noVoiceTip()); return false; }
+  await voicesReady();
+  const v = enVoice();
+  if (!v) { toast(noVoiceTip()); return false; }
+  try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(text); u.voice = v; u.lang = v.lang; u.rate = rate || RATE_NORMAL; speechSynthesis.speak(u); return true; } catch (e) { return false; }
+}
+// Speaking (Listen and Repeat): mesma escolha de voz, ritmo quase natural
+function speak(text) {
+  try { if (!window.speechSynthesis) return false; speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(text); u.lang = "en-US"; u.rate = .95;
+    const v = enVoice(); if (v) { u.voice = v; u.lang = v.lang; }
+    speechSynthesis.speak(u); return true; } catch (e) { return false; }
+}
+const SPK_SVG = `<svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M3 9v6h4l5 4V5L7 9H3z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`;
+// botão de ouvir: clique = normal; segurar (0,5 s) = devagar. slow=true acrescenta o botão "devagar".
+function spk(text, slow) {
+  const t = esc(text);
+  const b = `<button type="button" class="spk" data-act="say" data-v="${t}" title="${L("Ouvir (segure para ouvir devagar)", "Listen (hold to hear it slowly)")}" aria-label="${L("Ouvir", "Listen")}: ${t}">${SPK_SVG}</button>`;
+  // v1.3: com "devagar", os dois botões formam um controle único (alto-falante | devagar)
+  return slow ? `<span class="aud">${b}<button type="button" class="spk slow" data-act="sayslow" data-v="${t}" title="${L("Ouvir devagar", "Listen slowly")}">${L("devagar", "slow")}</button></span>` : b;
+}
+const ICON = {
+  copy: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`,
+  folder: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>`,
+  down: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M4 20h16"/></svg>`,
+  up: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V9M7 14l5-5 5 5M4 4h16"/></svg>`
+};
+const ipaOf = w => (VOCAB_BY_WORD[String(w).toLowerCase()] || {}).ipa || "";
+const ipaSpan = w => { const ipa = ipaOf(w); return ipa ? `<span class="ipa" title="${L("Pronúncia americana (IPA)", "US pronunciation (IPA)")}">${esc(ipa)}</span>` : ""; };
+// palavra + IPA ao lado + botões (v1.3: tudo numa linha)
+function wordBlock(w, slow) {
+  return `<span class="wb"><b class="w">${esc(w)}</b>${ipaSpan(w)}${spk(w, slow)}</span>`;
+}
+// v1.3: unidade da palavra no topo da questão — palavra grande, IPA, alto-falante | devagar
+function wordUnit(w) {
+  return `<div class="wunit"><span class="wbig" lang="en">${esc(w)}</span>${ipaSpan(w)}${spk(w, true)}</div>`;
+}
+const sentenceToSpeech = s => String(s).replace(/_{2,}/g, " blank ").replace(/\s+/g, " ").trim();
+let LP = null; // long-press
+document.addEventListener("pointerdown", e => {
+  const b = e.target.closest && e.target.closest('.spk[data-act="say"]'); if (!b) return;
+  LP = { b, fired: false, t: setTimeout(() => { LP.fired = true; sayEn(b.dataset.v, RATE_SLOW); }, 500) };
+});
+const lpEnd = () => { if (LP && !LP.fired) { clearTimeout(LP.t); LP = null; } };
+document.addEventListener("pointerup", lpEnd); document.addEventListener("pointercancel", lpEnd);
+document.addEventListener("contextmenu", e => { if (e.target.closest && e.target.closest(".spk")) e.preventDefault(); });
+
+/* ---------- tema ---------- */
+const MQ = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+function themeSetting() { const t = P && P.settings && P.settings.theme; return t === "light" || t === "dark" ? t : "system"; }
+function resolvedTheme() { const t = themeSetting(); return t === "system" ? (MQ && MQ.matches ? "dark" : "light") : t; }
+function applyTheme() { const r = resolvedTheme(); document.documentElement.dataset.theme = r; API.setDarkTitle(r === "dark"); }
+if (MQ) { const onSys = () => { if (themeSetting() === "system") { applyTheme(); if (TAB === "settings") render(); } }; MQ.addEventListener ? MQ.addEventListener("change", onSys) : MQ.addListener(onSys); }
+function applyLang() { document.documentElement.lang = LANG() === "en" ? "en" : "pt-BR"; document.title = "Treino TalTech v" + APP_VERSION + " — GRE + TOEFL"; }
+
+/* ---------- progresso (salvo em %APPDATA%\TreinoTalTech\progresso.json) ---------- */
+const EMPTY = () => ({ app: "TreinoTalTech", schemaVersion: SCHEMA, appVersion: APP_VERSION, ultimaVersaoVista: APP_VERSION, criado: now(), atualizado: now(),
+  settings: Object.assign({}, DEFAULT_SETTINGS), historico: [], rodadas: [], erros: {}, redacoes: [], rascunhos: {}, falas: [], marcos: {}, sessoes: {}, sessaoUI: null });
+let P = EMPTY();
+let saveTimer = null, saving = Promise.resolve(), LAST_SAVED = null;
+function setSaveStatus(t) { const e = $("#savest"); if (e) e.textContent = t; }
+function persist(immediate) {
+  P.atualizado = now(); if (!LOADINFO.newer) { P.appVersion = APP_VERSION; P.sessoes = serializeSessions(); P.sessaoUI = uiState(); }
+  setSaveStatus(L("salvando…", "saving…"));
+  clearTimeout(saveTimer); saveTimer = null;
+  const run = () => { saveTimer = null; saving = saving.then(() => API.save(JSON.stringify(P))).then(
+      () => { LAST_SAVED = new Date(); setSaveStatus(L("salvo ", "saved ") + LAST_SAVED.toLocaleTimeString(LOC(), {hour:"2-digit", minute:"2-digit", second:"2-digit"})); if (TAB === "settings") refreshDataInfo(); },
+      e => { setSaveStatus(L("ERRO ao salvar", "SAVE ERROR")); toast(L("Erro ao salvar: ", "Save error: ") + (e && e.message || e)); }); };
+  if (immediate) run(); else saveTimer = setTimeout(run, 600);
+}
+async function flushSave() { if (saveTimer) { clearTimeout(saveTimer); persist(true); } await saving; }
+/* Migrações: cada função leva o objeto da versão N para N+1.
+   Regras: nunca apagar campos desconhecidos; só acrescentar/renomear com cópia. */
+const MIGRATIONS = {
+  1: o => { // v1.0 (sem schemaVersion) -> schema 2 (v1.1)
+    if (o.ultimaVersaoVista == null) o.ultimaVersaoVista = "1.0"; // força o painel "O que há de novo"
+    if (o.versao != null && o.versaoLegada == null) o.versaoLegada = o.versao;
+    return o;
+  },
+  2: o => { // v1.1 -> schema 3 (v1.2): configurações dentro do progresso.json
+    if (!o.settings || typeof o.settings !== "object" || Array.isArray(o.settings)) { if (o.settings != null) o.settingsLegado = o.settings; o.settings = {}; }
+    for (const k in DEFAULT_SETTINGS) if (o.settings[k] == null) o.settings[k] = DEFAULT_SETTINGS[k];
+    return o;
+  },
+  3: o => { // v1.2 -> schema 4 (v1.2.1): sessões em andamento por modo/filtro
+    if (o.sessoes != null && (typeof o.sessoes !== "object" || Array.isArray(o.sessoes))) { o.sessoesLegado = o.sessoes; o.sessoes = null; }
+    if (o.sessoes == null) o.sessoes = {};
+    if (o.sessaoUI === undefined) o.sessaoUI = null;
+    return o;
+  }
+};
+const LOADINFO = { migrated: null, backup: null, newer: false };
+function schemaOf(o) { const n = parseInt(o && o.schemaVersion, 10); return n > 0 ? n : 1; }
+function upgrade(o) { // aplica as migrações; devolve o schema original
+  const old = schemaOf(o);
+  if (old < SCHEMA) { for (let v = old; v < SCHEMA; v++) if (MIGRATIONS[v]) o = MIGRATIONS[v](o) || o; o.schemaVersion = SCHEMA; }
+  return { o, old };
+}
+function adopt(o) { // objeto carregado/importado -> P (mantém campos desconhecidos)
+  const np = Object.assign(EMPTY(), o);
+  np.settings = Object.assign({}, DEFAULT_SETTINGS, (o.settings && typeof o.settings === "object" && !Array.isArray(o.settings)) ? o.settings : {});
+  if (!np.sessoes || typeof np.sessoes !== "object" || Array.isArray(np.sessoes)) np.sessoes = {};
+  return np;
+}
+async function loadP() {
+  let o = null;
+  try { const s = await API.load(); if (s) o = JSON.parse(s); }
+  catch (e) { toast(L("Não consegui ler o progresso salvo; começando do zero.", "Could not read saved progress; starting fresh.")); o = null; }
+  if (o && typeof o === "object" && !Array.isArray(o)) {
+    const old = schemaOf(o);
+    if (old < SCHEMA) {
+      try { LOADINFO.backup = await API.backup(old); }
+      catch (e) { LOADINFO.backup = null; toast(L("Aviso: não consegui criar o backup antes de atualizar (", "Warning: could not back up before updating (") + (e && e.message || e) + ")."); }
+      o = upgrade(o).o; LOADINFO.migrated = old;
+    } else if (old > SCHEMA) LOADINFO.newer = true; // arquivo de versão mais nova: não rebaixa nada
+    P = adopt(o);
+    if (!LOADINFO.newer) { P.schemaVersion = SCHEMA; restoreSessions(); } // antes de qualquer persist (que regrava P.sessoes)
+    if (LOADINFO.migrated) persist(true);
+  }
+  if (P.historico.length > 20000) P.historico = P.historico.slice(-20000);
+}
+function logAnswer(mod, id, set, ok, extra) { P.historico.push(Object.assign({ t: now(), mod, id, set, ok }, extra || {})); persist(); }
+function markWrong(word) { const e = P.erros[word] || { n: 0, pendente: true }; e.n++; e.ultima = now(); e.pendente = true; P.erros[word] = e; }
+const VOCAB_BY_WORD = {}; DATA && DATA.vocab.forEach(v => VOCAB_BY_WORD[v.word.toLowerCase()] = v);
+
+/* ---------- timer compartilhado ---------- */
+const T = { left: 0, total: 0, id: null, onEnd: null,
+  start(sec, onEnd) { this.stop(); this.total = this.left = sec; this.onEnd = onEnd || null; this.t0 = Date.now(); this.id = setInterval(() => this.tick(), 250); this.paint(); },
+  tick() { this.left = this.total - (Date.now() - this.t0) / 1000; if (this.left <= 0) { this.left = 0; this.stop(); beep(); this.paint(); if (this.onEnd) this.onEnd(); return; } this.paint(); },
+  stop() { if (this.id) clearInterval(this.id); this.id = null; },
+  elapsed() { return this.total ? Math.round(this.total - this.left) : 0; },
+  running() { return !!this.id; },
+  paint() { const el = document.getElementById("tmr"); if (el) { el.textContent = mmss(this.left); el.classList.toggle("low", this.left <= Math.min(60, this.total * .15) && this.total > 0); } }
+};
+
+/* ---------- navegação ---------- */
+const TABS = () => [["vocab","GRE Vocab"],["quant","GRE Quant"],["writing","Writing"],["speaking","Speaking"],["prog",L("Progresso","Progress")]];
+let TAB = "vocab";
+function go(tab) { R = null; T.stop(); T.total = 0; try { speechSynthesis.cancel(); } catch (e) {} TAB = tab; render(); window.scrollTo(0, 0); }
+function renderNav() {
+  $("#nav").innerHTML = TABS().map(([k, l]) => `<button data-act="tab" data-v="${k}" class="${k === TAB ? "on" : ""}">${l}</button>`).join("");
+  const g = $("#gear"); g.classList.toggle("on", TAB === "settings"); g.title = L("Configurações", "Settings"); g.setAttribute("aria-label", g.title);
+  $("#ver").title = L("O que há de novo", "What's new");
+}
+function render() { renderNav(); const f = { vocab: rVocab, quant: rQuant, writing: rWriting, speaking: rSpeaking, prog: rProg, settings: rSettings }[TAB]; $("#app").innerHTML = f(); T.paint(); afterRender(); }
+let afterHooks = []; function afterRender() { const h = afterHooks; afterHooks = []; h.forEach(f => f()); }
+
+/* ---------- rodadas de quiz (Vocab / Quant) ----------
+   Cada modo + filtro tem a sua sessão em SESS (chave: "def:0", "frase:2", "revisao", "quant:MC"...).
+   Trocar de aba/filtro só troca qual sessão está ativa (R); nada é apagado.
+   As sessões em andamento vão para P.sessoes (progresso.json) a cada salvamento, junto com o histórico,
+   então uma resposta confirmada e o estado "já respondida" são gravados juntos (nunca conta duas vezes). */
+let R = null; // sessão ativa: {key, mod, kind, label, set, queue, i, ok, n, cur, done, picked, makeQ, ...}
+let SESS = {};
+const SESS_FIELDS = ["mod", "kind", "label", "set", "i", "ok", "n", "done", "picked", "lastOk", "missed", "neVal", "spokenI", "saved", "t0"];
+function closeRound(r) {
+  r = r || R;
+  if (r && r.n > 0 && !r.saved) { P.rodadas.push({ t: now(), mod: r.mod, conjunto: r.label, acertos: r.ok, total: r.n }); r.saved = true; persist(); }
+}
+const inProgress = r => !!(r && r.cur && (r.n > 0 || r.i > 0));
+function newRound(key, mod, label, set, items, makeQ, kind) {
+  const old = SESS[key];
+  if (old && old.cur) closeRound(old); // sessão descartada no meio: guarda o parcial em "Últimas rodadas"
+  R = SESS[key] = { key, mod, kind, label, set, queue: shuffle(items), i: 0, ok: 0, n: 0, makeQ, cur: null, done: false, picked: [], t0: now() };
+  if (R.queue.length) R.cur = makeQ(R.queue[0]);
+  return R;
+}
+// devolve a sessão do modo/filtro (cria se não houver ou se a anterior terminou)
+function useRound(key, create) {
+  const r = SESS[key];
+  if (r && r.cur && r.queue.length && !(r.mod === "revisao" && !inProgress(r))) { R = r; return r; }
+  if (r && !r.cur && R === r) return r; // acabou agora: mostra o resultado até sair da tela
+  return create();
+}
+function nextQ() { R.i++; R.picked = []; R.done = false; R.neVal = ""; R.ask = false; if (R.i < R.queue.length) R.cur = R.makeQ(R.queue[R.i]); else { R.cur = null; closeRound(); } persist(true); render(); }
+// v1.3: linha de meta — selo (conjunto/tipo) · Questão X de N · barra · acertos · Nova sessão
+function roundHeader(badge) {
+  const k = Math.min(R.i + 1, R.queue.length), N = R.queue.length;
+  return `<div class="qmeta">${badge ? `<span class="pill">${badge}</span>` : ""}<span class="qn">${L("Questão", "Question")} ${k} ${L("de", "of")} ${N}</span><div class="qprog" title="${R.n}/${N}"><i style="width:${N ? Math.round(R.n / N * 100) : 0}%"></i></div><span class="qscore" title="${L("Acertos nesta rodada", "Correct this round")}">${L("Acertos", "Correct")} <b>${R.ok}/${R.n}</b></span><button class="btn sm ghost" data-act="rnew" title="${L("Recomeçar este modo/conjunto do zero", "Restart this mode/set from scratch")}">${L("Nova sessão", "New session")}</button></div>`;
+}
+// nome da sessão no idioma atual (o rótulo salvo fica no idioma em que a rodada começou)
+function roundLabel(r) {
+  const [m, f] = String(r.key || "").split(":");
+  if (m === "revisao") return L("Revisão de erros", "Mistake review");
+  if (m === "quant") return "Quant · " + (f ? QT()[f] : L("todos", "all"));
+  if (m === "def" || m === "frase") return (m === "def" ? L("Definições", "Definitions") : L("Frases TC/SE", "TC/SE sentences")) + (+f ? L(" · conjunto ", " · set ") + f : L(" · todos", " · all"));
+  return r.label || "";
+}
+// aviso de sessão retomada após reabrir o app (não bloqueia: a questão continua logo abaixo)
+function resumeBanner() {
+  if (!R || !R.ask || !R.cur) return "";
+  return `<div class="card resume" id="resume"><div class="rt"><b>${L("Sessão em andamento", "Session in progress")}</b> · ${esc(roundLabel(R))}<div class="mut">${L("Você respondeu", "You answered")} ${R.n} ${L("de", "of")} ${R.queue.length} · ${L("acertos", "correct")} ${R.ok}/${R.n}${R.t0 ? ` · ${L("iniciada em", "started")} ${fmtDT(R.t0)}` : ""}</div></div>
+    <div class="row"><button class="btn acc" data-act="rcont">${L("Continuar sessão", "Continue session")} (${R.n}/${R.queue.length})</button><button class="btn" data-act="rnewnow">${L("Começar nova sessão", "Start a new session")}</button></div></div>`;
+}
+const progPill = r => inProgress(r) ? ` <span class="pill" title="${L("sessão em andamento", "session in progress")}">${r.n}/${r.queue.length}</span>` : "";
+const progDot = r => inProgress(r) ? `<span class="dot" title="${L("sessão em andamento", "session in progress")}"> •</span>` : "";
+/* --- serialização das sessões (progresso.json) --- */
+const KIND_LIST = { def: () => DATA.vocab, frase: () => DATA.vocabSentences, quant: () => DATA.quant };
+function qWith(kind, item, options) {
+  if (kind === "def") return { kind: "def", item, options, answers: [item.definition], need: 1 };
+  if (kind === "frase") return { kind: "frase", item, options, answers: item.answers, need: item.answers.length };
+  return { kind: "quant", item, options, answers: [item.answer], need: 1 };
+}
+const makeQFor = kind => kind === "def" ? makeDefQ : kind === "frase" ? makeSentQ : makeQuantQ;
+function serializeSessions() {
+  const out = {};
+  for (const k in SESS) {
+    const r = SESS[k]; if (!inProgress(r)) continue;
+    const o = { ids: r.queue.map(x => x.id), cur: { id: r.cur.item.id, options: r.cur.options.slice() }, salvo: now() };
+    SESS_FIELDS.forEach(f => { if (r[f] !== undefined) o[f] = r[f]; });
+    out[k] = o;
+  }
+  return out;
+}
+function sameSet(a, b) { return a.length === b.length && a.every(x => b.includes(x)); }
+function reviveSession(key, o) {
+  if (!o || typeof o !== "object" || !KIND_LIST[o.kind] || !Array.isArray(o.ids) || !o.ids.length) return null;
+  const list = KIND_LIST[o.kind](), byId = {}; list.forEach(x => byId[x.id] = x);
+  const queue = o.ids.map(id => byId[id]);
+  const i = parseInt(o.i, 10);
+  if (queue.some(x => !x) || !(i >= 0 && i < queue.length)) return null;
+  const r = { key, queue, makeQ: makeQFor(o.kind), cur: null, picked: [] };
+  SESS_FIELDS.forEach(f => { if (o[f] !== undefined) r[f] = o[f]; });
+  r.i = i; r.ok = Math.max(0, parseInt(o.ok, 10) || 0); r.n = Math.max(r.ok, parseInt(o.n, 10) || 0); r.done = !!o.done;
+  r.picked = Array.isArray(o.picked) ? o.picked.slice() : [];
+  const item = queue[i], fresh = r.makeQ(item), opts = o.cur && o.cur.id === item.id && Array.isArray(o.cur.options) ? o.cur.options : null;
+  const valid = opts && (o.kind === "def" ? opts.length === fresh.options.length && opts.includes(item.definition) && opts.every(x => list.some(v => v.definition === x)) : sameSet(opts, fresh.options));
+  r.cur = valid ? qWith(o.kind, item, opts.slice()) : fresh;
+  if (!valid) r.picked = []; // dados mudaram: mantém "respondida"/done (não conta de novo), só refaz as alternativas
+  r.ask = r.n > 0;
+  return r;
+}
+function restoreSessions() {
+  SESS = {}; R = null;
+  const src = P.sessoes && typeof P.sessoes === "object" ? P.sessoes : {};
+  for (const k in src) { try { const r = reviveSession(k, src[k]); if (r) SESS[k] = r; } catch (e) {} }
+  const u = P.sessaoUI;
+  if (u && typeof u === "object") {
+    if (["def", "frase", "revisao"].includes(u.vmode)) V.mode = u.vmode;
+    if (u.vset && typeof u.vset === "object") ["def", "frase"].forEach(m => { const n = +u.vset[m]; if (n >= 0 && n <= 4) V.sets[m] = n; });
+    if (["", "QC", "MC", "NE"].includes(u.qtype)) Q.type = u.qtype;
+    const bl = DATA.toeflWriting.buildSentence.practice, b = u.build;
+    if (b && b.idx >= 0 && b.idx < bl.length) { B.idx = b.idx; B.done = !!b.done; B.ok = !!b.ok; B.built = Array.isArray(b.built) ? b.built.filter(x => x >= 0 && x < bl[b.idx].chunks.length) : []; }
+  }
+  V.set = V.sets[V.mode] || 0;
+}
+function uiState() { return { vmode: V.mode, vset: Object.assign({}, V.sets), qtype: Q.type, build: { idx: B.idx, built: B.built.slice(), done: B.done, ok: B.ok } }; }
+function roundEnd() {
+  return `<div class="card"><h2>${L("Rodada concluída", "Round complete")}</h2><p class="score">${R.ok}/${R.n} <span class="mut" style="font-size:17px;font-weight:400">${pct(R.ok, R.n)}%</span></p>${R.missed && R.missed.length ? `<div class="missed"><div class="mut" style="margin-bottom:4px">${L("Palavras que você errou nesta rodada", "Words you missed this round")}</div><div>${[...new Set(R.missed)].map(w => `<span class="chip">${esc(w)}${spk(w)}</span>`).join("")}</div></div>` : ""}<p class="mut">${L("Resultado salvo no seu progresso.", "Result saved to your progress.")}</p><button class="btn pri" data-act="again">${L("Nova rodada", "New round")}</button></div>`;
+}
+function statsFor(mod, keyFn) {
+  const m = {}; P.historico.filter(h => h.mod === mod).forEach(h => { const k = keyFn(h); m[k] = m[k] || { ok: 0, n: 0 }; m[k].n++; if (h.ok) m[k].ok++; }); return m;
+}
+const rightWrong = ok => ok ? L("Correto!", "Correct!") : L("Errado.", "Wrong.");
+const ansLbl = () => L("Resposta", "Answer");
+
+/* ---------- GRE VOCAB ---------- */
+const V = { mode: "def", set: 0, sets: { def: 0, frase: 0 } }; // filtro de conjunto guardado por modo
+function vocabItems() {
+  if (V.mode === "def") return DATA.vocab.filter(v => !V.set || v.set === V.set);
+  if (V.mode === "frase") return DATA.vocabSentences.filter(v => !V.set || v.set === V.set);
+  return DATA.vocab.filter(v => P.erros[v.word] && P.erros[v.word].pendente);
+}
+function makeDefQ(v) {
+  const pool = DATA.vocab.filter(x => x.set === v.set && x.id !== v.id);
+  const opts = shuffle([v.definition].concat(shuffle(pool).slice(0, 3).map(x => x.definition)));
+  return { kind: "def", item: v, options: opts, answers: [v.definition], need: 1 };
+}
+function makeSentQ(s) { return { kind: "frase", item: s, options: shuffle(s.options), answers: s.answers, need: s.answers.length }; }
+const vKey = (mode, set) => mode === "revisao" ? "revisao" : mode + ":" + (set || 0);
+function setVMode(m) { V.mode = m; V.set = m === "revisao" ? 0 : (V.sets[m] || 0); }
+function useVocab() { return useRound(vKey(V.mode, V.set), startVocab); }
+function startVocab() {
+  const label = V.mode === "revisao" ? L("Revisão de erros", "Mistake review") : (V.mode === "def" ? L("Definições", "Definitions") : L("Frases TC/SE", "TC/SE sentences")) + (V.set ? L(" · conjunto ", " · set ") + V.set : L(" · todos", " · all"));
+  return newRound(vKey(V.mode, V.set), V.mode === "revisao" ? "revisao" : V.mode === "def" ? "vocab" : "frases", label, V.set, vocabItems(), V.mode === "frase" ? makeSentQ : makeDefQ, V.mode === "frase" ? "frase" : "def");
+}
+function rVocab() {
+  if (!R || R.key !== vKey(V.mode, V.set)) useVocab();
+  const pend = Object.keys(P.erros).filter(w => P.erros[w].pendente).length;
+  let h = `<div class="card"><h2>GRE Vocab</h2><div class="row">
+    <button class="btn ${V.mode === "def" ? "on" : ""}" data-act="vmode" data-v="def">${L("Definições (60 palavras)", "Definitions (60 words)")}${progPill(SESS[vKey("def", V.sets.def)])}</button>
+    <button class="btn ${V.mode === "frase" ? "on" : ""}" data-act="vmode" data-v="frase">${L("Frases TC / SE (16)", "TC / SE sentences (16)")}${progPill(SESS[vKey("frase", V.sets.frase)])}</button>
+    <button class="btn ${V.mode === "revisao" ? "on" : ""}" data-act="vmode" data-v="revisao">${L("Revisar erros", "Review mistakes")} (${pend})${progPill(SESS.revisao)}</button></div>`;
+  if (V.mode !== "revisao") h += `<div class="row" style="margin-top:8px"><span class="mut">${L("Conjunto", "Set")}:</span>` + [0,1,2,3,4].map(s => `<button class="btn sm ${V.set === s ? "on" : ""}" data-act="vset" data-v="${s}">${s ? s : L("Todos", "All")}${progDot(SESS[vKey(V.mode, s)])}</button>`).join("") + `</div>`;
+  h += `</div>`;
+  if (!R.queue.length) return h + (V.mode === "revisao" ? `<div class="card empty"><p><b>${L("Nenhuma palavra pendente de revisão.", "No words pending review.")}</b></p><p class="mut">${L("Erros nas outras rodadas aparecem aqui.", "Mistakes from other rounds show up here.")}</p><button class="btn" data-act="vmode" data-v="def">${L("Treinar Definições", "Practise Definitions")}</button></div>` : `<div class="card empty mut">${L("Sem itens.", "No items.")}</div>`) + setTableHTML();
+  if (!R.cur) return h + roundEnd();
+  const q = R.cur, it = q.item;
+  h += resumeBanner() + `<div class="card">${roundHeader(`${L("conj.", "set")} ${it.set}`)}`;
+  // v1.3: a frase fica inteira ("…definition of bolster?") e a palavra ganha um bloco próprio com IPA e áudio
+  if (q.kind === "def") h += `<div class="q qdef"><p class="qtext">${L("Qual é a definição de", "What is the definition of")} <b class="w">${esc(it.word)}</b>?</p>${wordUnit(it.word)}</div>`;
+  else h += `<div class="q"><div class="qkind">${it.type === "SE" ? L("Sentence Equivalence — escolha 2", "Sentence Equivalence — choose 2") : L("Text Completion — escolha 1", "Text Completion — choose 1")}</div><p class="qtext">${esc(it.sentence)}</p></div>`;
+  q.options.forEach((o, k) => {
+    let cls = "";
+    if (R.done) { if (q.answers.includes(o)) cls = "ok"; else if (R.picked.includes(o)) cls = "bad"; }
+    else if (R.picked.includes(o)) cls = "sel";
+    h += `<button class="btn opt ${cls}" data-act="vpick" data-v="${k}" ${R.done ? "disabled" : ""}><span class="mut">${k + 1}.</span> ${esc(o)}</button>`;
+  });
+  if (!R.done) h += confirmBar("vconfirm", R.picked.length === q.need, q.need > 1 ? `${L("Confirmar", "Confirm")} (${R.picked.length}/${q.need})` : L("Confirmar", "Confirm"));
+  if (R.done) {
+    const right = R.lastOk;
+    h += `<div class="fb ${right ? "ok" : "bad"}">`;
+    if (q.kind === "def") h += `<div class="fbh"><b>${rightWrong(right)}</b>${wordBlock(it.word, true)}</div><div>${esc(it.definition)}${LANG() === "pt" && it.pt ? ` <span style="opacity:.8">(${esc(it.pt)})</span>` : ""}</div><div><i>${esc(it.example)}</i> ${spk(it.example)}</div>`;
+    else h += `<div><b>${rightWrong(right)}</b> ${ansLbl()}: <b>${q.answers.map(esc).join(" + ")}</b>. ${esc(L(it.explanation, it.explanationEn || it.explanation))}</div>
+      <div class="sayrow" id="saysent"><span>${L("Ouvir a frase (a lacuna é lida como “blank”)", "Hear the sentence (the gap is read as “blank”)")}</span>${spk(sentenceToSpeech(it.sentence), true)}</div>
+      <div id="sayopts"><div class="lbl">${L("Pronúncia das alternativas", "Pronunciation of the choices")}</div><div class="optgrid">${q.options.map(o => `<span class="optw ${q.answers.includes(o) ? "ok" : ""}">${wordBlock(o, false)}</span>`).join("")}</div></div>`;
+    h += `</div><div class="row" style="margin-top:10px"><button class="btn pri" data-act="next">${L("Próxima →", "Next →")}</button></div>`;
+  }
+  h += `</div>`;
+  h += setTableHTML();
+  if (P.settings.autoSpeak && q.kind === "def" && !R.done && R.spokenI !== R.i) { R.spokenI = R.i; afterHooks.push(() => sayEn(it.word, RATE_NORMAL)); }
+  return h;
+}
+function setRange(n) { const w = DATA.vocab.filter(v => v.set === n).map(v => v.word); return w.length ? w[0] + " → " + w[w.length - 1] : ""; }
+function setTableHTML() {
+  const st = statsFor("vocab", x => x.set), sf = statsFor("frases", x => x.set);
+  const metric = (cls, label, a) => `<div class="smet ${cls}"><div class="slbl">${label}</div>${a && a.n
+    ? `<div class="sval">${a.ok}/${a.n} · ${pct(a.ok, a.n)}%</div><div class="sbar"><i style="width:${pct(a.ok, a.n)}%"></i></div>`
+    : `<div class="sval mut">${L("ainda não treinado", "not practised yet")}</div><div class="sbar"></div>`}</div>`;
+  const seen = new Set(P.historico.filter(x => (x.mod === "vocab" || x.mod === "revisao") && x.palavra).map(x => x.palavra));
+  const rows = [1,2,3,4].map(n => {
+    const words = DATA.vocab.filter(v => v.set === n).map(v => v.word);
+    const nSeen = words.filter(w => seen.has(w)).length;
+    const pend = words.filter(w => P.erros[w] && P.erros[w].pendente);
+    const open = SETS_OPEN.has(n);
+    return `<div class="srow" data-setrow="${n}">
+      <div class="sname"><div class="snm">${L("Conjunto", "Set")} ${n}</div><div class="srng">${esc(setRange(n))}</div><div class="sseen">${L("vistas", "seen")} <span class="seen">${nSeen}/${words.length}</span></div></div>
+      ${metric("cdef", L("Definições", "Definitions"), st[n])}${metric("cfr", L("Frases TC/SE", "TC/SE sentences"), sf[n])}
+      <div class="smet spend"><div class="slbl">${L("Erros pendentes", "Pending mistakes")}</div>
+        <div class="pend${open ? " open" : ""}" data-n="${pend.length}">${pend.length ? pend.map((w, i) => `<span class="chip${!open && i >= 2 ? " hid" : ""}">${esc(w)}${spk(w)}</span>`).join("")
+          + `<button class="more" data-act="pmore" data-v="${n}" ${pend.length > 2 || open ? "" : "hidden"}>${open ? L("menos", "less") : "+" + (pend.length - 2)}</button>` : `<span class="sval mut">${L("nenhum", "none")}</span>`}</div></div>
+      <div class="sact"><button class="btn sm" data-act="vtrain" data-v="${n}">${L("Treinar este conjunto", "Practise this set")}</button></div></div>`;
+  }).join("");
+  afterHooks.push(fitChips);
+  return `<div class="card" id="settable"><h3 style="margin-top:0">${L("Seu desempenho por conjunto (acumulado)", "Your performance by set (all time)")}</h3>
+    <p class="mut" style="margin-top:0">${L("Os conjuntos são as 60 palavras do GRE divididas em 4 blocos de 15, em ordem alfabética.", "The sets are the 60 GRE words split into 4 alphabetical blocks of 15.")}</p>
+    <div class="slist">${rows}</div>
+    <p class="mut legend"><b>${L("Definições", "Definitions")}</b>: ${L("quiz de significado — escolher a definição certa da palavra.", "meaning quiz — pick the right definition of the word.")} <b>${L("Frases TC/SE", "TC/SE sentences")}</b>: ${L("frases de Text Completion / Sentence Equivalence, como na prova real.", "Text Completion / Sentence Equivalence sentences, like the real test.")} ${L("Os números são <b>acertos/tentativas · % de acerto</b>, somando todas as rodadas.", "Numbers are <b>correct/attempted · % correct</b>, across all rounds.")} <b>${L("Vistas", "Seen")}</b>: ${L("palavras do conjunto que já apareceram no quiz de Definições.", "words of the set already shown in the Definitions quiz.")}</p></div>`;
+}
+// erros pendentes: no máximo 2 chips numa linha só (menos, se não couberem) + "+N"; clicar em +N mostra todos
+const SETS_OPEN = new Set();
+function fitChips() {
+  document.querySelectorAll("#settable .pend:not(.open)").forEach(box => {
+    const chips = [...box.querySelectorAll(".chip")], more = box.querySelector(".more");
+    if (!chips.length) return;
+    let vis = Math.min(2, chips.length);
+    const apply = () => { chips.forEach((c, i) => c.classList.toggle("hid", i >= vis)); const h = chips.length - vis;
+      more.hidden = h === 0; more.textContent = vis ? "+" + h : h + " " + L(h === 1 ? "erro" : "erros", h === 1 ? "mistake" : "mistakes"); };
+    apply();
+    while (vis > 0 && box.scrollWidth > box.clientWidth + 1) { vis--; apply(); }
+  });
+}
+let fitT = 0; window.addEventListener("resize", () => { clearTimeout(fitT); fitT = setTimeout(fitChips, 60); });
+function vocabCheck() {
+  const q = R.cur, ok = q.answers.length === R.picked.length && q.answers.every(a => R.picked.includes(a));
+  R.done = true; R.lastOk = ok; R.n++; if (ok) R.ok++; R.ask = false;
+  if (q.kind === "def") {
+    if (!ok) { markWrong(q.item.word); (R.missed = R.missed || []).push(q.item.word); }
+    else if (R.mod === "revisao" && P.erros[q.item.word]) { P.erros[q.item.word].pendente = false; P.erros[q.item.word].revisada = now(); }
+  } else if (!ok) q.answers.forEach(a => { if (VOCAB_BY_WORD[a.toLowerCase()]) { markWrong(VOCAB_BY_WORD[a.toLowerCase()].word); (R.missed = R.missed || []).push(VOCAB_BY_WORD[a.toLowerCase()].word); } });
+  logAnswer(R.mod, q.item.id, q.item.set, ok, q.kind === "def" ? { palavra: q.item.word } : {});
+  render();
+}
+
+/* ---------- GRE QUANT ---------- */
+const Q = { type: "" };
+const QT = () => ({ QC: "Quantitative Comparison", MC: L("Múltipla escolha", "Multiple choice"), NE: "Numeric Entry" });
+function makeQuantQ(q) { return { kind: "quant", item: q, options: q.options || [], answers: [q.answer], need: 1 }; }
+const qKey = t => "quant:" + (t || "");
+function startQuant() { return newRound(qKey(Q.type), "quant", "Quant · " + (Q.type || L("todos", "all")), Q.type, DATA.quant.filter(q => !Q.type || q.type === Q.type), makeQuantQ, "quant"); }
+function useQuant() { return useRound(qKey(Q.type), startQuant); }
+function rQuant() {
+  if (!R || R.key !== qKey(Q.type)) useQuant();
+  let h = `<div class="card"><h2>GRE Quant</h2><div class="row"><span class="mut">${L("Tipo", "Type")}:</span>` +
+    [["", L("Todos (15)", "All (15)")], ["QC", "Quantitative Comparison"], ["MC", L("Múltipla escolha", "Multiple choice")], ["NE", "Numeric Entry"]].map(([k, l]) => `<button class="btn sm ${Q.type === k ? "on" : ""}" data-act="qtype" data-v="${k}">${l}${progDot(SESS[qKey(k)])}</button>`).join("") +
+    `</div><p class="mut" style="margin-bottom:0">${L("Sem calculadora nas QC; no GRE real há calculadora na tela. Dica: ~1 min 30 s por questão.", "No calculator for QC here; the real GRE has an on-screen calculator. Tip: ~1 min 30 s per question.")}</p></div>`;
+  if (!R.cur) return h + roundEnd();
+  const q = R.cur.item;
+  h += resumeBanner() + `<div class="card">${roundHeader(QT()[q.type])}<div class="q"><p class="qtext">${esc(q.prompt)}</p></div>`;
+  if (q.type === "NE") {
+    h += `<div class="row"><input type="text" id="neans" placeholder="${L("Sua resposta", "Your answer")}" autocomplete="off" ${R.done ? "disabled" : ""} value="${esc(R.neVal || "")}"></div>`;
+    if (!R.done) h += confirmBar("qne", !!(R.neVal || "").trim(), L("Confirmar", "Confirm"));
+    afterHooks.push(() => { const e = $("#neans"); if (e && !R.done) { e.focus(); e.setSelectionRange(e.value.length, e.value.length); e.addEventListener("input", () => { R.neVal = e.value; const b = $("[data-confirm]"); if (b) b.disabled = !e.value.trim(); }); } });
+  } else q.options.forEach((o, k) => {
+    let cls = ""; if (R.done) { if (o === q.answer) cls = "ok"; else if (R.picked.includes(o)) cls = "bad"; } else if (R.picked.includes(o)) cls = "sel";
+    h += `<button class="btn opt ${cls}" data-act="qpick" data-v="${k}" ${R.done ? "disabled" : ""}><span class="mut">${k + 1}.</span> ${esc(o)}</button>`;
+  });
+  if (q.type !== "NE" && !R.done) h += confirmBar("qconfirm", R.picked.length === 1, L("Confirmar", "Confirm"));
+  if (R.done) h += `<div class="fb ${R.lastOk ? "ok" : "bad"}"><b>${rightWrong(R.lastOk)}</b> ${ansLbl()}: <b>${esc(q.answer)}</b>. ${esc(L(q.solution, q.solutionEn || q.solution))}</div><div class="row" style="margin-top:10px"><button class="btn pri" data-act="next">${L("Próxima →", "Next →")}</button></div>`;
+  h += `</div>`;
+  const st = statsFor("quant", x => (DATA.quant.find(q => q.id === x.id) || {}).type);
+  h += `<div class="card"><h3 style="margin-top:0">${L("Desempenho por tipo (acumulado)", "Performance by type (all time)")}</h3><table class="mid"><tr><th>${L("Tipo", "Type")}</th><th>${L("Acertos", "Correct")}</th><th style="width:40%"></th></tr>` +
+    ["QC","MC","NE"].map(t => { const a = st[t] || {ok:0,n:0}; return `<tr><td>${QT()[t]}</td><td class="nw">${a.ok}/${a.n} (${pct(a.ok,a.n)}%)</td><td>${bar(pct(a.ok,a.n))}</td></tr>`; }).join("") + `</table></div>`;
+  return h;
+}
+function quantCheck(val) {
+  const q = R.cur.item; let ok;
+  if (q.type === "NE") { R.neVal = val; const ne = s => String(s).trim().toLowerCase().replace(/\s+/g, "").replace(/,/g, "."); const num = s => { const m = s.match(/^(-?\d*\.?\d+)\/(-?\d*\.?\d+)$/); return m ? +m[1] / +m[2] : (s === "" ? NaN : +s); };
+    const v = ne(val); ok = (q.accept || [q.answer]).some(a => ne(a) === v || (!isNaN(num(v)) && Math.abs(num(v) - num(ne(a))) < 1e-9)); R.picked = [val]; }
+  else { R.picked = [val]; ok = val === q.answer; }
+  R.done = true; R.lastOk = ok; R.n++; if (ok) R.ok++; R.ask = false;
+  logAnswer("quant", q.id, q.type, ok); render();
+}
+
+/* ---------- WRITING ---------- */
+const W = { task: "issue", idx: 0, started: false };
+const WT = { issue: "GRE Issue (30 min)", email: "TOEFL Write an Email (7 min)", disc: "TOEFL Academic Discussion (10 min)", build: "TOEFL Build a Sentence" };
+function wMinutes() { return W.task === "issue" ? DATA.greIssue.minutes : W.task === "email" ? DATA.toeflWriting.email.minutes : DATA.toeflWriting.discussion.minutes; }
+function wList() { return W.task === "issue" ? DATA.greIssue.prompts : W.task === "email" ? DATA.toeflWriting.email.practice : DATA.toeflWriting.discussion.practice; }
+function wKey() { return W.task + ":" + W.idx; }
+function wTitle(task, idx) {
+  if (task === "issue") return "Issue #" + (idx + 1) + ": " + DATA.greIssue.prompts[idx].statement.slice(0, 70) + "…";
+  if (task === "email") return "Email #" + (idx + 1) + ": " + DATA.toeflWriting.email.practice[idx].subject;
+  return L("Discussão #", "Discussion #") + (idx + 1) + ": " + DATA.toeflWriting.discussion.practice[idx].professor.replace(/^.*?Professor:\s*/, "").slice(0, 70) + "…";
+}
+const srcLbl = () => L("Fonte", "Source");
+function rubricHTML() {
+  if (W.task === "issue") return `<h3>${L("Rubrica GRE (nota 6 / nota 4)", "GRE rubric (score 6 / score 4)")}</h3><b>6:</b><ul class="r">${DATA.greIssue.rubric6.map(x => `<li>${esc(x)}</li>`).join("")}</ul><b>4:</b><ul class="r">${DATA.greIssue.rubric4.map(x => `<li>${esc(x)}</li>`).join("")}</ul><p class="mut">${srcLbl()}: ${esc(DATA.greIssue.rubricSource)}</p>`;
+  const r = W.task === "email" ? DATA.toeflWriting.rubricEmail5 : DATA.toeflWriting.rubricDiscussion5;
+  return `<h3>${L("Rubrica TOEFL — nota 5", "TOEFL rubric — score 5")}</h3><ul class="r">${r.map(x => `<li>${esc(x)}</li>`).join("")}</ul><p class="mut">${srcLbl()}: ${esc(DATA.toeflWriting.source)}</p>`;
+}
+function rWriting() {
+  const tb = (k, l, m) => `<button class="btn ${W.task === k ? "on" : ""}" data-act="wtask" data-v="${k}" title="${WT[k]}">${l}${m ? `<span class="mut">${m} min</span>` : ""}</button>`;
+  let h = `<div class="card"><h2>Writing</h2><div class="tasks"><span class="tg"><span class="grp">GRE</span>${tb("issue", "Issue", 30)}</span><span class="tg"><span class="grp">TOEFL</span>${tb("email", "Write an Email", 7)}${tb("disc", "Academic Discussion", 10)}${tb("build", "Build a Sentence")}</span></div></div>`;
+  if (W.task === "build") return h + rBuild();
+  const list = wList(); if (W.idx >= list.length) W.idx = 0;
+  h += `<div class="card"><div class="selrow"><span class="mut">${L("Tema", "Prompt")}</span><select id="wsel">` + list.map((_, i) => `<option value="${i}" ${i === W.idx ? "selected" : ""}>${esc(wTitle(W.task, i))}</option>`).join("") + `</select>
+    <button class="btn sm" data-act="wrand">${L("Sortear", "Random")}</button></div>`;
+  const p = list[W.idx];
+  const orig = L("Tema original de prática (não é item ETS)", "Original practice prompt (not an ETS item)");
+  if (W.task === "issue") h += `<div class="prompt"><b>${esc(p.statement)}</b><br><br>${esc(p.instructions)}</div><p class="mut">${L("Tema oficial do pool ETS (texto literal).", "Official ETS pool prompt (verbatim).")} ${srcLbl()}: ${esc(DATA.greIssue.source)}</p>`;
+  else if (W.task === "email") h += `<div class="prompt">${esc(p.situation)}<br><br><b>To:</b> ${esc(p.to)}<br><b>Subject:</b> ${esc(p.subject)}<br>Write an email in which you:<ul class="r">${p.bullets.map(b => `<li>${esc(b)}</li>`).join("")}</ul></div><p class="mut">${orig}${L(", no formato oficial.", ", in the official format.")}</p>`;
+  else h += `<div class="prompt">${esc(p.professor)}${p.students.map(s => `<br><br><b>${esc(s.name)}:</b> ${esc(s.post)}`).join("")}</div><p class="mut">${orig}. ${L("Mínimo recomendado", "Recommended minimum")}: ${DATA.toeflWriting.discussion.minWords} ${L("palavras", "words")}.</p>`;
+  const draft = P.rascunhos[wKey()] || "";
+  h += `<div class="row" style="margin:10px 0"><span class="timer" id="tmr">${mmss(T.total ? T.left : wMinutes() * 60)}</span>
+    <button class="btn" data-act="wstart">${T.running() ? L("Reiniciar", "Restart") : L("Iniciar", "Start")} ${wMinutes()} min</button>
+    <button class="btn" data-act="tstop">${L("Pausar / continuar", "Pause / resume")}</button>
+    <span style="margin-left:auto"><span id="wc" class="big">${words(draft)}</span> <span class="mut">${L("palavras", "words")}</span></span></div>
+    <textarea id="essay" spellcheck="false" placeholder="${L("Escreva em inglês. O corretor ortográfico fica desligado, como na prova.", "Write in English. Spell check is off, as in the test.")}">${esc(draft)}</textarea>
+    <div class="row" style="margin-top:12px"><span class="mut">${L("Autoavaliação", "Self-score")}</span><select id="wscore"><option value="">—</option>${(W.task === "issue" ? [6,5.5,5,4.5,4,3.5,3,2.5,2,1.5,1,0.5,0] : [5,4,3,2,1,0]).map(n => `<option>${n}</option>`).join("")}</select>
+    <button class="btn pri" data-act="wsave">${L("Salvar redação", "Save essay")}</button><button class="btn" data-act="wclear">${L("Limpar", "Clear")}</button>
+    <span class="mut" style="margin-left:auto">${L("O rascunho é salvo automaticamente.", "Drafts are saved automatically.")}</span></div>${rubricHTML()}</div>`;
+  const mine = P.redacoes.filter(r => r.tarefa === W.task).slice(-8).reverse();
+  if (mine.length) h += `<div class="card"><h3 style="margin-top:0">${L("Suas redações salvas deste tipo", "Your saved essays of this type")}</h3>${essaysTable(mine)}</div>`;
+  afterHooks.push(() => {
+    const ta = $("#essay"); ta.addEventListener("input", () => { $("#wc").textContent = words(ta.value); P.rascunhos[wKey()] = ta.value; persist(); });
+    $("#wsel").addEventListener("change", e => { W.idx = +e.target.value; T.stop(); render(); });
+  });
+  return h;
+}
+function essaysTable(list) {
+  return `<table><tr><th>${L("Data", "Date")}</th><th>${L("Tarefa", "Task")}</th><th>${L("Palavras", "Words")}</th><th>${L("Tempo", "Time")}</th><th>${L("Nota", "Score")}</th><th></th></tr>` + list.map(r =>
+    `<tr><td class="nw">${fmtDT(r.t)}</td><td>${esc(r.titulo)}</td><td>${r.palavras}</td><td>${r.segundos ? mmss(r.segundos) : "—"}</td><td>${r.nota === "" || r.nota == null ? "—" : r.nota}</td>
+     <td style="white-space:nowrap"><button class="btn sm" data-act="eview" data-v="${r.id}">${L("Ver", "View")}</button> <button class="btn sm" data-act="ecopy" data-v="${r.id}">${L("Copiar", "Copy")}</button> <button class="btn sm" data-act="edel" data-v="${r.id}">${L("Apagar", "Delete")}</button></td></tr>`).join("") + `</table>`;
+}
+function saveEssay() {
+  const ta = $("#essay"), text = ta.value.trim(); if (!text) { toast(L("A redação está vazia.", "The essay is empty.")); return; }
+  const wasRunning = T.total > 0;
+  P.redacoes.push({ id: "e" + Date.now(), t: now(), tarefa: W.task, tema: W.idx, titulo: wTitle(W.task, W.idx), texto: text, palavras: words(text), segundos: wasRunning ? T.elapsed() : 0, nota: $("#wscore").value });
+  delete P.rascunhos[wKey()]; T.stop(); T.total = 0; persist(true); toast(L("Redação salva (", "Essay saved (") + words(text) + L(" palavras).", " words).")); render();
+}
+/* Build a Sentence */
+const B = { idx: 0, built: [], done: false, ok: false };
+function rBuild() {
+  const bs = DATA.toeflWriting.buildSentence, list = bs.practice, p = list[B.idx];
+  const st = statsFor("build", () => "x").x || { ok: 0, n: 0 };
+  let h = `<div class="card"><div class="qmeta"><span class="qn">Item ${B.idx + 1} ${L("de", "of")} ${list.length}</span><div class="qprog"><i style="width:${Math.round(B.idx / list.length * 100)}%"></i></div><span class="qscore">${L("Acumulado", "All time")} <b>${st.ok}/${st.n}</b> (${pct(st.ok, st.n)}%)</span></div>
+    <p class="mut" style="margin-top:0">${esc(L(bs.note, bs.noteEn || bs.note))} ${L("Clique nos blocos na ordem certa; pode sobrar um bloco extra.", "Click the chunks in the right order; one extra chunk may be left over.")}</p>
+    <div class="prompt">${esc(p.context)}</div><div class="built">${B.built.map((i, pos) => B.done ? esc(p.chunks[i]) : `<button class="btn on" style="margin:2px" data-act="bremove" data-v="${pos}" title="${L("Clique para tirar", "Click to remove")}">${esc(p.chunks[i])}</button>`).join(" ") || `<span class="mut">${L("monte a resposta aqui…", "build your answer here…")}</span>`}</div>
+    <div class="chips">${p.chunks.map((c, i) => `<button class="btn" data-act="bchip" data-v="${i}" ${B.built.includes(i) || B.done ? "disabled" : ""}>${esc(c)}</button>`).join("")}</div>
+    ${B.done ? "" : `<div class="row" style="margin-top:12px"><button class="btn pri" data-act="bcheck" data-confirm="1" ${B.built.length ? "" : "disabled"}>${L("Confirmar", "Confirm")}</button><button class="btn" data-act="bundo" ${B.built.length ? "" : "disabled"}>${L("Desfazer", "Undo")}</button><button class="btn" data-act="bclear" ${B.built.length ? "" : "disabled"}>${L("Limpar", "Clear")}</button><span class="mut">${L("Enter confirma", "Enter confirms")}</span></div>`}`;
+  if (B.done) h += `<div class="fb ${B.ok ? "ok" : "bad"}"><b>${rightWrong(B.ok)}</b> ${ansLbl()}: <b>${esc(p.answer)}</b>${p.extra ? ` (${L("bloco extra", "extra chunk")}: <i>${esc(p.extra)}</i>)` : ""}</div><div class="row" style="margin-top:10px"><button class="btn pri" data-act="bnext">${L("Próximo →", "Next →")}</button></div>`;
+  return h + `<p class="mut" style="margin-bottom:0">${L("Itens originais de prática (não são itens ETS), no formato oficial.", "Original practice items (not ETS items), in the official format.")}</p></div>`;
+}
+function buildCheck() {
+  const p = DATA.toeflWriting.buildSentence.practice[B.idx];
+  B.ok = norm(B.built.map(i => p.chunks[i]).join(" ")) === norm(p.answer); B.done = true;
+  logAnswer("build", "b" + (B.idx + 1), 0, B.ok); render();
+}
+
+/* ---------- SPEAKING ---------- */
+const S = { task: "repeat", set: 0, i: 0, show: true, score: "" };
+function lrSeconds(s) { const n = words(s); return n <= 6 ? 8 : n <= 11 ? 10 : 12; }
+function rSpeaking() {
+  const sp = DATA.toeflSpeaking;
+  let h = `<div class="card"><h2>Speaking</h2><div class="row"><button class="btn ${S.task === "repeat" ? "on" : ""}" data-act="stask" data-v="repeat">Listen and Repeat (7 ${L("frases", "sentences")})</button><button class="btn ${S.task === "interview" ? "on" : ""}" data-act="stask" data-v="interview">Take an Interview (4 × 45 s)</button></div>
+    <p class="mut" style="margin-bottom:0">${L(`Sem tempo de preparo, como na prova (${sp.sectionItems} itens, ~${sp.sectionMinutes} min). Grave-se com o Gravador de Voz do Windows e compare com a rubrica. Áudio usa a voz em inglês do Windows (se instalada).`, `No preparation time, as in the test (${sp.sectionItems} items, ~${sp.sectionMinutes} min). Record yourself with Windows Voice Recorder and compare with the rubric. Audio uses the Windows English voice (if installed).`)}</p></div>`;
+  const list = S.task === "repeat" ? sp.listenRepeat.practice : sp.interview.practice; const p = list[S.set];
+  const items = S.task === "repeat" ? p.sentences : p.questions;
+  const cur = items[S.i], secs = S.task === "repeat" ? lrSeconds(cur) : sp.interview.responseSeconds;
+  h += `<div class="card"><div class="row"><span class="mut">${L("Cenário", "Scenario")}:</span>` + list.map((_, k) => `<button class="btn sm ${S.set === k ? "on" : ""}" data-act="sset" data-v="${k}">${k + 1}</button>`).join("") +
+    `<label class="mut" style="margin-left:auto"><input type="checkbox" id="shide" ${S.show ? "" : "checked"}> ${L("esconder o texto (só ouvir)", "hide the text (listen only)")}</label></div>
+    <div class="prompt">${esc(p.scenario)}</div>
+    <p class="mut">${S.task === "repeat" ? L("Frase", "Sentence") : L("Pergunta", "Question")} ${S.i + 1} ${L("de", "of")} ${items.length} · ${L("tempo de resposta", "response time")}: ${secs} s${S.task === "repeat" ? L(" (8–12 s conforme o tamanho; valor exato por frase é estimativa)", " (8–12 s by length; the exact value per sentence is an estimate)") : ""}</p>
+    <div class="q" style="font-size:20px">${S.show ? esc(cur) : `<span class="mut">${L("(texto escondido — clique em Ouvir)", "(text hidden — click Listen)")}</span>`}</div>
+    <div class="row"><button class="btn ic" data-act="ssay">${SPK_SVG}${L("Ouvir", "Listen")}</button><span class="timer" id="tmr">${mmss(T.running() ? T.left : secs)}</span>
+    <button class="btn pri" data-act="sgo">${L("Responder agora", "Answer now")} (${secs} s)</button><button class="btn" data-act="sauto">${L("Ouvir + responder", "Listen + answer")}</button>
+    <span class="pn"><button class="btn" data-act="sprev" ${S.i ? "" : "disabled"}>${L("← Anterior", "← Previous")}</button><button class="btn" data-act="snext" ${S.i < items.length - 1 ? "" : "disabled"}>${L("Próxima →", "Next →")}</button></span></div>
+    <h3>${L("Rubrica (resumo ETS, 0–5)", "Rubric (ETS summary, 0–5)")}</h3><table class="rub">${Object.entries(S.task === "repeat" ? sp.rubricRepeat : sp.rubricInterview).sort((a, b) => b[0] - a[0]).map(([k, v]) => `<tr><td><b>${k}</b></td><td>${esc(v)}</td></tr>`).join("")}</table>
+    <p class="mut">${srcLbl()}: ${esc(sp.source)}</p>
+    <div class="row"><span class="mut">${L("Terminou o cenário? Autoavaliação", "Finished the scenario? Self-score")}</span><select id="sscore"><option value="">—</option>${[5,4,3,2,1,0].map(n => `<option>${n}</option>`).join("")}</select><button class="btn" data-act="slog">${L("Registrar sessão", "Log session")}</button></div></div>`;
+  const mine = P.falas.slice(-6).reverse();
+  if (mine.length) h += `<div class="card"><h3 style="margin-top:0">${L("Últimas sessões de Speaking", "Recent Speaking sessions")}</h3><table><tr><th>${L("Data", "Date")}</th><th>${L("Tarefa", "Task")}</th><th>${L("Cenário", "Scenario")}</th><th>${L("Nota", "Score")}</th></tr>${mine.map(f => `<tr><td class="nw">${fmtDT(f.t)}</td><td>${f.tarefa === "repeat" ? "Listen and Repeat" : "Interview"}</td><td>${f.cenario + 1}</td><td>${f.nota === "" ? "—" : f.nota}</td></tr>`).join("")}</table></div>`;
+  afterHooks.push(() => { $("#shide").addEventListener("change", e => { S.show = !e.target.checked; render(); }); });
+  return h;
+}
+function spCur() { const sp = DATA.toeflSpeaking; const p = (S.task === "repeat" ? sp.listenRepeat.practice : sp.interview.practice)[S.set]; return (S.task === "repeat" ? p.sentences : p.questions)[S.i]; }
+function spSecs() { return S.task === "repeat" ? lrSeconds(spCur()) : DATA.toeflSpeaking.interview.responseSeconds; }
+
+/* ---------- PROGRESSO ---------- */
+function sumStats(mod) { const a = P.historico.filter(h => mod.includes(h.mod)); return { ok: a.filter(h => h.ok).length, n: a.length }; }
+const msWk = m => LANG() === "en" && m[2] ? m[2] : m[0];
+const msTxt = m => LANG() === "en" && m[3] ? m[3] : m[1];
+function rProg() {
+  const v = sumStats(["vocab"]), f = sumStats(["frases"]), q = sumStats(["quant"]), b = sumStats(["build"]);
+  const pend = Object.entries(P.erros).filter(([, e]) => e.pendente).sort((a, b) => b[1].n - a[1].n);
+  const doneMs = DATA.milestones.filter((_, i) => P.marcos[i] && P.marcos[i].feito).length;
+  const en = LANG() === "en";
+  let h = `<div class="card"><h2>${L("Progresso", "Progress")}</h2><div class="row"><button class="btn pri ic" data-act="export">${ICON.copy}${L("Exportar progresso", "Export progress")}</button><button class="btn ic" data-act="folder">${ICON.folder}${L("Abrir pasta de dados", "Open data folder")}</button><span class="mut" id="fpath"></span></div>
+    <p class="mut" style="margin-bottom:0">${L('"Exportar progresso" copia um resumo para a área de transferência — é só colar no chat. Backup completo e importação ficam em Configurações (engrenagem).', '"Export progress" copies a summary to the clipboard — just paste it in the chat. Full backup and import are in Settings (gear).')}</p><textarea id="exptxt" style="display:none;min-height:180px;margin-top:10px" readonly></textarea></div>
+    <div class="grid2"><div class="card"><h3 style="margin-top:0">${L("Resumo", "Summary")}</h3><table>
+    <tr><td>${L("Vocab — definições", "Vocab — definitions")}</td><td>${v.ok}/${v.n} (${pct(v.ok, v.n)}%)</td></tr><tr><td>${L("Vocab — frases TC/SE", "Vocab — TC/SE sentences")}</td><td>${f.ok}/${f.n} (${pct(f.ok, f.n)}%)</td></tr>
+    <tr><td>Quant</td><td>${q.ok}/${q.n} (${pct(q.ok, q.n)}%)</td></tr><tr><td>Build a Sentence</td><td>${b.ok}/${b.n} (${pct(b.ok, b.n)}%)</td></tr>
+    <tr><td>${L("Redações salvas", "Saved essays")}</td><td>${P.redacoes.length}</td></tr><tr><td>${L("Sessões de Speaking", "Speaking sessions")}</td><td>${P.falas.length}</td></tr><tr><td>${L("Marcos concluídos", "Milestones done")}</td><td>${doneMs}/${DATA.milestones.length}</td></tr></table></div>
+    <div class="card"><h3 style="margin-top:0">${L("Palavras para revisar", "Words to review")} (${pend.length})</h3>${pend.length ? `<table><tr><th>${L("Palavra", "Word")}</th><th>${L("Erros", "Mistakes")}</th><th></th></tr>${pend.slice(0, 30).map(([w, e]) => `<tr><td>${wordBlock(w, true)} ${en ? "" : `<span class="mut">${esc((VOCAB_BY_WORD[w.toLowerCase()] || {}).pt || "")}</span>`}</td><td>${e.n}</td><td><button class="btn sm" data-act="wok" data-v="${esc(w)}">${L("Já sei", "Got it")}</button></td></tr>`).join("")}</table>
+    <button class="btn" style="margin-top:8px" data-act="toreview">${L("Treinar revisão agora", "Practise review now")}</button>` : `<p class="mut">${L("Nenhuma. Erros no Vocab entram aqui automaticamente.", "None. Vocab mistakes show up here automatically.")}</p>`}</div></div>
+    <div class="card"><h3 style="margin-top:0">${L("Marcos do plano (clique para marcar)", "Plan milestones (click to tick)")}</h3>${DATA.milestones.map((ms, i) => { const m = P.marcos[i]; return `<label class="ms ${m && m.feito ? "done" : ""}"><input type="checkbox" data-ms="${i}" ${m && m.feito ? "checked" : ""}><span><b>${esc(msWk(ms))}</b> — <span class="t">${esc(msTxt(ms))}</span>${m && m.feito ? ` <span class="mut">(${L("feito em", "done on")} ${fmtD(m.t)})</span>` : ""}</span></label>`; }).join("")}</div>
+    <div class="card"><h3 style="margin-top:0">${L("Últimas rodadas", "Recent rounds")}</h3>${P.rodadas.length ? `<table class="mid"><tr><th>${L("Data", "Date")}</th><th>${L("Rodada", "Round")}</th><th>${L("Acertos", "Correct")}</th><th></th></tr>${P.rodadas.slice(-15).reverse().map(r => `<tr><td class="nw">${fmtDT(r.t)}</td><td>${esc(r.conjunto)}</td><td class="nw">${r.acertos}/${r.total} (${pct(r.acertos, r.total)}%)</td><td style="width:30%">${bar(pct(r.acertos, r.total))}</td></tr>`).join("")}</table>` : `<p class="mut">${L("Nenhuma rodada ainda.", "No rounds yet.")}</p>`}</div>
+    <div class="card"><h3 style="margin-top:0">${L("Redações", "Essays")}</h3>${P.redacoes.length ? essaysTable(P.redacoes.slice().reverse()) : `<p class="mut">${L("Nenhuma redação salva ainda.", "No saved essays yet.")}</p>`}</div>`;
+  afterHooks.push(async () => { document.querySelectorAll("[data-ms]").forEach(cb => cb.addEventListener("change", e => { const i = e.target.dataset.ms; P.marcos[i] = { feito: e.target.checked, t: now() }; persist(true); render(); }));
+    try { const el = $("#fpath"); const fp = await API.folder(); if (el) el.textContent = fp; } catch (e) {} });
+  return h;
+}
+function exportText() {
+  const out = [], line = s => out.push(s);
+  const st = (mod, key) => statsFor(mod, key);
+  line(L("TREINO TALTECH — progresso exportado em ", "TREINO TALTECH — progress exported on ") + fmtDT(now()));
+  line(L("Meta: TOEFL iBT ≥4 em cada seção (B2) · GRE V145 / Q150 / AW 3.0 até 31/01/2027 · prazo TalTech 22/03/2027", "Goal: TOEFL iBT ≥4 in every section (B2) · GRE V145 / Q150 / AW 3.0 by 31/01/2027 · TalTech deadline 22/03/2027"));
+  const tot = m => { const s = sumStats([m]); return `${s.ok}/${s.n} (${pct(s.ok, s.n)}%)`; };
+  line(""); line(L("GRE VOCAB — definições: ", "GRE VOCAB — definitions: ") + tot("vocab") + L(" · frases TC/SE: ", " · TC/SE sentences: ") + tot("frases") + L(" · revisão: ", " · review: ") + tot("revisao"));
+  const sv = st("vocab", x => x.set), sf = st("frases", x => x.set);
+  [1,2,3,4].forEach(s => { const a = sv[s] || {ok:0,n:0}, b = sf[s] || {ok:0,n:0}; line(`  ${L("Conjunto", "Set")} ${s}: ${L("definições", "definitions")} ${a.ok}/${a.n} (${pct(a.ok,a.n)}%) · ${L("frases", "sentences")} ${b.ok}/${b.n} (${pct(b.ok,b.n)}%)`); });
+  const pend = Object.entries(P.erros).filter(([, e]) => e.pendente).sort((a, b) => b[1].n - a[1].n);
+  line(L("  Palavras para revisar (", "  Words to review (") + pend.length + "): " + (pend.map(([w, e]) => w + (e.n > 1 ? "×" + e.n : "")).join(", ") || L("nenhuma", "none")));
+  const sq = st("quant", x => (DATA.quant.find(q => q.id === x.id) || {}).type);
+  line(""); line("GRE QUANT — total " + tot("quant") + " · " + ["QC","MC","NE"].map(t => { const a = sq[t] || {ok:0,n:0}; return `${t} ${a.ok}/${a.n}`; }).join(" · "));
+  line(""); line("TOEFL Build a Sentence — " + tot("build"));
+  const byT = t => P.redacoes.filter(r => r.tarefa === t);
+  line(L("REDAÇÕES — total ", "ESSAYS — total ") + P.redacoes.length + " (GRE Issue " + byT("issue").length + ", Email " + byT("email").length + L(", Discussão ", ", Discussion ") + byT("disc").length + ")");
+  P.redacoes.slice(-6).reverse().forEach(r => line(`  ${fmtD(r.t)} · ${r.titulo} · ${r.palavras} ${L("palavras", "words")}${r.segundos ? " · " + mmss(r.segundos) : ""}${r.nota !== "" && r.nota != null ? L(" · autoavaliação ", " · self-score ") + r.nota : ""}`));
+  line(L("SPEAKING — sessões ", "SPEAKING — sessions ") + P.falas.length + P.falas.slice(-4).reverse().map(f => `\n  ${fmtD(f.t)} · ${f.tarefa === "repeat" ? "Listen and Repeat" : "Interview"} ${L("cenário", "scenario")} ${f.cenario + 1}${f.nota !== "" ? L(" · autoavaliação ", " · self-score ") + f.nota : ""}`).join(""));
+  line(""); line(L("ÚLTIMAS RODADAS:", "RECENT ROUNDS:")); P.rodadas.slice(-8).reverse().forEach(r => line(`  ${fmtD(r.t)} · ${r.conjunto} · ${r.acertos}/${r.total} (${pct(r.acertos, r.total)}%)`));
+  if (!P.rodadas.length) line(L("  nenhuma", "  none"));
+  const ms = DATA.milestones.map((m, i) => [m, P.marcos[i]]);
+  line(""); line(`${L("MARCOS", "MILESTONES")} — ${ms.filter(x => x[1] && x[1].feito).length}/${ms.length} ${L("concluídos", "done")}`);
+  ms.forEach(([m, s]) => line(`  [${s && s.feito ? "x" : " "}] ${msWk(m)} — ${msTxt(m)}`));
+  const days = new Set(P.historico.map(h => h.t.slice(0, 10)).concat(P.redacoes.map(r => r.t.slice(0, 10)), P.falas.map(f => f.t.slice(0, 10))));
+  line(""); line(L("Dias com treino registrado: ", "Days with logged practice: ") + days.size + L(" · última atividade: ", " · last activity: ") + (P.atualizado ? fmtDT(P.atualizado) : "—"));
+  return out.join("\n");
+}
+function showEssay(id) {
+  const r = P.redacoes.find(x => x.id === id); if (!r) return;
+  $("#modalc").innerHTML = `<div class="mhead"><h2 title="${esc(r.titulo)}">${esc(r.titulo)}</h2><button class="btn" data-act="mclose">${L("Fechar", "Close")}</button></div>
+    <p class="mut">${fmtDT(r.t)} · ${r.palavras} ${L("palavras", "words")}${r.segundos ? " · " + mmss(r.segundos) : ""}${r.nota !== "" && r.nota != null ? L(" · autoavaliação ", " · self-score ") + r.nota : ""}</p><div style="white-space:pre-wrap">${esc(r.texto)}</div>`;
+  openModal();
+}
+
+/* ---------- CONFIGURAÇÕES ---------- */
+function counts(o) { const n = k => Array.isArray(o[k]) ? o[k].length : 0; return { resp: n("historico"), rod: n("rodadas"), red: n("redacoes"), fal: n("falas"), err: o.erros && typeof o.erros === "object" ? Object.keys(o.erros).length : 0 }; }
+const plur = (n, pt1, ptN, en1, enN) => `${n} ${n === 1 ? L(pt1, en1) : L(ptN, enN)}`;
+function countsLine(c) { return `${plur(c.resp, "resposta", "respostas", "answer", "answers")} · ${plur(c.rod, "rodada", "rodadas", "round", "rounds")} · ${plur(c.red, "redação", "redações", "essay", "essays")} · ${plur(c.fal, "sessão de Speaking", "sessões de Speaking", "Speaking session", "Speaking sessions")}`; }
+function rSettings() {
+  const t = themeSetting(), lang = LANG();
+  const sysNow = MQ && MQ.matches ? L("escuro", "dark") : L("claro", "light");
+  const th = [["light", L("Claro", "Light")], ["dark", L("Escuro", "Dark")], ["system", L("Sistema", "System")]];
+  let h = `<div class="card"><h2>${L("Configurações", "Settings")}</h2><p class="mut" style="margin:0">${L("As mudanças valem na hora e ficam salvas no seu progresso.", "Changes apply instantly and are saved with your progress.")}</p></div>
+  <div class="card" id="s-theme"><h3 style="margin-top:0">${L("Tema", "Theme")}</h3><div class="seg" role="radiogroup" aria-label="${L("Tema", "Theme")}">` +
+    th.map(([k, l]) => `<button class="btn ${t === k ? "on" : ""}" data-act="theme" data-v="${k}" role="radio" aria-checked="${t === k}"><span class="sw ${k}"></span>${l}</button>`).join("") +
+    `</div><p class="mut" style="margin-bottom:0">${L("Sistema segue o tema do Windows automaticamente (agora: ", "System follows the Windows theme automatically (now: ")}${sysNow}).</p></div>
+  <div class="card" id="s-lang"><h3 style="margin-top:0">${L("Idioma da interface", "Interface language")}</h3><div class="seg" role="radiogroup">` +
+    [["pt", "Português"], ["en", "English"]].map(([k, l]) => `<button class="btn ${lang === k ? "on" : ""}" data-act="lang" data-v="${k}" role="radio" aria-checked="${lang === k}">${l}</button>`).join("") +
+    `</div><p class="mut" style="margin-bottom:0">${L("Menus, botões e mensagens. As questões continuam em inglês, como na prova; explicações e traduções seguem este idioma.", "Menus, buttons and messages. Questions stay in English, as in the test; explanations and translations follow this language.")}</p></div>
+  <div class="card" id="s-pron"><h3 style="margin-top:0">${L("Pronúncia", "Pronunciation")}</h3>
+    <p style="margin:0 0 8px">${L("Pronúncia automática ao mostrar a palavra", "Auto-pronounce when a word is shown")}</p><div class="seg" role="radiogroup">` +
+    [["on", L("Ligada", "On")], ["off", L("Desligada", "Off")]].map(([k, l]) => `<button class="btn ${(P.settings.autoSpeak ? "on" : "off") === k ? "on" : ""}" data-act="autospeak" data-v="${k}" role="radio" aria-checked="${(P.settings.autoSpeak ? "on" : "off") === k}">${l}</button>`).join("") + `</div>
+    <p class="mut" id="voiceinfo">${voiceInfoHTML()}</p>
+    <div class="row"><button class="btn ic" data-act="saytest">${SPK_SVG}${L("Testar voz", "Test voice")}</button></div>
+    <p class="mut" style="margin-bottom:0">${L("Clique no alto-falante ao lado da palavra para ouvir (velocidade 0,85); “devagar” ou segurar o botão = 0,6. A transcrição ao lado da palavra é a pronúncia americana (IPA).", "Click the speaker next to a word to hear it (rate 0.85); “slow” or holding the button = 0.6. The transcription next to the word is the US pronunciation (IPA).")}</p></div>
+  <div class="card" id="s-data"><h3 style="margin-top:0">${L("Dados salvos", "Saved data")}</h3><div id="dinfo">${dataInfoHTML(null)}</div>
+    <div class="row" style="margin-top:12px"><button class="btn pri ic" data-act="bexport">${ICON.down}${L("Exportar backup", "Export backup")}</button><button class="btn ic" data-act="bimport">${ICON.up}${L("Importar backup", "Import backup")}</button><button class="btn ic" data-act="folder">${ICON.folder}${L("Abrir pasta", "Open folder")}</button></div>
+    <p class="mut">${L("Exportar gera um arquivo .json com todo o seu progresso. Antes de importar ou zerar, o app sempre guarda uma cópia do arquivo atual (.bak) na pasta de dados.", "Export creates a .json file with all your progress. Before importing or resetting, the app always keeps a copy of the current file (.bak) in the data folder.")}</p>
+    <div class="dz"><div><b>${L("Zerar progresso", "Reset progress")}</b><div class="mut">${L("Apaga respostas, rodadas, redações, Speaking e marcos. Mantém tema e idioma.", "Erases answers, rounds, essays, Speaking and milestones. Keeps theme and language.")}</div></div><button class="btn dangerline" data-act="breset">${L("Zerar progresso…", "Reset progress…")}</button></div></div>
+  <div class="card" id="s-about"><h3 style="margin-top:0">${L("Sobre", "About")}</h3><div class="kv"><span>${L("Versão", "Version")}</span><span>v${esc(APP_VERSION)}</span><span>${L("Formato dos dados", "Data format")}</span><span>schema ${esc(P.schemaVersion)}</span></div>
+    <div class="row" style="margin-top:10px"><button class="btn" data-act="novidades">${L("O que há de novo", "What's new")}</button></div></div>`;
+  afterHooks.push(refreshDataInfo);
+  return h;
+}
+function voiceInfoHTML() {
+  const v = enVoice();
+  if (v) return `${L("Voz em inglês", "English voice")}: <b>${esc(v.name)}</b> (${esc(v.lang)})`;
+  if (!VOICES_READY && window.speechSynthesis) { voicesReady().then(() => { const e = $("#voiceinfo"); if (e) e.innerHTML = voiceInfoHTML(); }); return L("Procurando vozes…", "Looking for voices…"); }
+  return `<span class="warnline">${esc(noVoiceTip())}</span>`;
+}
+let DINFO = null;
+function dataInfoHTML(i) {
+  const c = counts(P);
+  const last = LAST_SAVED ? fmtDTs(LAST_SAVED) : (i && i.modified ? fmtDTs(new Date(i.modified)) : (i && i.exists === false ? L("ainda não salvo", "not saved yet") : "…"));
+  return `<div class="kv"><span>${L("Pasta", "Folder")}</span><span class="path">${esc(i ? i.folder : "…")}</span>
+    <span>${L("Arquivo", "File")}</span><span class="path">${esc(i ? i.file : "progresso.json")}</span>
+    <span>${L("Tamanho", "Size")}</span><span>${i ? fmtSize(i.size || 0) : "…"}</span>
+    <span>${L("Último salvamento", "Last saved")}</span><span>${esc(last)}</span>
+    <span>${L("Conteúdo", "Contents")}</span><span>${countsLine(c)}</span></div>`;
+}
+async function refreshDataInfo() {
+  try { DINFO = await API.info(); } catch (e) { DINFO = { folder: "?", file: "progresso.json", size: 0, modified: "", exists: false }; }
+  const d = $("#dinfo"); if (d && TAB === "settings") d.innerHTML = dataInfoHTML(DINFO);
+}
+async function doExport() {
+  await flushSave();
+  const name = "TreinoTalTech-backup-" + stamp() + ".json";
+  let path;
+  try { path = await API.exportBackup(JSON.stringify(P, null, 2), name); }
+  catch (e) { toast(L("Não consegui exportar: ", "Could not export: ") + ((e && e.message) || e)); return; }
+  if (path) toast(L("Backup exportado: ", "Backup exported: ") + path); else toast(L("Exportação cancelada.", "Export cancelled."));
+}
+function validateImport(text) {
+  let o; try { o = JSON.parse(text); } catch (e) { throw new Error(L("o arquivo não é um JSON válido", "the file is not valid JSON")); }
+  if (!o || typeof o !== "object" || Array.isArray(o)) throw new Error(L("formato inesperado", "unexpected format"));
+  if (!(o.app === "TreinoTalTech" || Array.isArray(o.historico))) throw new Error(L("não parece um progresso do Treino TalTech", "this does not look like Treino TalTech progress"));
+  for (const k of ["historico", "rodadas", "redacoes", "falas"]) if (o[k] != null && !Array.isArray(o[k])) throw new Error(L("campo inválido: ", "invalid field: ") + k);
+  for (const k of ["erros", "rascunhos", "marcos", "settings", "sessoes"]) if (o[k] != null && (typeof o[k] !== "object" || Array.isArray(o[k]))) throw new Error(L("campo inválido: ", "invalid field: ") + k);
+  if (schemaOf(o) > SCHEMA) throw new Error(L("arquivo de uma versão mais nova do app; atualize o app antes de importar", "file from a newer app version; update the app before importing"));
+  return o;
+}
+let PENDING_IMPORT = null;
+async function doImport() {
+  let f;
+  try { f = await API.importBackup(); }
+  catch (e) { toast(L("Não importei: ", "Not imported: ") + ((e && e.message) || e)); return; }
+  if (!f) return;
+  let o; try { o = validateImport(f.content); } catch (e) { toast(L("Não importei: ", "Not imported: ") + e.message); return; }
+  PENDING_IMPORT = o;
+  const a = counts(o), b = counts(P);
+  $("#modalc").innerHTML = `<h2>${L("Importar backup?", "Import backup?")}</h2><p>${L("Isto vai <b>substituir</b> o progresso atual pelo do arquivo.", "This will <b>replace</b> your current progress with the file's.")}</p>
+    <div class="kv"><span>${L("Arquivo", "File")}</span><span class="path">${esc(f.name)}</span><span>${L("No arquivo", "In the file")}</span><span>${countsLine(a)}${o.atualizado ? " · " + L("salvo em ", "saved on ") + fmtDT(o.atualizado) : ""}</span><span>${L("Atual", "Current")}</span><span>${countsLine(b)}</span></div>
+    <p class="mut">${L("Antes de importar, o progresso atual é copiado para um .bak na pasta de dados.", "Before importing, current progress is copied to a .bak in the data folder.")}</p>
+    <div class="row" style="margin-top:12px"><button class="btn pri" data-act="iconfirm" data-confirm="1">${L("Importar", "Import")}</button><button class="btn" data-act="mclose">${L("Cancelar", "Cancel")}</button></div>`;
+  openModal();
+}
+async function confirmImport() {
+  const o = PENDING_IMPORT; if (!o) return; PENDING_IMPORT = null;
+  await flushSave();
+  let bak;
+  try { bak = await API.backupNamed("antes-de-importar"); } catch (e) { closeModal(); toast(L("Importação cancelada: não consegui fazer o backup (", "Import cancelled: backup failed (") + (e && e.message || e) + ")."); return; }
+  const keep = Object.assign({}, P.settings), hadSettings = o.settings && typeof o.settings === "object";
+  const up = upgrade(o).o;
+  R = null; SESS = {}; T.stop(); T.total = 0;
+  P = adopt(up); if (!hadSettings) P.settings = keep;
+  P.schemaVersion = SCHEMA; P.ultimaVersaoVista = APP_VERSION;
+  restoreSessions(); // antes do persist, para não perder as sessões do arquivo importado
+  persist(true); await saving;
+  applyTheme(); applyLang(); closeModal(); render();
+  toast(L("Backup importado.", "Backup imported.") + (bak ? L(" Cópia do anterior: ", " Previous copy: ") + bak : ""));
+}
+function askReset() {
+  $("#modalc").innerHTML = `<h2 class="danger-t">${L("Zerar progresso?", "Reset progress?")}</h2><p>${L("Isto apaga todas as respostas, rodadas, redações, sessões de Speaking, palavras para revisar e marcos. Tema e idioma são mantidos.", "This erases all answers, rounds, essays, Speaking sessions, words to review and milestones. Theme and language are kept.")}</p>
+    <p class="mut">${L("Antes, uma cópia do arquivo atual é salva como .bak na pasta de dados.", "First, a copy of the current file is saved as .bak in the data folder.")}</p>
+    <label>${L("Para confirmar, digite <b>ZERAR</b>:", "To confirm, type <b>ZERAR</b>:")}<br><input type="text" id="zerarIn" autocomplete="off" spellcheck="false" style="margin-top:6px"></label>
+    <div class="row" style="margin-top:12px"><button class="btn danger" data-act="rconfirm" data-confirm="1" disabled>${L("Zerar tudo", "Reset everything")}</button><button class="btn" data-act="mclose">${L("Cancelar", "Cancel")}</button></div>`;
+  openModal();
+  const i = $("#zerarIn"); i.addEventListener("input", () => { $("[data-act=rconfirm]").disabled = i.value.trim() !== "ZERAR"; }); i.focus();
+}
+async function confirmReset() {
+  const i = $("#zerarIn"); if (!i || i.value.trim() !== "ZERAR") return;
+  await flushSave();
+  let bak;
+  try { bak = await API.backupNamed("antes-de-zerar"); } catch (e) { closeModal(); toast(L("Nada foi apagado: não consegui fazer o backup (", "Nothing erased: backup failed (") + (e && e.message || e) + ")."); return; }
+  const keep = { settings: Object.assign({}, P.settings), ultimaVersaoVista: P.ultimaVersaoVista };
+  R = null; SESS = {}; T.stop(); T.total = 0; B.idx = 0; B.built = []; B.done = false;
+  P = Object.assign(EMPTY(), keep); persist(true); await saving;
+  closeModal(); render();
+  toast(L("Progresso zerado.", "Progress reset.") + (bak ? L(" Backup: ", " Backup: ") + bak : ""));
+}
+
+function confirmBar(act, enabled, label) {
+  return `<div class="row" style="margin-top:10px"><button class="btn pri" data-act="${act}" data-confirm="1" ${enabled ? "" : "disabled"}>${label}</button><span class="mut">${L("Enter confirma", "Enter confirms")}${act === "qne" || act === "bcheck" ? "" : L(" · teclas 1–6 escolhem", " · keys 1–6 pick")}</span></div>`;
+}
+function cmpVer(a, b) { const x = String(a).split(".").map(Number), y = String(b).split(".").map(Number); for (let i = 0; i < Math.max(x.length, y.length); i++) { const d = (x[i] || 0) - (y[i] || 0); if (d) return d; } return 0; }
+function openModal() { const m = $("#modal"); m.style.display = "flex"; m.dataset.news = ""; }
+function showNews(force) {
+  const seen = P.ultimaVersaoVista || "1.0";
+  const vers = Object.keys(NOVIDADES).filter(v => force ? true : cmpVer(v, seen) > 0 && cmpVer(v, APP_VERSION) <= 0).sort(cmpVer).reverse();
+  if (!vers.length) return false;
+  let extra = "";
+  if (!force && LOADINFO.migrated) extra = `<p class="mut">${L("Seu progresso foi convertido para o formato novo e está intacto.", "Your progress was converted to the new format and is intact.")}${LOADINFO.backup ? L(" Backup do arquivo antigo: <b>", " Backup of the old file: <b>") + esc(LOADINFO.backup) + "</b>." : ""}</p>`;
+  $("#modalc").innerHTML = `<h2>${L("O que há de novo", "What's new")}</h2>${vers.map(v => `<h3>v${esc(v)}</h3><ul class="r">${NOVIDADES[v][LANG()].map(x => `<li>${x}</li>`).join("")}</ul>`).join("")}${extra}
+    <div class="row" style="margin-top:12px"><button class="btn pri" data-act="newsok" data-confirm="1">${L("Entendi", "Got it")}</button></div>`;
+  $("#modal").style.display = "flex"; $("#modal").dataset.news = "1";
+  return true;
+}
+function closeModal() {
+  const m = $("#modal"); if (m.dataset.news === "1") { m.dataset.news = ""; if (!LOADINFO.newer && P.ultimaVersaoVista !== APP_VERSION) { P.ultimaVersaoVista = APP_VERSION; persist(true); } }
+  m.style.display = "none"; PENDING_IMPORT = null;
+}
+document.addEventListener("keydown", ev => {
+  if (ev.ctrlKey || ev.altKey || ev.metaKey) return;
+  const tag = (ev.target.tagName || "").toLowerCase();
+  if (tag === "textarea" || tag === "select") return;
+  const modalOpen = $("#modal").style.display === "flex";
+  if (ev.key === "Escape" && modalOpen) { closeModal(); return; }
+  if (ev.key === "Enter") {
+    const scope = modalOpen ? $("#modal") : $("#app");
+    const c = scope.querySelector("[data-confirm]:not(:disabled)") || (!modalOpen && scope.querySelector('[data-act=next],[data-act=bnext],[data-act=again]'));
+    if (c) { ev.preventDefault(); c.click(); }
+    return;
+  }
+  if (!modalOpen && tag !== "input" && /^[1-6]$/.test(ev.key)) {
+    const b = $("#app").querySelector(`[data-act=vpick][data-v="${+ev.key - 1}"]:not(:disabled), [data-act=qpick][data-v="${+ev.key - 1}"]:not(:disabled)`);
+    if (b) { ev.preventDefault(); b.click(); }
+  }
+});
+
+/* ---------- eventos ---------- */
+document.addEventListener("click", async ev => {
+  const el = ev.target.closest("[data-act]"); if (!el || el.disabled) return;
+  const a = el.dataset.act, v = el.dataset.v;
+  try {
+  switch (a) {
+    case "tab": go(v); break;
+    case "say": if (LP && LP.fired && LP.b === el) { LP = null; break; } LP = null; sayEn(v, RATE_NORMAL); break;
+    case "sayslow": sayEn(v, RATE_SLOW); break;
+    case "autospeak": P.settings.autoSpeak = v === "on"; persist(true); render(); toast(P.settings.autoSpeak ? L("Pronúncia automática ligada.", "Auto pronunciation on.") : L("Pronúncia automática desligada.", "Auto pronunciation off.")); break;
+    case "saytest": sayEn("The storm finally began to abate after midnight.", RATE_NORMAL); break;
+    case "again": if (TAB === "vocab") startVocab(); else startQuant(); persist(true); render(); break;
+    case "rcont": if (R) R.ask = false; render(); break;
+    case "rnew": if (R && R.n > 0 && R.cur && !confirm(L(`Começar uma nova sessão? A atual (${R.n}/${R.queue.length} respondidas) vai para "Últimas rodadas"; as respostas já confirmadas continuam contando.`, `Start a new session? The current one (${R.n}/${R.queue.length} answered) goes to "Recent rounds"; answers already confirmed still count.`))) break;
+    // fallthrough
+    case "rnewnow": if (TAB === "vocab") startVocab(); else if (TAB === "quant") startQuant(); persist(true); render(); window.scrollTo(0, 0); break;
+    case "next": nextQ(); break;
+    case "vmode": setVMode(v); useVocab(); persist(true); render(); break;
+    case "vset": V.set = V.sets[V.mode] = +v; useVocab(); persist(true); render(); break;
+    case "pmore": { const n = +v; SETS_OPEN.has(n) ? SETS_OPEN.delete(n) : SETS_OPEN.add(n); render(); break; }
+    case "vtrain": if (V.mode === "revisao") setVMode("def"); V.set = V.sets[V.mode] = +v; useVocab(); persist(true); render(); window.scrollTo(0, 0); break;
+    case "vpick": { if (R.done) break; const o = R.cur.options[+v]; if (R.cur.need === 1) R.picked = R.picked[0] === o ? [] : [o]; else R.picked = R.picked.includes(o) ? R.picked.filter(x => x !== o) : R.picked.length < R.cur.need ? R.picked.concat(o) : R.picked; render(); break; }
+    case "vconfirm": if (!R.done && R.picked.length === R.cur.need) vocabCheck(); break;
+    case "qtype": Q.type = v; useQuant(); persist(true); render(); break;
+    case "qpick": { if (R.done) break; const o = R.cur.options[+v]; R.picked = R.picked[0] === o ? [] : [o]; render(); break; }
+    case "qconfirm": if (!R.done && R.picked.length === 1) quantCheck(R.picked[0]); break;
+    case "qne": { const val = $("#neans") ? $("#neans").value : ""; if (!R.done && val.trim()) quantCheck(val); break; }
+    case "wtask": T.stop(); T.total = 0; W.task = v; W.idx = 0; render(); break;
+    case "wrand": T.stop(); T.total = 0; W.idx = Math.floor(Math.random() * wList().length); render(); break;
+    case "wstart": T.start(wMinutes() * 60, () => toast(L("Tempo esgotado! Termine a frase e salve.", "Time's up! Finish your sentence and save."))); $("#essay").focus(); render(); $("#essay").focus(); break;
+    case "tstop": if (T.running()) { T.stop(); T.paused = T.left; toast(L("Timer pausado.", "Timer paused.")); } else if (T.total && T.left > 0) { const left = T.left, tot = T.total; T.start(left, T.onEnd); T.total = tot; T.t0 = Date.now() - (tot - left) * 1000; } break;
+    case "wsave": saveEssay(); break;
+    case "wclear": if (confirm(L("Apagar o texto atual do rascunho?", "Delete the current draft text?"))) { delete P.rascunhos[wKey()]; persist(); render(); } break;
+    case "eview": showEssay(v); break;
+    case "ecopy": { const r = P.redacoes.find(x => x.id === v); if (r) { await API.copy(r.texto); toast(L("Redação copiada.", "Essay copied.")); } break; }
+    case "edel": if (confirm(L("Apagar esta redação do seu histórico?", "Delete this essay from your history?"))) { P.redacoes = P.redacoes.filter(x => x.id !== v); persist(true); render(); } break;
+    case "mclose": case "newsok": closeModal(); break;
+    case "bchip": B.built.push(+v); persist(); render(); break;
+    case "bundo": B.built.pop(); persist(); render(); break;
+    case "bclear": B.built = []; persist(); render(); break;
+    case "bcheck": if (!B.done && B.built.length) buildCheck(); break;
+    case "bremove": if (!B.done) { B.built.splice(+v, 1); persist(); render(); } break;
+    case "novidades": showNews(true); break;
+    case "bnext": B.idx = (B.idx + 1) % DATA.toeflWriting.buildSentence.practice.length; B.built = []; B.done = false; persist(); render(); break;
+    case "stask": T.stop(); S.task = v; S.set = 0; S.i = 0; render(); break;
+    case "sset": T.stop(); S.set = +v; S.i = 0; render(); break;
+    case "sprev": T.stop(); S.i--; render(); break;
+    case "snext": T.stop(); S.i++; render(); break;
+    case "ssay": if (!speak(spCur())) toast(L("Sem voz disponível — leia o texto.", "No voice available — read the text.")); break;
+    case "sgo": T.start(spSecs()); break;
+    case "sauto": {
+      const txt = spCur(); let started = false; const startT = () => { if (!started) { started = true; T.start(spSecs()); } };
+      if (window.speechSynthesis && speak(txt)) { const u = setInterval(() => { if (!speechSynthesis.speaking) { clearInterval(u); startT(); } }, 150); setTimeout(() => { clearInterval(u); startT(); }, 15000); }
+      else startT(); break; }
+    case "slog": P.falas.push({ t: now(), tarefa: S.task, cenario: S.set, nota: $("#sscore").value }); persist(true); toast(L("Sessão registrada.", "Session logged.")); render(); break;
+    case "export": { const t = exportText(); const ta = $("#exptxt"); ta.style.display = "block"; ta.value = t;
+      try { await API.copy(t); toast(L("Resumo copiado! Cole no chat (Ctrl+V).", "Summary copied! Paste it in the chat (Ctrl+V).")); } catch (e) { ta.select(); toast(L("Não consegui copiar automaticamente — selecione o texto abaixo e use Ctrl+C.", "Could not copy automatically — select the text below and press Ctrl+C.")); } break; }
+    case "folder": await API.openFolder(); break;
+    case "wok": if (P.erros[v]) { P.erros[v].pendente = false; P.erros[v].revisada = now(); persist(); render(); } break;
+    case "toreview": setVMode("revisao"); go("vocab"); break;
+    case "theme": if (["light", "dark", "system"].includes(v)) { P.settings.theme = v; applyTheme(); persist(true); render(); } break;
+    case "lang": if (v === "pt" || v === "en") { P.settings.language = v; applyLang(); persist(true); render(); } break;
+    case "bexport": await doExport(); break;
+    case "bimport": await doImport(); break;
+    case "iconfirm": await confirmImport(); break;
+    case "breset": askReset(); break;
+    case "rconfirm": await confirmReset(); break;
+  }
+  } catch (e) { toast(L("Erro: ", "Error: ") + (e && e.message || e)); }
+});
+$("#modal").addEventListener("click", e => { if (e.target.id === "modal") closeModal(); });
+window.addEventListener("beforeunload", () => { if (saveTimer) persist(true); }); // sessões em andamento ficam salvas (não fecha a rodada)
+
+applyTheme(); // tema do sistema já antes de carregar (evita piscar)
+(async function init() {
+  if (!DATA) { $("#app").innerHTML = '<div class="card">Dados não encontrados.</div>'; return; }
+  await loadP(); applyTheme(); applyLang(); $("#ver").textContent = "v" + APP_VERSION; render();
+  if (LOADINFO.newer) toast(L("Este progresso foi salvo por uma versão mais nova do app; nada será apagado.", "This progress was saved by a newer app version; nothing will be deleted."));
+  showNews(false);
+  if (!LOADINFO.migrated) setSaveStatus(API.native() ? L("progresso salvo localmente", "progress saved locally") : L("modo navegador (localStorage)", "browser mode (localStorage)"));
+  window.__ready = true;
+})();
+</script>
+</body>
+</html>
