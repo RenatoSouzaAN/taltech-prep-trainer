@@ -216,3 +216,33 @@ func readImportFile(path string) (*ImportedFile, error) {
 	}
 	return &ImportedFile{Name: filepath.Base(path), Content: string(b)}, nil
 }
+
+// savedLanguage lê o idioma da interface salvo no progresso ("pt" se não houver), para o título inicial da janela.
+func savedLanguage() string {
+	s, err := loadProgress()
+	if err != nil || s == "" {
+		return "pt"
+	}
+	var o struct {
+		Settings struct {
+			Language string `json:"language"`
+		} `json:"settings"`
+	}
+	if json.Unmarshal([]byte(s), &o) == nil && o.Settings.Language == "en" {
+		return "en"
+	}
+	return "pt"
+}
+
+// displayName é o nome exibido do app conforme o idioma (o appName da pasta de dados não muda).
+func displayName(lang string) string {
+	if lang == "en" {
+		return "TalTech Prep Trainer"
+	}
+	return "Treino TalTech"
+}
+
+// windowTitle é o mesmo título que o index.html põe em document.title.
+func windowTitle(lang, version string) string {
+	return displayName(lang) + " v" + version + " | GRE + TOEFL"
+}

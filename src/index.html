@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Treino TalTech — GRE + TOEFL</title>
+<title>Treino TalTech | GRE + TOEFL</title>
 <style>
 :root,[data-theme=light]{color-scheme:light;
  --bg:#f4f6fa;--card:#fff;--ink:#1d2433;--mut:#5d6778;--line:#dde3ec;--field:#fff;
@@ -125,7 +125,7 @@ ul.r{margin:4px 0 0 18px;padding:0}
 </head>
 <body>
 <header>
-  <h1>Treino TalTech <span id="ver" data-act="novidades"></span></h1>
+  <h1><span id="brand">Treino TalTech</span> <span id="ver" data-act="novidades"></span></h1>
   <nav id="nav"></nav>
   <span id="savest"></span>
   <button id="gear" data-act="tab" data-v="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
@@ -179,19 +179,23 @@ const NOVIDADES = {
   },
   "1.3": {
     pt: ["<b>Visual novo nas questões:</b> a pergunta fica inteira (“What is the definition of <b>bolster</b>?”, com o “?” colado na palavra) e, logo abaixo, a palavra em destaque com a pronúncia (IPA) ao lado e um só controle de áudio: alto-falante | devagar (segurar o alto-falante também toca devagar).",
-      "Conjunto/tipo, <b>Questão X de 60</b>, uma barra de progresso, os acertos e <b>Nova sessão</b> agora ficam numa linha discreta no topo da questão — em Definições, Frases TC/SE, Revisar erros, GRE Quant e Build a Sentence.",
+      "Conjunto/tipo, <b>Questão X de 60</b>, uma barra de progresso, os acertos e <b>Nova sessão</b> agora ficam numa linha discreta no topo da questão, em Definições, Frases TC/SE, Revisar erros, GRE Quant e Build a Sentence.",
       "Retoque geral: espaçamentos e tamanhos de texto padronizados, um só botão principal por tela, ícones no mesmo estilo (sem emojis), tabelas sem quebra de datas, menu do topo sem quebrar em janelas estreitas, abas do Writing agrupadas (GRE / TOEFL), tema claro e escuro revisados.",
       "Aviso de sessão em andamento no idioma da interface; contagens no singular (“1 rodada”); janela da redação com o título numa linha só."],
     en: ["<b>New question look:</b> the prompt reads as one sentence (“What is the definition of <b>bolster</b>?”, with the “?” right after the word) and, just below, the word stands out with its pronunciation (IPA) beside it and a single audio control: speaker | slow (holding the speaker also plays it slowly).",
-      "Set/type, <b>Question X of 60</b>, a progress bar, your score and <b>New session</b> now sit in a quiet row at the top of the question — in Definitions, TC/SE sentences, Review mistakes, GRE Quant and Build a Sentence.",
+      "Set/type, <b>Question X of 60</b>, a progress bar, your score and <b>New session</b> now sit in a quiet row at the top of the question, in Definitions, TC/SE sentences, Review mistakes, GRE Quant and Build a Sentence.",
       "General polish: consistent spacing and text sizes, one primary button per screen, matching icons (no emoji), tables no longer wrap dates, the top menu no longer wraps in narrow windows, Writing tasks grouped (GRE / TOEFL), light and dark themes reviewed.",
       "The session-in-progress notice follows the interface language; singular counts (“1 round”); the essay window keeps its title on one line."]
   },
+  "1.3.2": {
+    pt: ["Com a interface em inglês, o app passa a se chamar <b>TalTech Prep Trainer</b> (no topo, no título da janela e em Configurações &gt; Sobre). Em português continua <b>Treino TalTech</b>. Trocar o idioma muda o nome na hora; o arquivo .exe, a pasta de dados e o progresso continuam os mesmos."],
+    en: ["With the interface in English, the app is now called <b>TalTech Prep Trainer</b> (in the top bar, the window title and Settings &gt; About). In Portuguese it stays <b>Treino TalTech</b>. Switching the language changes the name right away; the .exe file, the data folder and your progress stay the same."]
+  },
   "1.3.1": {
-    pt: ["<b>Desempenho por conjunto redesenhado:</b> uma linha por conjunto — nome, faixa de palavras e vistas à esquerda; Definições e Frases TC/SE lado a lado com <b>acertos/tentativas · %</b> e uma barrinha; erros pendentes à direita e o botão <b>Treinar este conjunto</b> centralizado.",
-      "Nada quebra mais em duas linhas (nem em janelas estreitas): no máximo 2 erros aparecem e o resto vira <b>+N</b> — clique para ver todos. O significado dos números está na legenda abaixo da lista."],
-    en: ["<b>Redesigned performance by set:</b> one row per set — name, word range and seen words on the left; Definitions and TC/SE sentences side by side as <b>correct/attempted · %</b> with a small bar; pending mistakes on the right and the <b>Practise this set</b> button centred.",
-      "Nothing wraps onto two lines any more (even in narrow windows): at most 2 mistakes are shown and the rest become <b>+N</b> — click to see them all. What the numbers mean is in the legend below the list."]
+    pt: ["<b>Desempenho por conjunto redesenhado:</b> uma linha por conjunto: nome, faixa de palavras e vistas à esquerda; Definições e Frases TC/SE lado a lado com <b>acertos/tentativas · %</b> e uma barrinha; erros pendentes à direita e o botão <b>Treinar este conjunto</b> centralizado.",
+      "Nada quebra mais em duas linhas (nem em janelas estreitas): no máximo 2 erros aparecem e o resto vira <b>+N</b>; clique para ver todos. O significado dos números está na legenda abaixo da lista."],
+    en: ["<b>Redesigned performance by set:</b> one row per set: name, word range and seen words on the left; Definitions and TC/SE sentences side by side as <b>correct/attempted · %</b> with a small bar; pending mistakes on the right and the <b>Practise this set</b> button centred.",
+      "Nothing wraps onto two lines any more (even in narrow windows): at most 2 mistakes are shown and the rest become <b>+N</b>; click to see them all. What the numbers mean is in the legend below the list."]
   }
 };
 
@@ -235,6 +239,7 @@ const API = {
     return await new Promise(res => { const i = document.createElement("input"); i.type = "file"; i.accept = ".json,.bak,application/json";
       i.onchange = () => { const f = i.files[0]; if (!f) return res(null); const r = new FileReader(); r.onload = () => res({ name: f.name, content: String(r.result) }); r.readAsText(f); }; i.click(); });
   },
+  setTitle(t) { if (has("goSetTitle")) window.goSetTitle(String(t)).catch(() => {}); },
   setDarkTitle(dark) { if (has("goSetDarkTitle")) window.goSetDarkTitle(!!dark).catch(() => {}); }
 };
 
@@ -332,7 +337,14 @@ function themeSetting() { const t = P && P.settings && P.settings.theme; return 
 function resolvedTheme() { const t = themeSetting(); return t === "system" ? (MQ && MQ.matches ? "dark" : "light") : t; }
 function applyTheme() { const r = resolvedTheme(); document.documentElement.dataset.theme = r; API.setDarkTitle(r === "dark"); }
 if (MQ) { const onSys = () => { if (themeSetting() === "system") { applyTheme(); if (TAB === "settings") render(); } }; MQ.addEventListener ? MQ.addEventListener("change", onSys) : MQ.addListener(onSys); }
-function applyLang() { document.documentElement.lang = LANG() === "en" ? "en" : "pt-BR"; document.title = "Treino TalTech v" + APP_VERSION + " — GRE + TOEFL"; }
+/* nome exibido do app: muda com o idioma (o .exe, a pasta %APPDATA%\TreinoTalTech e o progresso.json não mudam) */
+const APP_NAME = () => L("Treino TalTech", "TalTech Prep Trainer");
+function applyLang() {
+  document.documentElement.lang = LANG() === "en" ? "en" : "pt-BR";
+  const b = $("#brand"); if (b) b.textContent = APP_NAME();
+  document.title = APP_NAME() + " v" + APP_VERSION + " | GRE + TOEFL";
+  API.setTitle(document.title); // título da janela nativa (Windows)
+}
 
 /* ---------- progresso (salvo em %APPDATA%\TreinoTalTech\progresso.json) ---------- */
 const EMPTY = () => ({ app: "TreinoTalTech", schemaVersion: SCHEMA, appVersion: APP_VERSION, ultimaVersaoVista: APP_VERSION, criado: now(), atualizado: now(),
@@ -570,7 +582,7 @@ function rVocab() {
   h += resumeBanner() + `<div class="card">${roundHeader(`${L("conj.", "set")} ${it.set}`)}`;
   // v1.3: a frase fica inteira ("…definition of bolster?") e a palavra ganha um bloco próprio com IPA e áudio
   if (q.kind === "def") h += `<div class="q qdef"><p class="qtext">${L("Qual é a definição de", "What is the definition of")} <b class="w">${esc(it.word)}</b>?</p>${wordUnit(it.word)}</div>`;
-  else h += `<div class="q"><div class="qkind">${it.type === "SE" ? L("Sentence Equivalence — escolha 2", "Sentence Equivalence — choose 2") : L("Text Completion — escolha 1", "Text Completion — choose 1")}</div><p class="qtext">${esc(it.sentence)}</p></div>`;
+  else h += `<div class="q"><div class="qkind">${it.type === "SE" ? L("Sentence Equivalence: escolha 2", "Sentence Equivalence: choose 2") : L("Text Completion: escolha 1", "Text Completion: choose 1")}</div><p class="qtext">${esc(it.sentence)}</p></div>`;
   q.options.forEach((o, k) => {
     let cls = "";
     if (R.done) { if (q.answers.includes(o)) cls = "ok"; else if (R.picked.includes(o)) cls = "bad"; }
@@ -616,7 +628,7 @@ function setTableHTML() {
   return `<div class="card" id="settable"><h3 style="margin-top:0">${L("Seu desempenho por conjunto (acumulado)", "Your performance by set (all time)")}</h3>
     <p class="mut" style="margin-top:0">${L("Os conjuntos são as 60 palavras do GRE divididas em 4 blocos de 15, em ordem alfabética.", "The sets are the 60 GRE words split into 4 alphabetical blocks of 15.")}</p>
     <div class="slist">${rows}</div>
-    <p class="mut legend"><b>${L("Definições", "Definitions")}</b>: ${L("quiz de significado — escolher a definição certa da palavra.", "meaning quiz — pick the right definition of the word.")} <b>${L("Frases TC/SE", "TC/SE sentences")}</b>: ${L("frases de Text Completion / Sentence Equivalence, como na prova real.", "Text Completion / Sentence Equivalence sentences, like the real test.")} ${L("Os números são <b>acertos/tentativas · % de acerto</b>, somando todas as rodadas.", "Numbers are <b>correct/attempted · % correct</b>, across all rounds.")} <b>${L("Vistas", "Seen")}</b>: ${L("palavras do conjunto que já apareceram no quiz de Definições.", "words of the set already shown in the Definitions quiz.")}</p></div>`;
+    <p class="mut legend"><b>${L("Definições", "Definitions")}</b>: ${L("quiz de significado: escolher a definição certa da palavra.", "meaning quiz: pick the right definition of the word.")} <b>${L("Frases TC/SE", "TC/SE sentences")}</b>: ${L("frases de Text Completion / Sentence Equivalence, como na prova real.", "Text Completion / Sentence Equivalence sentences, like the real test.")} ${L("Os números são <b>acertos/tentativas · % de acerto</b>, somando todas as rodadas.", "Numbers are <b>correct/attempted · % correct</b>, across all rounds.")} <b>${L("Vistas", "Seen")}</b>: ${L("palavras do conjunto que já apareceram no quiz de Definições.", "words of the set already shown in the Definitions quiz.")}</p></div>`;
 }
 // erros pendentes: no máximo 2 chips numa linha só (menos, se não couberem) + "+N"; clicar em +N mostra todos
 const SETS_OPEN = new Set();
@@ -698,7 +710,7 @@ const srcLbl = () => L("Fonte", "Source");
 function rubricHTML() {
   if (W.task === "issue") return `<h3>${L("Rubrica GRE (nota 6 / nota 4)", "GRE rubric (score 6 / score 4)")}</h3><b>6:</b><ul class="r">${DATA.greIssue.rubric6.map(x => `<li>${esc(x)}</li>`).join("")}</ul><b>4:</b><ul class="r">${DATA.greIssue.rubric4.map(x => `<li>${esc(x)}</li>`).join("")}</ul><p class="mut">${srcLbl()}: ${esc(DATA.greIssue.rubricSource)}</p>`;
   const r = W.task === "email" ? DATA.toeflWriting.rubricEmail5 : DATA.toeflWriting.rubricDiscussion5;
-  return `<h3>${L("Rubrica TOEFL — nota 5", "TOEFL rubric — score 5")}</h3><ul class="r">${r.map(x => `<li>${esc(x)}</li>`).join("")}</ul><p class="mut">${srcLbl()}: ${esc(DATA.toeflWriting.source)}</p>`;
+  return `<h3>${L("Rubrica TOEFL: nota 5", "TOEFL rubric: score 5")}</h3><ul class="r">${r.map(x => `<li>${esc(x)}</li>`).join("")}</ul><p class="mut">${srcLbl()}: ${esc(DATA.toeflWriting.source)}</p>`;
 }
 function rWriting() {
   const tb = (k, l, m) => `<button class="btn ${W.task === k ? "on" : ""}" data-act="wtask" data-v="${k}" title="${WT[k]}">${l}${m ? `<span class="mut">${m} min</span>` : ""}</button>`;
@@ -718,7 +730,7 @@ function rWriting() {
     <button class="btn" data-act="tstop">${L("Pausar / continuar", "Pause / resume")}</button>
     <span style="margin-left:auto"><span id="wc" class="big">${words(draft)}</span> <span class="mut">${L("palavras", "words")}</span></span></div>
     <textarea id="essay" spellcheck="false" placeholder="${L("Escreva em inglês. O corretor ortográfico fica desligado, como na prova.", "Write in English. Spell check is off, as in the test.")}">${esc(draft)}</textarea>
-    <div class="row" style="margin-top:12px"><span class="mut">${L("Autoavaliação", "Self-score")}</span><select id="wscore"><option value="">—</option>${(W.task === "issue" ? [6,5.5,5,4.5,4,3.5,3,2.5,2,1.5,1,0.5,0] : [5,4,3,2,1,0]).map(n => `<option>${n}</option>`).join("")}</select>
+    <div class="row" style="margin-top:12px"><span class="mut">${L("Autoavaliação", "Self-score")}</span><select id="wscore"><option value="">-</option>${(W.task === "issue" ? [6,5.5,5,4.5,4,3.5,3,2.5,2,1.5,1,0.5,0] : [5,4,3,2,1,0]).map(n => `<option>${n}</option>`).join("")}</select>
     <button class="btn pri" data-act="wsave">${L("Salvar redação", "Save essay")}</button><button class="btn" data-act="wclear">${L("Limpar", "Clear")}</button>
     <span class="mut" style="margin-left:auto">${L("O rascunho é salvo automaticamente.", "Drafts are saved automatically.")}</span></div>${rubricHTML()}</div>`;
   const mine = P.redacoes.filter(r => r.tarefa === W.task).slice(-8).reverse();
@@ -731,7 +743,7 @@ function rWriting() {
 }
 function essaysTable(list) {
   return `<table><tr><th>${L("Data", "Date")}</th><th>${L("Tarefa", "Task")}</th><th>${L("Palavras", "Words")}</th><th>${L("Tempo", "Time")}</th><th>${L("Nota", "Score")}</th><th></th></tr>` + list.map(r =>
-    `<tr><td class="nw">${fmtDT(r.t)}</td><td>${esc(r.titulo)}</td><td>${r.palavras}</td><td>${r.segundos ? mmss(r.segundos) : "—"}</td><td>${r.nota === "" || r.nota == null ? "—" : r.nota}</td>
+    `<tr><td class="nw">${fmtDT(r.t)}</td><td>${esc(r.titulo)}</td><td>${r.palavras}</td><td>${r.segundos ? mmss(r.segundos) : "-"}</td><td>${r.nota === "" || r.nota == null ? "-" : r.nota}</td>
      <td style="white-space:nowrap"><button class="btn sm" data-act="eview" data-v="${r.id}">${L("Ver", "View")}</button> <button class="btn sm" data-act="ecopy" data-v="${r.id}">${L("Copiar", "Copy")}</button> <button class="btn sm" data-act="edel" data-v="${r.id}">${L("Apagar", "Delete")}</button></td></tr>`).join("") + `</table>`;
 }
 function saveEssay() {
@@ -773,15 +785,15 @@ function rSpeaking() {
     `<label class="mut" style="margin-left:auto"><input type="checkbox" id="shide" ${S.show ? "" : "checked"}> ${L("esconder o texto (só ouvir)", "hide the text (listen only)")}</label></div>
     <div class="prompt">${esc(p.scenario)}</div>
     <p class="mut">${S.task === "repeat" ? L("Frase", "Sentence") : L("Pergunta", "Question")} ${S.i + 1} ${L("de", "of")} ${items.length} · ${L("tempo de resposta", "response time")}: ${secs} s${S.task === "repeat" ? L(" (8–12 s conforme o tamanho; valor exato por frase é estimativa)", " (8–12 s by length; the exact value per sentence is an estimate)") : ""}</p>
-    <div class="q" style="font-size:20px">${S.show ? esc(cur) : `<span class="mut">${L("(texto escondido — clique em Ouvir)", "(text hidden — click Listen)")}</span>`}</div>
+    <div class="q" style="font-size:20px">${S.show ? esc(cur) : `<span class="mut">${L("(texto escondido: clique em Ouvir)", "(text hidden: click Listen)")}</span>`}</div>
     <div class="row"><button class="btn ic" data-act="ssay">${SPK_SVG}${L("Ouvir", "Listen")}</button><span class="timer" id="tmr">${mmss(T.running() ? T.left : secs)}</span>
     <button class="btn pri" data-act="sgo">${L("Responder agora", "Answer now")} (${secs} s)</button><button class="btn" data-act="sauto">${L("Ouvir + responder", "Listen + answer")}</button>
     <span class="pn"><button class="btn" data-act="sprev" ${S.i ? "" : "disabled"}>${L("← Anterior", "← Previous")}</button><button class="btn" data-act="snext" ${S.i < items.length - 1 ? "" : "disabled"}>${L("Próxima →", "Next →")}</button></span></div>
     <h3>${L("Rubrica (resumo ETS, 0–5)", "Rubric (ETS summary, 0–5)")}</h3><table class="rub">${Object.entries(S.task === "repeat" ? sp.rubricRepeat : sp.rubricInterview).sort((a, b) => b[0] - a[0]).map(([k, v]) => `<tr><td><b>${k}</b></td><td>${esc(v)}</td></tr>`).join("")}</table>
     <p class="mut">${srcLbl()}: ${esc(sp.source)}</p>
-    <div class="row"><span class="mut">${L("Terminou o cenário? Autoavaliação", "Finished the scenario? Self-score")}</span><select id="sscore"><option value="">—</option>${[5,4,3,2,1,0].map(n => `<option>${n}</option>`).join("")}</select><button class="btn" data-act="slog">${L("Registrar sessão", "Log session")}</button></div></div>`;
+    <div class="row"><span class="mut">${L("Terminou o cenário? Autoavaliação", "Finished the scenario? Self-score")}</span><select id="sscore"><option value="">-</option>${[5,4,3,2,1,0].map(n => `<option>${n}</option>`).join("")}</select><button class="btn" data-act="slog">${L("Registrar sessão", "Log session")}</button></div></div>`;
   const mine = P.falas.slice(-6).reverse();
-  if (mine.length) h += `<div class="card"><h3 style="margin-top:0">${L("Últimas sessões de Speaking", "Recent Speaking sessions")}</h3><table><tr><th>${L("Data", "Date")}</th><th>${L("Tarefa", "Task")}</th><th>${L("Cenário", "Scenario")}</th><th>${L("Nota", "Score")}</th></tr>${mine.map(f => `<tr><td class="nw">${fmtDT(f.t)}</td><td>${f.tarefa === "repeat" ? "Listen and Repeat" : "Interview"}</td><td>${f.cenario + 1}</td><td>${f.nota === "" ? "—" : f.nota}</td></tr>`).join("")}</table></div>`;
+  if (mine.length) h += `<div class="card"><h3 style="margin-top:0">${L("Últimas sessões de Speaking", "Recent Speaking sessions")}</h3><table><tr><th>${L("Data", "Date")}</th><th>${L("Tarefa", "Task")}</th><th>${L("Cenário", "Scenario")}</th><th>${L("Nota", "Score")}</th></tr>${mine.map(f => `<tr><td class="nw">${fmtDT(f.t)}</td><td>${f.tarefa === "repeat" ? "Listen and Repeat" : "Interview"}</td><td>${f.cenario + 1}</td><td>${f.nota === "" ? "-" : f.nota}</td></tr>`).join("")}</table></div>`;
   afterHooks.push(() => { $("#shide").addEventListener("change", e => { S.show = !e.target.checked; render(); }); });
   return h;
 }
@@ -798,14 +810,14 @@ function rProg() {
   const doneMs = DATA.milestones.filter((_, i) => P.marcos[i] && P.marcos[i].feito).length;
   const en = LANG() === "en";
   let h = `<div class="card"><h2>${L("Progresso", "Progress")}</h2><div class="row"><button class="btn pri ic" data-act="export">${ICON.copy}${L("Exportar progresso", "Export progress")}</button><button class="btn ic" data-act="folder">${ICON.folder}${L("Abrir pasta de dados", "Open data folder")}</button><span class="mut" id="fpath"></span></div>
-    <p class="mut" style="margin-bottom:0">${L('"Exportar progresso" copia um resumo para a área de transferência — é só colar no chat. Backup completo e importação ficam em Configurações (engrenagem).', '"Export progress" copies a summary to the clipboard — just paste it in the chat. Full backup and import are in Settings (gear).')}</p><textarea id="exptxt" style="display:none;min-height:180px;margin-top:10px" readonly></textarea></div>
+    <p class="mut" style="margin-bottom:0">${L('"Exportar progresso" copia um resumo para a área de transferência; é só colar no chat. Backup completo e importação ficam em Configurações (engrenagem).', '"Export progress" copies a summary to the clipboard; just paste it in the chat. Full backup and import are in Settings (gear).')}</p><textarea id="exptxt" style="display:none;min-height:180px;margin-top:10px" readonly></textarea></div>
     <div class="grid2"><div class="card"><h3 style="margin-top:0">${L("Resumo", "Summary")}</h3><table>
-    <tr><td>${L("Vocab — definições", "Vocab — definitions")}</td><td>${v.ok}/${v.n} (${pct(v.ok, v.n)}%)</td></tr><tr><td>${L("Vocab — frases TC/SE", "Vocab — TC/SE sentences")}</td><td>${f.ok}/${f.n} (${pct(f.ok, f.n)}%)</td></tr>
+    <tr><td>${L("Vocab: definições", "Vocab: definitions")}</td><td>${v.ok}/${v.n} (${pct(v.ok, v.n)}%)</td></tr><tr><td>${L("Vocab: frases TC/SE", "Vocab: TC/SE sentences")}</td><td>${f.ok}/${f.n} (${pct(f.ok, f.n)}%)</td></tr>
     <tr><td>Quant</td><td>${q.ok}/${q.n} (${pct(q.ok, q.n)}%)</td></tr><tr><td>Build a Sentence</td><td>${b.ok}/${b.n} (${pct(b.ok, b.n)}%)</td></tr>
     <tr><td>${L("Redações salvas", "Saved essays")}</td><td>${P.redacoes.length}</td></tr><tr><td>${L("Sessões de Speaking", "Speaking sessions")}</td><td>${P.falas.length}</td></tr><tr><td>${L("Marcos concluídos", "Milestones done")}</td><td>${doneMs}/${DATA.milestones.length}</td></tr></table></div>
     <div class="card"><h3 style="margin-top:0">${L("Palavras para revisar", "Words to review")} (${pend.length})</h3>${pend.length ? `<table><tr><th>${L("Palavra", "Word")}</th><th>${L("Erros", "Mistakes")}</th><th></th></tr>${pend.slice(0, 30).map(([w, e]) => `<tr><td>${wordBlock(w, true)} ${en ? "" : `<span class="mut">${esc((VOCAB_BY_WORD[w.toLowerCase()] || {}).pt || "")}</span>`}</td><td>${e.n}</td><td><button class="btn sm" data-act="wok" data-v="${esc(w)}">${L("Já sei", "Got it")}</button></td></tr>`).join("")}</table>
     <button class="btn" style="margin-top:8px" data-act="toreview">${L("Treinar revisão agora", "Practise review now")}</button>` : `<p class="mut">${L("Nenhuma. Erros no Vocab entram aqui automaticamente.", "None. Vocab mistakes show up here automatically.")}</p>`}</div></div>
-    <div class="card"><h3 style="margin-top:0">${L("Marcos do plano (clique para marcar)", "Plan milestones (click to tick)")}</h3>${DATA.milestones.map((ms, i) => { const m = P.marcos[i]; return `<label class="ms ${m && m.feito ? "done" : ""}"><input type="checkbox" data-ms="${i}" ${m && m.feito ? "checked" : ""}><span><b>${esc(msWk(ms))}</b> — <span class="t">${esc(msTxt(ms))}</span>${m && m.feito ? ` <span class="mut">(${L("feito em", "done on")} ${fmtD(m.t)})</span>` : ""}</span></label>`; }).join("")}</div>
+    <div class="card"><h3 style="margin-top:0">${L("Marcos do plano (clique para marcar)", "Plan milestones (click to tick)")}</h3>${DATA.milestones.map((ms, i) => { const m = P.marcos[i]; return `<label class="ms ${m && m.feito ? "done" : ""}"><input type="checkbox" data-ms="${i}" ${m && m.feito ? "checked" : ""}><span><b>${esc(msWk(ms))}</b>: <span class="t">${esc(msTxt(ms))}</span>${m && m.feito ? ` <span class="mut">(${L("feito em", "done on")} ${fmtD(m.t)})</span>` : ""}</span></label>`; }).join("")}</div>
     <div class="card"><h3 style="margin-top:0">${L("Últimas rodadas", "Recent rounds")}</h3>${P.rodadas.length ? `<table class="mid"><tr><th>${L("Data", "Date")}</th><th>${L("Rodada", "Round")}</th><th>${L("Acertos", "Correct")}</th><th></th></tr>${P.rodadas.slice(-15).reverse().map(r => `<tr><td class="nw">${fmtDT(r.t)}</td><td>${esc(r.conjunto)}</td><td class="nw">${r.acertos}/${r.total} (${pct(r.acertos, r.total)}%)</td><td style="width:30%">${bar(pct(r.acertos, r.total))}</td></tr>`).join("")}</table>` : `<p class="mut">${L("Nenhuma rodada ainda.", "No rounds yet.")}</p>`}</div>
     <div class="card"><h3 style="margin-top:0">${L("Redações", "Essays")}</h3>${P.redacoes.length ? essaysTable(P.redacoes.slice().reverse()) : `<p class="mut">${L("Nenhuma redação salva ainda.", "No saved essays yet.")}</p>`}</div>`;
   afterHooks.push(async () => { document.querySelectorAll("[data-ms]").forEach(cb => cb.addEventListener("change", e => { const i = e.target.dataset.ms; P.marcos[i] = { feito: e.target.checked, t: now() }; persist(true); render(); }));
@@ -815,28 +827,28 @@ function rProg() {
 function exportText() {
   const out = [], line = s => out.push(s);
   const st = (mod, key) => statsFor(mod, key);
-  line(L("TREINO TALTECH — progresso exportado em ", "TREINO TALTECH — progress exported on ") + fmtDT(now()));
+  line(APP_NAME().toUpperCase() + L(": progresso exportado em ", ": progress exported on ") + fmtDT(now()));
   line(L("Meta: TOEFL iBT ≥4 em cada seção (B2) · GRE V145 / Q150 / AW 3.0 até 31/01/2027 · prazo TalTech 22/03/2027", "Goal: TOEFL iBT ≥4 in every section (B2) · GRE V145 / Q150 / AW 3.0 by 31/01/2027 · TalTech deadline 22/03/2027"));
   const tot = m => { const s = sumStats([m]); return `${s.ok}/${s.n} (${pct(s.ok, s.n)}%)`; };
-  line(""); line(L("GRE VOCAB — definições: ", "GRE VOCAB — definitions: ") + tot("vocab") + L(" · frases TC/SE: ", " · TC/SE sentences: ") + tot("frases") + L(" · revisão: ", " · review: ") + tot("revisao"));
+  line(""); line(L("GRE VOCAB: definições: ", "GRE VOCAB: definitions: ") + tot("vocab") + L(" · frases TC/SE: ", " · TC/SE sentences: ") + tot("frases") + L(" · revisão: ", " · review: ") + tot("revisao"));
   const sv = st("vocab", x => x.set), sf = st("frases", x => x.set);
   [1,2,3,4].forEach(s => { const a = sv[s] || {ok:0,n:0}, b = sf[s] || {ok:0,n:0}; line(`  ${L("Conjunto", "Set")} ${s}: ${L("definições", "definitions")} ${a.ok}/${a.n} (${pct(a.ok,a.n)}%) · ${L("frases", "sentences")} ${b.ok}/${b.n} (${pct(b.ok,b.n)}%)`); });
   const pend = Object.entries(P.erros).filter(([, e]) => e.pendente).sort((a, b) => b[1].n - a[1].n);
   line(L("  Palavras para revisar (", "  Words to review (") + pend.length + "): " + (pend.map(([w, e]) => w + (e.n > 1 ? "×" + e.n : "")).join(", ") || L("nenhuma", "none")));
   const sq = st("quant", x => (DATA.quant.find(q => q.id === x.id) || {}).type);
-  line(""); line("GRE QUANT — total " + tot("quant") + " · " + ["QC","MC","NE"].map(t => { const a = sq[t] || {ok:0,n:0}; return `${t} ${a.ok}/${a.n}`; }).join(" · "));
-  line(""); line("TOEFL Build a Sentence — " + tot("build"));
+  line(""); line("GRE QUANT: total " + tot("quant") + " · " + ["QC","MC","NE"].map(t => { const a = sq[t] || {ok:0,n:0}; return `${t} ${a.ok}/${a.n}`; }).join(" · "));
+  line(""); line("TOEFL Build a Sentence: " + tot("build"));
   const byT = t => P.redacoes.filter(r => r.tarefa === t);
-  line(L("REDAÇÕES — total ", "ESSAYS — total ") + P.redacoes.length + " (GRE Issue " + byT("issue").length + ", Email " + byT("email").length + L(", Discussão ", ", Discussion ") + byT("disc").length + ")");
+  line(L("REDAÇÕES: total ", "ESSAYS: total ") + P.redacoes.length + " (GRE Issue " + byT("issue").length + ", Email " + byT("email").length + L(", Discussão ", ", Discussion ") + byT("disc").length + ")");
   P.redacoes.slice(-6).reverse().forEach(r => line(`  ${fmtD(r.t)} · ${r.titulo} · ${r.palavras} ${L("palavras", "words")}${r.segundos ? " · " + mmss(r.segundos) : ""}${r.nota !== "" && r.nota != null ? L(" · autoavaliação ", " · self-score ") + r.nota : ""}`));
-  line(L("SPEAKING — sessões ", "SPEAKING — sessions ") + P.falas.length + P.falas.slice(-4).reverse().map(f => `\n  ${fmtD(f.t)} · ${f.tarefa === "repeat" ? "Listen and Repeat" : "Interview"} ${L("cenário", "scenario")} ${f.cenario + 1}${f.nota !== "" ? L(" · autoavaliação ", " · self-score ") + f.nota : ""}`).join(""));
+  line(L("SPEAKING: sessões ", "SPEAKING: sessions ") + P.falas.length + P.falas.slice(-4).reverse().map(f => `\n  ${fmtD(f.t)} · ${f.tarefa === "repeat" ? "Listen and Repeat" : "Interview"} ${L("cenário", "scenario")} ${f.cenario + 1}${f.nota !== "" ? L(" · autoavaliação ", " · self-score ") + f.nota : ""}`).join(""));
   line(""); line(L("ÚLTIMAS RODADAS:", "RECENT ROUNDS:")); P.rodadas.slice(-8).reverse().forEach(r => line(`  ${fmtD(r.t)} · ${r.conjunto} · ${r.acertos}/${r.total} (${pct(r.acertos, r.total)}%)`));
   if (!P.rodadas.length) line(L("  nenhuma", "  none"));
   const ms = DATA.milestones.map((m, i) => [m, P.marcos[i]]);
-  line(""); line(`${L("MARCOS", "MILESTONES")} — ${ms.filter(x => x[1] && x[1].feito).length}/${ms.length} ${L("concluídos", "done")}`);
-  ms.forEach(([m, s]) => line(`  [${s && s.feito ? "x" : " "}] ${msWk(m)} — ${msTxt(m)}`));
+  line(""); line(`${L("MARCOS", "MILESTONES")}: ${ms.filter(x => x[1] && x[1].feito).length}/${ms.length} ${L("concluídos", "done")}`);
+  ms.forEach(([m, s]) => line(`  [${s && s.feito ? "x" : " "}] ${msWk(m)}: ${msTxt(m)}`));
   const days = new Set(P.historico.map(h => h.t.slice(0, 10)).concat(P.redacoes.map(r => r.t.slice(0, 10)), P.falas.map(f => f.t.slice(0, 10))));
-  line(""); line(L("Dias com treino registrado: ", "Days with logged practice: ") + days.size + L(" · última atividade: ", " · last activity: ") + (P.atualizado ? fmtDT(P.atualizado) : "—"));
+  line(""); line(L("Dias com treino registrado: ", "Days with logged practice: ") + days.size + L(" · última atividade: ", " · last activity: ") + (P.atualizado ? fmtDT(P.atualizado) : "-"));
   return out.join("\n");
 }
 function showEssay(id) {
@@ -871,7 +883,7 @@ function rSettings() {
     <div class="row" style="margin-top:12px"><button class="btn pri ic" data-act="bexport">${ICON.down}${L("Exportar backup", "Export backup")}</button><button class="btn ic" data-act="bimport">${ICON.up}${L("Importar backup", "Import backup")}</button><button class="btn ic" data-act="folder">${ICON.folder}${L("Abrir pasta", "Open folder")}</button></div>
     <p class="mut">${L("Exportar gera um arquivo .json com todo o seu progresso. Antes de importar ou zerar, o app sempre guarda uma cópia do arquivo atual (.bak) na pasta de dados.", "Export creates a .json file with all your progress. Before importing or resetting, the app always keeps a copy of the current file (.bak) in the data folder.")}</p>
     <div class="dz"><div><b>${L("Zerar progresso", "Reset progress")}</b><div class="mut">${L("Apaga respostas, rodadas, redações, Speaking e marcos. Mantém tema e idioma.", "Erases answers, rounds, essays, Speaking and milestones. Keeps theme and language.")}</div></div><button class="btn dangerline" data-act="breset">${L("Zerar progresso…", "Reset progress…")}</button></div></div>
-  <div class="card" id="s-about"><h3 style="margin-top:0">${L("Sobre", "About")}</h3><div class="kv"><span>${L("Versão", "Version")}</span><span>v${esc(APP_VERSION)}</span><span>${L("Formato dos dados", "Data format")}</span><span>schema ${esc(P.schemaVersion)}</span></div>
+  <div class="card" id="s-about"><h3 style="margin-top:0">${L("Sobre", "About")}</h3><div class="kv"><span>${L("App", "App")}</span><span id="about-name">${esc(APP_NAME())}</span><span>${L("Versão", "Version")}</span><span>v${esc(APP_VERSION)}</span><span>${L("Formato dos dados", "Data format")}</span><span>schema ${esc(P.schemaVersion)}</span></div>
     <div class="row" style="margin-top:10px"><button class="btn" data-act="novidades">${L("O que há de novo", "What's new")}</button></div></div>`;
   afterHooks.push(refreshDataInfo);
   return h;
@@ -907,7 +919,7 @@ async function doExport() {
 function validateImport(text) {
   let o; try { o = JSON.parse(text); } catch (e) { throw new Error(L("o arquivo não é um JSON válido", "the file is not valid JSON")); }
   if (!o || typeof o !== "object" || Array.isArray(o)) throw new Error(L("formato inesperado", "unexpected format"));
-  if (!(o.app === "TreinoTalTech" || Array.isArray(o.historico))) throw new Error(L("não parece um progresso do Treino TalTech", "this does not look like Treino TalTech progress"));
+  if (!(o.app === "TreinoTalTech" || Array.isArray(o.historico))) throw new Error(L("não parece um progresso do Treino TalTech", "this does not look like TalTech Prep Trainer progress"));
   for (const k of ["historico", "rodadas", "redacoes", "falas"]) if (o[k] != null && !Array.isArray(o[k])) throw new Error(L("campo inválido: ", "invalid field: ") + k);
   for (const k of ["erros", "rascunhos", "marcos", "settings", "sessoes"]) if (o[k] != null && (typeof o[k] !== "object" || Array.isArray(o[k]))) throw new Error(L("campo inválido: ", "invalid field: ") + k);
   if (schemaOf(o) > SCHEMA) throw new Error(L("arquivo de uma versão mais nova do app; atualize o app antes de importar", "file from a newer app version; update the app before importing"));
@@ -1049,7 +1061,7 @@ document.addEventListener("click", async ev => {
     case "sset": T.stop(); S.set = +v; S.i = 0; render(); break;
     case "sprev": T.stop(); S.i--; render(); break;
     case "snext": T.stop(); S.i++; render(); break;
-    case "ssay": if (!speak(spCur())) toast(L("Sem voz disponível — leia o texto.", "No voice available — read the text.")); break;
+    case "ssay": if (!speak(spCur())) toast(L("Sem voz disponível; leia o texto.", "No voice available; read the text.")); break;
     case "sgo": T.start(spSecs()); break;
     case "sauto": {
       const txt = spCur(); let started = false; const startT = () => { if (!started) { started = true; T.start(spSecs()); } };
@@ -1057,7 +1069,7 @@ document.addEventListener("click", async ev => {
       else startT(); break; }
     case "slog": P.falas.push({ t: now(), tarefa: S.task, cenario: S.set, nota: $("#sscore").value }); persist(true); toast(L("Sessão registrada.", "Session logged.")); render(); break;
     case "export": { const t = exportText(); const ta = $("#exptxt"); ta.style.display = "block"; ta.value = t;
-      try { await API.copy(t); toast(L("Resumo copiado! Cole no chat (Ctrl+V).", "Summary copied! Paste it in the chat (Ctrl+V).")); } catch (e) { ta.select(); toast(L("Não consegui copiar automaticamente — selecione o texto abaixo e use Ctrl+C.", "Could not copy automatically — select the text below and press Ctrl+C.")); } break; }
+      try { await API.copy(t); toast(L("Resumo copiado! Cole no chat (Ctrl+V).", "Summary copied! Paste it in the chat (Ctrl+V).")); } catch (e) { ta.select(); toast(L("Não consegui copiar automaticamente; selecione o texto abaixo e use Ctrl+C.", "Could not copy automatically; select the text below and press Ctrl+C.")); } break; }
     case "folder": await API.openFolder(); break;
     case "wok": if (P.erros[v]) { P.erros[v].pendente = false; P.erros[v].revisada = now(); persist(); render(); } break;
     case "toreview": setVMode("revisao"); go("vocab"); break;

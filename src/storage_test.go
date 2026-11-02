@@ -118,3 +118,26 @@ func TestV12Storage(t *testing.T) {
 		t.Fatalf("exportFallback: %q %v", p, err)
 	}
 }
+
+func TestDisplayNameAndTitle(t *testing.T) {
+	tmp := t.TempDir()
+	t.Setenv("APPDATA", tmp)
+	if savedLanguage() != "pt" {
+		t.Fatal("sem progresso: pt")
+	}
+	if err := saveProgress(`{"app":"TreinoTalTech","settings":{"language":"en"}}`); err != nil {
+		t.Fatal(err)
+	}
+	if savedLanguage() != "en" {
+		t.Fatal("deveria ler en do progresso")
+	}
+	if got := windowTitle("en", "1.3.2"); got != "TalTech Prep Trainer v1.3.2 | GRE + TOEFL" {
+		t.Fatalf("título en: %q", got)
+	}
+	if got := windowTitle("pt", "1.3.2"); got != "Treino TalTech v1.3.2 | GRE + TOEFL" {
+		t.Fatalf("título pt: %q", got)
+	}
+	if _, err := os.Stat(filepath.Join(tmp, "TreinoTalTech", "progresso.json")); err != nil {
+		t.Fatal("pasta de dados deve continuar TreinoTalTech")
+	}
+}

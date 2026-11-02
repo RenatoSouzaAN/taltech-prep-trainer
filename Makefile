@@ -1,10 +1,15 @@
-.PHONY: all build test clean data
+.PHONY: all build test test-ui clean data winres
 
 # Build for Windows from Linux
 all: build
 
 build:
-	cd src && GOOS=windows GOARCH=amd64 go build -ldflags="-H windowsgui" -o ../TreinoTalTech.exe
+	cd src && CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -trimpath -ldflags="-H windowsgui -s -w" -o ../TreinoTalTech.exe
+
+# Regenerate the Windows resources (icon, manifest, version info) from src/winres/winres.json
+# Requires: go install github.com/tc-hib/go-winres@latest
+winres:
+	cd src && go-winres make --in winres/winres.json --arch amd64
 
 # Generate data.json from Python script
 data:
@@ -21,7 +26,6 @@ test-ui:
 # Clean build artifacts
 clean:
 	rm -f TreinoTalTech.exe
-	rm -f src/rsrc_windows_amd64.syso
 
 # Check if required tools are installed
 check-deps:

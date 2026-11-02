@@ -1,7 +1,7 @@
-# TreinoTalTech
+# TalTech Prep Trainer
 
 <p align="center">
-  <img src="docs/images/icon.png" alt="TreinoTalTech Icon" width="120">
+  <img src="docs/images/icon.png" alt="TalTech Prep Trainer icon" width="120">
 </p>
 
 <p align="center">
@@ -15,12 +15,12 @@
 </p>
 
 <p align="center">
-  <img src="docs/images/hero.png" alt="TreinoTalTech - Light and Dark Mode" width="100%">
+  <img src="docs/images/hero.png" alt="TalTech Prep Trainer in light and dark mode" width="100%">
 </p>
 
 ## About
 
-TreinoTalTech is a Windows desktop application I built to prepare for the GRE and TOEFL iBT exams as part of my application to TalTech's MSc program in Computer Science and AI. The app provides targeted practice for vocabulary, quantitative reasoning, essay writing, and speaking exercises, with progress tracking and performance analytics.
+TalTech Prep Trainer is a Windows desktop application I built to prepare for the GRE and TOEFL iBT exams as part of my application to TalTech's MSc program in Computer Science and AI. The app provides targeted practice for vocabulary, quantitative reasoning, essay writing, and speaking exercises, with progress tracking and performance analytics. When the interface is set to Portuguese, the app shows its original name, Treino TalTech. The executable (`TreinoTalTech.exe`) and the data folder keep that name in both languages.
 
 Built entirely in Go using WebView2, the app runs as a native Windows application with a single-page HTML/CSS/JS interface embedded directly into the executable. All progress is saved locally with automatic schema migrations and backup support.
 
@@ -44,7 +44,7 @@ Built entirely in Go using WebView2, the app runs as a native Windows applicatio
 - **Performance analytics**: Review your performance over time
 - **Session persistence**: Sessions persist across tabs and app restarts
 - **Theme support**: Light, dark, or system theme
-- **Bilingual UI**: Portuguese and English interface options
+- **Bilingual UI**: Portuguese and English interface options; the app name, window title and About panel follow the selected language
 - **Data management**: Export, import, and reset your progress
 - **Automatic backups**: Schema migrations create timestamped backups
 
@@ -141,7 +141,7 @@ The app handles schema migrations automatically and creates `.bak` backup files 
 **Cross-compile for Windows from Linux/macOS**:
 ```bash
 cd src
-GOOS=windows GOARCH=amd64 go build -ldflags="-H windowsgui" -o ../TreinoTalTech.exe
+CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -trimpath -ldflags="-H windowsgui -s -w" -o ../TreinoTalTech.exe
 ```
 
 Or use the provided Makefile:
@@ -149,7 +149,7 @@ Or use the provided Makefile:
 make build
 ```
 
-The `src/rsrc_windows_amd64.syso` file contains the compiled Windows resources (icon, manifest) and is included in the repository.
+The `src/rsrc_windows_amd64.syso` file contains the compiled Windows resources (icon, manifest and version info) and is included in the repository. To regenerate it after editing `src/winres/winres.json`, install [go-winres](https://github.com/tc-hib/go-winres) (`go install github.com/tc-hib/go-winres@latest`) and run `make winres`.
 
 ## Running Tests
 
@@ -182,7 +182,8 @@ node ui_test.js
 │   └── winres/                   # Windows resource config and icon
 ├── tools/
 │   ├── audit_shots.js            # Screenshot generation for audits
-│   └── sets_shots.js             # Screenshot generation for sets
+│   ├── sets_shots.js             # Screenshot generation for sets
+│   └── name_shots.js             # Top bar screenshots in English and Portuguese
 ├── icon/                         # App icon assets
 ├── build_data.py                 # Script to generate data.json
 ├── Makefile                      # Build automation

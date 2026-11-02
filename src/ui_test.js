@@ -1,12 +1,12 @@
-// Teste headless v1.3.1: lista de conjuntos redesenhada (sem quebras, +N); v1.3: cabeçalho novo das questões; v1.2.1: sessões por modo (trocar de aba não zera), retomar após reabrir, filtros, migração schema 3→4; confirmação, migração (v1.0 e v1.1), tema, idioma, exportar/importar, zerar
+// Teste headless v1.3.2: nome do app muda com o idioma (TalTech Prep Trainer / Treino TalTech); v1.3.1: lista de conjuntos redesenhada (sem quebras, +N); v1.3: cabeçalho novo das questões; v1.2.1: sessões por modo (trocar de aba não zera), retomar após reabrir, filtros, migração schema 3→4; confirmação, migração (v1.0 e v1.1), tema, idioma, exportar/importar, zerar
 const puppeteer = require('puppeteer-core'); const fs = require('fs');
 const path = require('path');
 const SRC = path.join(__dirname);
 const html = fs.readFileSync(path.join(SRC, 'index.html'), 'utf8')
   .replace('/*__DATA__*/null', fs.readFileSync(path.join(SRC, 'data.json'), 'utf8').replace(/<\//g, '<\\/'))
-  .replace('/*__VER__*/"dev"', '"1.3.1"');
+  .replace('/*__VER__*/"dev"', '"1.3.2"');
 const D = JSON.parse(fs.readFileSync(path.join(SRC, 'data.json')));
-let store = '', backups = [], named = [], exported = null, importFile = null, darkTitle = [], savedAt = null, errors = [], pass = 0, fail = 0;
+let store = '', backups = [], named = [], exported = null, importFile = null, darkTitle = [], winTitles = [], savedAt = null, errors = [], pass = 0, fail = 0;
 const ok = (cond, msg) => { if (cond) pass++; else { fail++; console.log('  FALHOU:', msg); } };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 (async () => {
@@ -27,6 +27,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
     await p.exposeFunction('goExportBackup', (content, name) => { exported = { content, name }; return 'C:\\Users\\user\\Documents\\' + name; });
     await p.exposeFunction('goImportBackup', () => importFile);
     await p.exposeFunction('goBackupNamed', tag => { if (!store) return ''; const n = 'progresso-' + tag + '-20261102-1200.bak'; named.push({ tag, name: n, content: store }); return n; });
+    await p.exposeFunction('goSetTitle', t => { winTitles.push(t); return null; });
     await p.exposeFunction('goSetDarkTitle', d => { darkTitle.push(d); return null; });
     if (p.__scheme) await p.emulateMediaFeatures([{ name: 'prefers-color-scheme', value: p.__scheme }]);
     const stub = `<script>(function(vs){window.__spoken=[];window.SpeechSynthesisUtterance=function(t){this.text=t;this.rate=1;this.lang='';this.voice=null;};
@@ -44,7 +45,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 
   console.log('1) Instalação nova');
   let p = await open();
-  ok(await p.$eval('#ver', e => e.textContent.includes('1.3.1')), 'versão v1.3.1 no cabeçalho');
+  ok(await p.$eval('#ver', e => e.textContent.includes('1.3.2')), 'versão v1.3.2 no cabeçalho');
   ok(!(await p.modal()), 'sem painel de novidades em instalação nova');
   ok(backups.length === 0, 'sem backup em instalação nova');
 
@@ -133,7 +134,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   }
   await sleep(900);
   const fresh = JSON.parse(store);
-  ok(fresh.schemaVersion === 4 && fresh.appVersion === '1.3.1' && fresh.ultimaVersaoVista === '1.3.1' && fresh.settings.theme === 'system' && fresh.settings.language === 'pt', 'instalação nova salva schemaVersion 4 / appVersion 1.3.1 / settings padrão');
+  ok(fresh.schemaVersion === 4 && fresh.appVersion === '1.3.2' && fresh.ultimaVersaoVista === '1.3.2' && fresh.settings.theme === 'system' && fresh.settings.language === 'pt', 'instalação nova salva schemaVersion 4 / appVersion 1.3.2 / settings padrão');
   console.log('   respostas registradas:', fresh.historico.length);
   await p.close();
 
@@ -146,12 +147,12 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   ok(backups.length === 1 && backups[0].old === 1 && backups[0].content === original, 'backup chamado (v1) com o arquivo original, antes de salvar');
   await sleep(300);
   let s = JSON.parse(store);
-  ok(s.schemaVersion === 4 && s.appVersion === '1.3.1' && s.settings && s.settings.theme === 'system' && s.settings.language === 'pt', 'v1.0 migrado direto para schemaVersion 4 com settings');
+  ok(s.schemaVersion === 4 && s.appVersion === '1.3.2' && s.settings && s.settings.theme === 'system' && s.settings.language === 'pt', 'v1.0 migrado direto para schemaVersion 4 com settings');
   ok(JSON.stringify(s.campoFuturo) === JSON.stringify(v10.campoFuturo) && s.historico[0].extraX === 42, 'campos desconhecidos preservados');
   ok(['historico', 'rodadas', 'redacoes', 'falas', 'rascunhos', 'erros', 'marcos', 'criado'].every(k => JSON.stringify(s[k]) === JSON.stringify(v10[k])), 'todo o progresso v1.0 intacto (histórico, rodadas, redações, falas, rascunhos, erros, marcos)');
   ok(await p.modal() && await p.$eval('#modalc', e => /O que há de novo/.test(e.innerText) && /v1\.2/.test(e.innerText) && /v1\.1/.test(e.innerText) && /progresso-v1\.bak/.test(e.innerText)), 'painel "O que há de novo" aparece, cita o backup');
     await p.enter(); await sleep(300);
-  ok(!(await p.modal()) && JSON.parse(store).ultimaVersaoVista === '1.3.1', 'Enter fecha o painel e grava ultimaVersaoVista=1.3.1');
+  ok(!(await p.modal()) && JSON.parse(store).ultimaVersaoVista === '1.3.2', 'Enter fecha o painel e grava ultimaVersaoVista=1.3.2');
   await p.close();
   backups = []; p = await open();
   ok(!(await p.modal()) && backups.length === 0, 'reabrindo: painel não reaparece, sem novo backup');
@@ -215,9 +216,18 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 
   console.log('10) Idioma da interface');
   p = await open('light'); await p.click_('#gear');
+  ok(await p.$eval('#brand', e => e.textContent) === 'Treino TalTech' && await p.evaluate('document.title') === 'Treino TalTech v1.3.2 | GRE + TOEFL' && winTitles[winTitles.length - 1] === 'Treino TalTech v1.3.2 | GRE + TOEFL', 'v1.3.2: em PT o nome é Treino TalTech (topo, document.title, janela)');
+  ok(await p.$eval('#s-about', e => /Treino TalTech/.test(e.innerText)), 'v1.3.2: Sobre mostra Treino TalTech em PT');
+  winTitles = [];
   await p.click_('[data-act=lang][data-v=en]'); await sleep(300);
   ok(JSON.parse(store).settings.language === 'en' && await p.evaluate('document.documentElement.lang') === 'en', 'English salvo; <html lang=en>');
   ok(await p.$eval('#nav', e => /Progress\b/.test(e.innerText) && !/Progresso/.test(e.innerText)) && await p.$eval('#gear', e => e.title === 'Settings'), 'menu e engrenagem em inglês');
+  ok(await p.$eval('#brand', e => e.textContent) === 'TalTech Prep Trainer' && await p.evaluate('document.title') === 'TalTech Prep Trainer v1.3.2 | GRE + TOEFL' && winTitles[winTitles.length - 1] === 'TalTech Prep Trainer v1.3.2 | GRE + TOEFL', 'v1.3.2: trocar para EN muda o nome na hora (topo, document.title, goSetTitle)');
+  ok(await p.$eval('#s-about', e => /TalTech Prep Trainer/.test(e.innerText) && !/Treino TalTech/.test(e.innerText)), 'v1.3.2: Sobre mostra TalTech Prep Trainer em EN');
+  ok(await p.$eval('header', e => !/Treino TalTech/.test(e.innerText)), 'v1.3.2: nenhum "Treino TalTech" no topo em EN');
+  await p.click_('[data-act=lang][data-v=pt]'); await sleep(200);
+  ok(await p.$eval('#brand', e => e.textContent) === 'Treino TalTech' && winTitles[winTitles.length - 1] === 'Treino TalTech v1.3.2 | GRE + TOEFL', 'v1.3.2: voltar para PT restaura o nome na hora');
+  await p.click_('[data-act=lang][data-v=en]'); await sleep(200);
   ok(await p.$eval('#app', e => /Saved data/.test(e.innerText) && /Interface language/.test(e.innerText) && !/Dados salvos/.test(e.innerText)), 'tela de configurações em inglês');
   await p.click_('[data-act=tab][data-v=vocab]'); await p.click_('[data-act=vmode][data-v=def]'); await p.click_('[data-act=vset][data-v="1"]');
   ok(await p.$eval('.q', e => /What is the definition of/.test(e.innerText)) && await p.$eval('[data-confirm]', e => e.textContent === 'Confirm'), 'quiz em inglês (rótulos)');
@@ -343,7 +353,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   s = JSON.parse(store);
   ok(named.length === 1 && named[0].tag === 'antes-de-zerar' && JSON.parse(named[0].content).historico.length === pre.historico.length, '.bak com o progresso completo feito ANTES de zerar');
   ok(s.historico.length === 0 && s.redacoes.length === 0 && s.falas.length === 0 && Object.keys(s.erros).length === 0 && Object.keys(s.marcos).length === 0 && s.rodadas.length === 0, 'progresso zerado');
-  ok(s.settings.theme === 'system' && s.settings.language === 'pt' && s.schemaVersion === 4 && s.ultimaVersaoVista === '1.3.1' && Object.keys(s.sessoes).length === 0, 'tema/idioma mantidos, sessões limpas; sem painel de novidades depois');
+  ok(s.settings.theme === 'system' && s.settings.language === 'pt' && s.schemaVersion === 4 && s.ultimaVersaoVista === '1.3.2' && Object.keys(s.sessoes).length === 0, 'tema/idioma mantidos, sessões limpas; sem painel de novidades depois');
   await p.close(); p = await open('light'); ok(!(await p.modal()) && await p.evaluate('P.historico.length') === 0, 'reabrindo após zerar: vazio, sem novidades');
   await p.close();
 
@@ -566,7 +576,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   store = JSON.stringify(v12); const orig12 = store; backups = [];
   p = await open('light'); await sleep(300); s = JSON.parse(store);
   ok(backups.length === 1 && backups[0].old === 3 && backups[0].content === orig12, 'v1.2: backup progresso-v3.bak do arquivo original antes de converter');
-  ok(s.schemaVersion === 4 && s.appVersion === '1.3.1' && s.sessoes && typeof s.sessoes === 'object' && !Array.isArray(s.sessoes), 'v1.2 → schema 4 com sessoes');
+  ok(s.schemaVersion === 4 && s.appVersion === '1.3.2' && s.sessoes && typeof s.sessoes === 'object' && !Array.isArray(s.sessoes), 'v1.2 → schema 4 com sessoes');
   ok(['historico', 'rodadas', 'redacoes', 'falas', 'erros', 'marcos', 'rascunhos', 'settings', 'campoDaV12', 'criado'].every(k => JSON.stringify(s[k]) === JSON.stringify(v12[k])), 'v1.2: todo o progresso e campos desconhecidos intactos');
   ok(await p.modal() && await p.$eval('#modalc', e => /v1\.3\.1\n/.test(e.innerText) && /v1\.3\n/.test(e.innerText) && /v1\.2\.1/.test(e.innerText) && !/v1\.2\n/.test(e.innerText) && /não zera mais a sessão/.test(e.innerText) && /Visual novo nas questões/.test(e.innerText) && /progresso-v3\.bak/.test(e.innerText)), 'novidades da v1.3 e v1.2.1 (sem v1.2, em PT), cita progresso-v3.bak');
   await p.enter(); await sleep(200);
@@ -586,13 +596,13 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   ok((await st()).key === 'def:3' && JSON.parse(store).sessoes['def:3'], 'importar backup traz as sessões em andamento junto');
   await p.close();
 
-  console.log('17) v1.3.1: atualização a partir da v1.2.1, aviso de sessão no idioma da interface');
+  console.log('17) v1.3.2: atualização a partir da v1.2.1, aviso de sessão no idioma da interface');
   const v121 = JSON.parse(store); v121.appVersion = '1.2.1'; v121.ultimaVersaoVista = '1.2.1'; v121.settings.language = 'en';
   store = JSON.stringify(v121); backups = []; p = await open('dark'); await sleep(300);
-  ok(await p.modal() && await p.$eval('#modalc', e => /v1\.3\.1\n/.test(e.innerText) && /v1\.3\n/.test(e.innerText) && !/v1\.2\.1/.test(e.innerText) && /New question look/.test(e.innerText) && /Redesigned performance by set/.test(e.innerText)), 'v1.2.1 → v1.3.1: novidades da v1.3.1 e v1.3 (em EN)');
-  ok(backups.length === 0 && JSON.parse(store).schemaVersion === 4, 'v1.2.1 → v1.3.1: mesmo schema 4, sem backup de migração');
+  ok(await p.modal() && await p.$eval('#modalc', e => /v1\.3\.2\n/.test(e.innerText) && /v1\.3\.1\n/.test(e.innerText) && /v1\.3\n/.test(e.innerText) && !/v1\.2\.1/.test(e.innerText) && /TalTech Prep Trainer/.test(e.innerText) && /New question look/.test(e.innerText) && /Redesigned performance by set/.test(e.innerText)), 'v1.2.1 → v1.3.2: novidades da v1.3.2, v1.3.1 e v1.3 (em EN)');
+  ok(backups.length === 0 && JSON.parse(store).schemaVersion === 4, 'v1.2.1 → v1.3.2: mesmo schema 4, sem backup de migração');
   await p.enter(); await sleep(200);
-  ok(!(await p.modal()) && JSON.parse(store).ultimaVersaoVista === '1.3.1', 'Enter fecha e grava ultimaVersaoVista=1.3.1');
+  ok(!(await p.modal()) && JSON.parse(store).ultimaVersaoVista === '1.3.2', 'Enter fecha e grava ultimaVersaoVista=1.3.2');
   await p.click_('[data-act=tab][data-v=vocab]');
   ok(await p.has('#resume') && await p.$eval('#resume', e => /Definitions · set 3/.test(e.innerText) && !/Definições|conjunto/.test(e.innerText)), 'aviso "Session in progress" com o nome da sessão em inglês');
   ok(await p.evaluate("roundLabel({key:'quant:MC'}) === 'Quant · Multiple choice' && roundLabel({key:'revisao'}) === 'Mistake review' && roundLabel({key:'frase:0'}) === 'TC/SE sentences · all'"), 'roundLabel traduz todas as chaves');

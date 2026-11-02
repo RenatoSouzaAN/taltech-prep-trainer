@@ -1,6 +1,18 @@
 # Changelog
 
-All notable changes to TreinoTalTech will be documented in this file.
+All notable changes to TalTech Prep Trainer (TreinoTalTech) will be documented in this file.
+
+## [1.3.2] - 2026-11-02
+
+### Changed
+- With the interface in English, the app is now called TalTech Prep Trainer: in the top bar, the window title and Settings > About. In Portuguese it is still Treino TalTech.
+- Switching the language updates the name and the native window title right away. The window opens with the title in the saved language.
+- Window title now reads "TalTech Prep Trainer v1.3.2 | GRE + TOEFL" (no em dash). Em dashes were also removed from other interface text.
+- Windows version resource updated: FileDescription and ProductName are TalTech Prep Trainer, FileVersion and ProductVersion are 1.3.2.0.
+- Added a `make winres` target to regenerate the Windows resources.
+
+### Unchanged
+- The executable is still `TreinoTalTech.exe` and progress stays in `%APPDATA%\TreinoTalTech\progresso.json` (schema 4, no migration).
 
 ## [1.3.1] - 2026-10-30
 

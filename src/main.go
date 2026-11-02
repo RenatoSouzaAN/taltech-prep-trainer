@@ -24,7 +24,7 @@ var indexHTML string
 //go:embed data.json
 var dataJSON string
 
-const appVersion = "1.3.1"
+const appVersion = "1.3.2"
 
 var (
 	user32           = windows.NewLazySystemDLL("user32.dll")
@@ -133,7 +133,7 @@ func main() {
 		AutoFocus: true,
 		DataPath:  filepath.Join(dir, "WebView2"),
 		WindowOptions: webview2.WindowOptions{
-			Title:  "Treino TalTech v" + appVersion + " — GRE + TOEFL",
+			Title:  windowTitle(savedLanguage(), appVersion),
 			Width:  ww,
 			Height: wh,
 			IconId: 1, // RT_GROUP_ICON #1 (rsrc_windows_amd64.syso, gerado pelo go-winres)
@@ -181,6 +181,8 @@ func main() {
 		}
 		return readImportFile(path)
 	}))
+	// O título da janela acompanha o idioma (o JS chama ao abrir e ao trocar o idioma).
+	must(w.Bind("goSetTitle", func(title string) { w.SetTitle(title) }))
 	must(w.Bind("goSetDarkTitle", func(dark bool) { setDarkTitle(hwnd, dark) }))
 
 	// </script> nunca aparece no data.json, mas por segurança:
