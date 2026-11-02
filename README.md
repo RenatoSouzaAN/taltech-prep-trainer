@@ -10,13 +10,12 @@
 
 <p align="center">
   <img alt="Platform" src="https://img.shields.io/badge/platform-Windows-blue">
-  <img alt="Go" src="https://img.shields.io/badge/Go-1.27+-00ADD8?logo=go">
+  <img alt="Go" src="https://img.shields.io/badge/Go-1.27.3+-00ADD8?logo=go">
   <img alt="License" src="https://img.shields.io/badge/license-MIT-green">
 </p>
 
 <p align="center">
-  <img src="docs/images/00-hero-light.png" alt="TreinoTalTech Interface" width="48%">
-  <img src="docs/images/00-hero-dark.png" alt="TreinoTalTech Dark Mode" width="48%">
+  <img src="docs/images/hero.png" alt="TreinoTalTech - Light and Dark Mode" width="100%">
 </p>
 
 ## About
@@ -33,10 +32,10 @@ Built entirely in Go using WebView2, the app runs as a native Windows applicatio
 - **Pronunciation support**: IPA transcription and Web Speech API audio (slow mode available)
 - **Per-set performance**: See your accuracy and progress for each word set
 - **Quantitative Reasoning**: Quantitative comparison (QC), multiple choice (MC), and numeric entry (NE) questions
-- **Issue Essays**: Practice with official ETS Issue pool prompts, timed sessions (45 minutes)
+- **Issue Essays**: Practice with official ETS Issue pool prompts, timed sessions (30 minutes)
 
 ### TOEFL Preparation
-- **Writing tasks**: Email responses, academic discussion, sentence building exercises
+- **Writing tasks**: Email responses (7 minutes), academic discussion (10 minutes), sentence building exercises
 - **Speaking practice**: Listen and repeat, interview questions
 - **Scoring rubrics**: Self-evaluation with ETS-based rubric summaries
 
@@ -86,7 +85,7 @@ Built entirely in Go using WebView2, the app runs as a native Windows applicatio
 
 <p align="center">
   <img src="docs/images/05-writing-timer.png" alt="Essay writing with timer" width="80%">
-  <br><em>Issue essay editor with 45-minute timer and prompt display</em>
+  <br><em>Issue essay editor with 30-minute timer and prompt display</em>
 </p>
 
 </details>
@@ -137,7 +136,7 @@ The app handles schema migrations automatically and creates `.bak` backup files 
 
 ## Building from Source
 
-**Prerequisites**: Go 1.27 or later
+**Prerequisites**: Go 1.27.3 or later
 
 **Cross-compile for Windows from Linux/macOS**:
 ```bash
