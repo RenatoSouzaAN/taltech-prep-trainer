@@ -1,5 +1,7 @@
 # TalTech Prep Trainer
 
+<p align="center">English | <a href="README.pt-BR.md">Português</a></p>
+
 <p align="center">
   <img src="docs/images/icon.png" alt="TalTech Prep Trainer icon" width="120">
 </p>
@@ -183,12 +185,16 @@ node ui_test.js
 ├── tools/
 │   ├── audit_shots.js            # Screenshot generation for audits
 │   ├── sets_shots.js             # Screenshot generation for sets
-│   └── name_shots.js             # Top bar screenshots in English and Portuguese
+│   ├── name_shots.js             # Top bar screenshots in English and Portuguese
+│   ├── readme_shots.js           # README screenshots (English and Portuguese)
+│   └── hero.js                   # Composes the README hero banner
+├── docs/images/                  # README images (Portuguese copies in docs/images/pt/)
 ├── icon/                         # App icon assets
 ├── build_data.py                 # Script to generate data.json
 ├── Makefile                      # Build automation
 ├── LICENSE                       # MIT License
-└── README.md                     # This file
+├── README.md                     # This file
+└── README.pt-BR.md               # Portuguese (Brazil) version
 ```
 
 ## Technical Notes
