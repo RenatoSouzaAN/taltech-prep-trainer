@@ -9,7 +9,7 @@
       "0409": {
         "identity": {
           "name": "TreinoTalTech",
-          "version": "1.3.2.0"
+          "version": "1.6.0.0"
         },
         "description": "TalTech Prep Trainer | GRE + TOEFL",
         "minimum-os": "win10",
@@ -33,19 +33,19 @@
     "#1": {
       "0000": {
         "fixed": {
-          "file_version": "1.3.2.0",
-          "product_version": "1.3.2.0"
+          "file_version": "1.6.0.0",
+          "product_version": "1.6.0.0"
         },
         "info": {
           "0409": {
             "CompanyName": "Renato Souza",
             "FileDescription": "TalTech Prep Trainer",
-            "FileVersion": "1.3.2.0",
+            "FileVersion": "1.6.0.0",
             "InternalName": "TreinoTalTech.exe",
             "LegalCopyright": "Copyright (c) 2026 Renato Souza. MIT License.",
             "OriginalFilename": "TreinoTalTech.exe",
             "ProductName": "TalTech Prep Trainer",
-            "ProductVersion": "1.3.2.0"
+            "ProductVersion": "1.6.0.0"
           }
         }
       }

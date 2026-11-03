@@ -40,6 +40,10 @@ Built entirely in Go using WebView2, the app runs as a native Windows applicatio
 - **Writing tasks**: Email responses (7 minutes), academic discussion (10 minutes), sentence building exercises
 - **Speaking practice**: Listen and repeat, interview questions
 - **Scoring rubrics**: Self-evaluation with ETS-based rubric summaries
+- **Practice tests**: Full TOEFL iBT practice tests in the 2026 format (Reading, Listening, Writing, Speaking) with official section timers and audio; Reading, Listening and Build a Sentence are scored automatically. Content comes from content packs you import (none is bundled)
+- **Test review**: Reopen a finished practice test to see each answer marked right or wrong next to the correct answer
+- **Speaking recording and transcription**: Record your answers; an offline speech model (whisper.cpp, downloaded on first use) transcribes them and gives an automatic score
+- **Optional AI grading**: Grade essays and Speaking answers with OpenAI or Gemini using your own API key (stored encrypted by Windows)
 
 ### General Features
 - **Progress tracking**: Detailed history of all practice sessions
@@ -49,6 +53,8 @@ Built entirely in Go using WebView2, the app runs as a native Windows applicatio
 - **Bilingual UI**: Portuguese and English interface options; the app name, window title and About panel follow the selected language
 - **Data management**: Export, import, and reset your progress
 - **Automatic backups**: Schema migrations create timestamped backups
+- **Content packs**: Import practice tests or your own files as a `.zip` pack (see [Content packs](#content-packs))
+- **In-app updates**: Check for, download and install new versions from Settings, with SHA-256 verification (see [Updates](#updates))
 
 ## Screenshots
 
@@ -136,6 +142,48 @@ Your progress is automatically saved to:
 
 The app handles schema migrations automatically and creates `.bak` backup files when updating your progress format. Your data is preserved across updates.
 
+### Content packs
+
+The app can import content packs (Settings > Content (packs) > "Import pack (.zip)"). No practice-test content ships with the app: the Practice tests tab uses only the packs you import, and shows "No practice-test content installed. Import a content pack in Settings." until then. Packs are installed to `%APPDATA%\TreinoTalTech\conteudo\<id>\`, survive app updates and can be removed from the same screen. Importing a pack with an existing `id` replaces the installed version.
+
+A pack is a `.zip` with `manifest.json` at the root (or inside a single top-level folder):
+
+```json
+{
+  "id": "my-practice-tests",
+  "name": "My practice tests",
+  "version": "1.0",
+  "type": "simulados",
+  "description": "Optional text"
+}
+```
+
+| Field | Rules |
+|---|---|
+| `id` | Required. 2 to 48 characters: lowercase letters, digits, `-` or `_`. Used as the folder name. |
+| `name` | Required, up to 100 characters. |
+| `version` | Required, up to 30 characters. |
+| `type` | Required: `simulados` (practice tests) or `arquivos` (your own files). |
+| `description` | Optional, up to 2000 characters. |
+
+Folder layout by type:
+
+```
+simulados (practice tests)           arquivos (your own files)
+├── manifest.json                    ├── manifest.json
+├── ets_tests.json                   └── any folders/files
+├── audio/<test id>/<clip>.ogg           (PDF, audio, video, images, text)
+└── rubrics.json        (optional)
+```
+
+- `simulados`: `ets_tests.json` holds `{"tests": [{"id": "t1", "title": "...", "reading": [...], "listening": [...], "writing": {...}, "speaking": {...}}]}` in the app's format (test ids: lowercase letters and digits). Audio clips are referenced by name and read from `audio/<test id>/`. `rubrics.json` is optional and is used by the optional AI grading.
+- `arquivos`: the app lists the files ("Show files") and opens them in their default Windows program. Executables and scripts are never opened.
+- Limits: 4 GB uncompressed. Absolute paths, `..`, symlinks and duplicate names are rejected.
+
+### Updates
+
+Settings > Updates > "Check for updates" reads the public releases of this repository. If a newer version exists, "Download and install" downloads it, checks the SHA-256 when the release publishes one, replaces the program files and restarts. The progress folder is never touched. The daily automatic check can be turned off.
+
 ## Building from Source
 
 **Prerequisites**: Go 1.27.3 or later
@@ -218,6 +266,7 @@ The practice content in this app was created specifically for GRE and TOEFL prep
 - **GRE Issue Essays**: The essay prompts are quoted from the official [ETS GRE Issue Pool](https://www.ets.org/pdfs/gre/issue-pool.pdf)
 - **TOEFL Writing & Speaking**: Original practice tasks and prompts
 - **Scoring Rubrics**: Rubric summaries based on official ETS scoring guides
+- **Practice tests**: No practice-test content is included in this repository or in the releases; the Practice tests tab only uses content packs that you import yourself (see [Content packs](#content-packs))
 
 **Disclaimer**: This application is not affiliated with, endorsed by, or sponsored by Educational Testing Service (ETS) or Tallinn University of Technology (TalTech). GRE and TOEFL are registered trademarks of ETS.
 

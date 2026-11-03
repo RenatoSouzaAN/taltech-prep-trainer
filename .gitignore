@@ -30,3 +30,15 @@ dist/
 
 # Temp files
 *.tmp
+
+# Official ETS content: local only, never commit (see src/ets/README.md)
+src/ets/ets_tests.json
+src/ets/audio/
+src/ets/rubrics.json
+local-ets/
+
+# Speech-recognition model and runtime (downloaded in the app / shipped only in the release zip)
+*.bin
+ggml-*.bin
+stt/
+stt-modelo/

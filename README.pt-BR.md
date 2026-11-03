@@ -40,6 +40,10 @@ O app é feito inteiramente em Go com WebView2 e roda como um aplicativo nativo 
 - **Writing**: Write an Email (7 minutos), Academic Discussion (10 minutos) e Build a Sentence
 - **Speaking**: Listen and Repeat e Take an Interview
 - **Rubricas**: autoavaliação com resumos das rubricas da ETS
+- **Simulados**: simulados completos do TOEFL iBT no formato de 2026 (Reading, Listening, Writing, Speaking), com o tempo oficial de cada seção e áudio; Reading, Listening e Build a Sentence têm correção automática. O conteúdo vem de pacotes que você importa (nenhum vem com o app)
+- **Revisão do simulado**: reabra um simulado concluído para ver cada resposta marcada como certa ou errada, ao lado da resposta correta
+- **Gravação e transcrição do Speaking**: grave suas respostas; um modelo de fala offline (whisper.cpp, baixado no primeiro uso) transcreve e dá uma nota automática
+- **Correção por IA (opcional)**: corrija redações e respostas de Speaking com OpenAI ou Gemini usando sua própria chave de API (guardada com criptografia do Windows)
 
 ### Recursos gerais
 - **Acompanhamento do progresso**: histórico detalhado de todas as sessões de estudo
@@ -49,6 +53,8 @@ O app é feito inteiramente em Go com WebView2 e roda como um aplicativo nativo 
 - **Interface bilíngue**: português e inglês; o nome do app, o título da janela e o painel Sobre acompanham o idioma escolhido
 - **Gerenciamento de dados**: exporte, importe e zere seu progresso
 - **Backups automáticos**: as migrações de formato criam backups com data e hora
+- **Pacotes de conteúdo**: importe simulados ou seus próprios arquivos em um pacote `.zip` (veja [Pacotes de conteúdo](#pacotes-de-conteúdo))
+- **Atualizações pelo app**: procure, baixe e instale versões novas pelas Configurações, com verificação SHA-256 (veja [Atualizações](#atualizações))
 
 ## Capturas de tela
 
@@ -136,6 +142,48 @@ Seu progresso é salvo automaticamente em:
 
 O app cuida das migrações de formato sozinho e cria arquivos de backup `.bak` sempre que o formato do progresso muda. Seus dados são preservados entre as atualizações.
 
+### Pacotes de conteúdo
+
+O app importa pacotes de conteúdo (Configurações > Conteúdo (pacotes) > "Importar pacote (.zip)"). Nenhum conteúdo de simulado vem com o app: a aba Simulados usa só os pacotes que você importar e, até lá, mostra "Nenhum conteúdo de simulado instalado. Importe um pacote de conteúdo em Configurações." Os pacotes ficam em `%APPDATA%\TreinoTalTech\conteudo\<id>\`, não são afetados pelas atualizações do app e podem ser removidos na mesma tela. Importar um pacote com um `id` já instalado troca a versão.
+
+Um pacote é um `.zip` com `manifest.json` na raiz (ou dentro de uma única pasta de topo):
+
+```json
+{
+  "id": "meus-simulados",
+  "name": "Meus simulados",
+  "version": "1.0",
+  "type": "simulados",
+  "description": "Texto opcional"
+}
+```
+
+| Campo | Regras |
+|---|---|
+| `id` | Obrigatório. 2 a 48 caracteres: letras minúsculas, números, `-` ou `_`. Vira o nome da pasta. |
+| `name` | Obrigatório, até 100 caracteres. |
+| `version` | Obrigatório, até 30 caracteres. |
+| `type` | Obrigatório: `simulados` ou `arquivos` (seus próprios arquivos). |
+| `description` | Opcional, até 2000 caracteres. |
+
+Estrutura de pastas por tipo:
+
+```
+simulados                            arquivos (seus próprios arquivos)
+├── manifest.json                    ├── manifest.json
+├── ets_tests.json                   └── quaisquer pastas/arquivos
+├── audio/<id do teste>/<clipe>.ogg      (PDF, áudio, vídeo, imagens, textos)
+└── rubrics.json        (opcional)
+```
+
+- `simulados`: o `ets_tests.json` contém `{"tests": [{"id": "t1", "title": "...", "reading": [...], "listening": [...], "writing": {...}, "speaking": {...}}]}` no formato do app (id do teste: letras minúsculas e números). Os clipes de áudio são referenciados pelo nome e lidos de `audio/<id do teste>/`. O `rubrics.json` é opcional e é usado pela avaliação por IA (também opcional).
+- `arquivos`: o app lista os arquivos ("Ver arquivos") e abre cada um no programa padrão do Windows. Executáveis e scripts nunca são abertos.
+- Limites: 4 GB descompactado. Caminhos absolutos, `..`, links simbólicos e nomes repetidos são recusados.
+
+### Atualizações
+
+Configurações > Atualizações > "Procurar atualizações" consulta as versões publicadas deste repositório. Se houver uma mais nova, "Baixar e instalar" baixa, confere o SHA-256 (quando a versão publica um), troca os arquivos do programa e reinicia. A pasta de progresso nunca é tocada. A procura automática diária pode ser desligada.
+
 ## Compilando a partir do código-fonte
 
 **Pré-requisito**: Go 1.27.3 ou mais recente
@@ -218,6 +266,7 @@ O conteúdo de prática do app foi criado especificamente para a preparação pa
 - **Redações Issue do GRE**: os temas são citados do [pool oficial de Issue da ETS](https://www.ets.org/pdfs/gre/issue-pool.pdf)
 - **Writing e Speaking do TOEFL**: tarefas e enunciados originais
 - **Rubricas**: resumos baseados nos guias oficiais de pontuação da ETS
+- **Simulados**: nenhum conteúdo de simulado vem neste repositório nem nas versões publicadas; a aba Simulados usa só pacotes de conteúdo que você mesmo importa (veja [Pacotes de conteúdo](#pacotes-de-conteúdo))
 
 **Aviso**: este aplicativo não tem vínculo com a Educational Testing Service (ETS) nem com a Tallinn University of Technology (TalTech), e não é endossado nem patrocinado por elas. GRE e TOEFL são marcas registradas da ETS.
 

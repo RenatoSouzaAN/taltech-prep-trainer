@@ -66,18 +66,23 @@ func utf16Multi(parts ...string) *uint16 {
 	return &u[0]
 }
 
-// fileDialog abre o diálogo nativo. ok=false e err=nil => usuário cancelou.
+// fileDialog abre o diálogo nativo para backups (.json). ok=false e err=nil => usuário cancelou.
 func fileDialog(owner uintptr, save bool, title, defName string) (path string, ok bool, err error) {
+	return fileDialogF(owner, save, title, defName, "Backup JSON (*.json)", "json")
+}
+
+// fileDialogF: igual, com filtro próprio (ex.: "Pacote de conteúdo (*.zip)", "zip").
+func fileDialogF(owner uintptr, save bool, title, defName, filterName, extName string) (path string, ok bool, err error) {
 	buf := make([]uint16, 4096)
 	if defName != "" {
 		d, _ := windows.UTF16FromString(defName)
 		copy(buf, d)
 	}
 	t, _ := windows.UTF16PtrFromString(title)
-	ext, _ := windows.UTF16PtrFromString("json")
+	ext, _ := windows.UTF16PtrFromString(extName)
 	ofn := openFileNameW{
 		hwndOwner:    owner,
-		lpstrFilter:  utf16Multi("Backup JSON (*.json)", "*.json", "Todos os arquivos (*.*)", "*.*"),
+		lpstrFilter:  utf16Multi(filterName, "*."+extName, "Todos os arquivos (*.*)", "*.*"),
 		nFilterIndex: 1,
 		lpstrFile:    &buf[0],
 		nMaxFile:     uint32(len(buf)),
