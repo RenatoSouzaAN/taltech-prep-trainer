@@ -193,6 +193,12 @@ const APP_VERSION = /*__VER__*/"dev";
 const SCHEMA = 6; // versão do formato do progresso.json (1 = v1.0, 2 = v1.1, 3 = v1.2, 4 = v1.2.1: sessões em andamento; 5 = v1.4: simulados; 6 = v1.5: gravações do Speaking + avaliação)
 const DEFAULT_SETTINGS = { theme: "system", language: "pt", autoSpeak: false, gravar: true };
 const NOVIDADES = {
+  "1.6.1": {
+    pt: ["Textos revisados: as novidades das versões anteriores, o plano de estudos e as telas dos Simulados agora usam nomes genéricos (<b>Simulado 1</b>, <b>Simulado 2</b>…) e “material de origem”; com um pacote importado, aparece o título que vem no pacote.",
+      "Primeira versão entregue pela <b>atualização dentro do app</b> (Configurações → Atualizações). Nada muda no seu progresso, nas gravações ou nos pacotes."],
+    en: ["Wording cleanup: earlier release notes, the study plan and the Practice tests screens now use generic names (<b>Practice test 1</b>, <b>Practice test 2</b>…) and “source material”; with an imported pack, the title from the pack is shown.",
+      "First version delivered by the <b>in-app update</b> (Settings → Updates). Nothing changes in your progress, recordings or packs."]
+  },
   "1.6.0": {
     pt: ["<b>Pacotes de conteúdo</b>: Configurações → Conteúdo → <b>Importar pacote (.zip)</b>. O app agora importa pacotes de conteúdo: simulados (questões, áudio e rubricas no formato do app) ou os seus próprios arquivos (PDFs, áudios, anotações), que abrem no programa padrão do Windows. Os Simulados usam o conteúdo dos pacotes importados.",
       "<b>Atualizações pelo app</b>: Configurações → Atualizações → <b>Procurar atualizações</b>. O app também procura sozinho ao abrir (uma vez por dia, dá para desligar), mostra um aviso no topo e instala com <b>Baixar e instalar</b>, conferindo o arquivo. Progresso, gravações e pacotes nunca são tocados.",
@@ -280,12 +286,12 @@ const NOVIDADES = {
     en: ["Practice tests: times now follow a single format, in PT and EN: total minutes first, with the modules in parentheses (e.g. Reading 24 min (12 + 12), Writing 23 min (6 + 7 + 10), Speaking ~7 min (11 items)). “~” marks a rounded value. The countdown stays mm:ss."]
   },
   "1.4.1": {
-    pt: ["<b>Teacher Practice Tests 3, 4 e 5</b> agora estão na aba Simulados, com áudio, no mesmo formato dos outros testes (Reading, Listening, Writing e Speaking completos).",
-      "Em Progresso, os marcos S4 (TPT 3) e S6 (TPT 4) ganharam botão <b>Iniciar</b> e marcam sozinhos quando o teste fica completo.",
-      "Onde o PDF da ETS tem erro de digitação (uma lacuna a mais em um Build a Sentence, uma palavra quebrada), o app corrige e avisa na revisão."],
-    en: ["<b>Teacher Practice Tests 3, 4 and 5</b> are now in the Practice tests tab, with audio, in the same format as the other tests (full Reading, Listening, Writing and Speaking).",
-      "In Progress, milestones W4 (TPT 3) and W6 (TPT 4) now have a <b>Start</b> button and tick themselves when the test is complete.",
-      "Where the ETS PDF has a typo (one extra blank in a Build a Sentence item, a split word), the app fixes it and says so in the review."]
+    pt: ["<b>Mais três simulados</b> agora estão na aba Simulados, com áudio, no mesmo formato dos outros testes (Reading, Listening, Writing e Speaking completos).",
+      "Em Progresso, os marcos S4 e S6 ganharam botão <b>Iniciar</b> e marcam sozinhos quando o teste fica completo.",
+      "Onde o material de origem tem erro de digitação (uma lacuna a mais em um Build a Sentence, uma palavra quebrada), o app corrige e avisa na revisão."],
+    en: ["<b>Three more practice tests</b> are now in the Practice tests tab, with audio, in the same format as the other tests (full Reading, Listening, Writing and Speaking).",
+      "In Progress, milestones W4 and W6 now have a <b>Start</b> button and tick themselves when the test is complete.",
+      "Where the source material has a typo (one extra blank in a Build a Sentence item, a split word), the app fixes it and says so in the review."]
   },
   "1.4.0": {
     pt: ["<b>Nova aba Simulados:</b> simulados completos do TOEFL iBT no formato de 2026, com áudio (desde a v1.6.0 o conteúdo vem de um pacote de conteúdo importado). Reading e Listening são corrigidos na hora; Writing usa o editor com cronômetro e contagem de palavras; Speaking mostra cada pergunta com o tempo de resposta.",
@@ -944,10 +950,11 @@ const URLS = { toeflReg: "https://www.ets.org/toefl/test-takers/ibt/register.htm
   powerprep: "https://www.ets.org/gre/test-takers/general-test/prepare/powerprep.html", greReg: "https://www.ets.org/gre/test-takers/general-test/register.html",
   greSend: "https://www.ets.org/gre/test-takers/general-test/scores/send-scores.html" };
 const SIM_ORDER = ["flpt1", "tpt1", "tpt2", "tpt3", "flpt2", "tpt4", "tpt5"]; // ordem do plano de estudos
-const SIM_SHORT = { flpt1: "Full-Length Practice Test 1", flpt2: "Full-Length Practice Test 2", tpt1: "Teacher Practice Test 1", tpt2: "Teacher Practice Test 2", tpt3: "Teacher Practice Test 3", tpt4: "Teacher Practice Test 4", tpt5: "Teacher Practice Test 5" };
-const SIM_ABBR = { flpt1: "FLPT 1", flpt2: "FLPT 2", tpt1: "TPT 1", tpt2: "TPT 2", tpt3: "TPT 3", tpt4: "TPT 4", tpt5: "TPT 5" };
 const simTest = id => ETS && ETS.tests.find(t => t.id === id) || null;
-const simAbbr = id => SIM_ABBR[id] || String(id).toUpperCase();
+// nomes genéricos (v1.6.1): "Simulado N" pela ordem do plano; o título de verdade vem do pacote importado
+const simNum = id => SIM_ORDER.indexOf(id) + 1;
+const simAbbr = id => simNum(id) ? L("Simulado ", "Practice test ") + simNum(id) : String(id);
+const simName = id => { const t = simTest(id); return t && t.title || simAbbr(id); };
 const SECS = ["reading", "listening", "writing", "speaking"];
 const SEC_NAME = { reading: "Reading", listening: "Listening", writing: "Writing", speaking: "Speaking" };
 const STEPS = { reading: ["R1", "R2"], listening: ["L1", "L2"], writing: ["WB", "WE", "WD"], speaking: ["SR", "SI"] };
@@ -988,7 +995,7 @@ function secDur(t, sec) { // "24 min (12 + 12)", "~21 min (11 + 10)", "~7 min (1
   const st = STEPS[sec].map(s => stepSecs(t, s));
   return durMin(secSecs(t, sec)) + (st.length > 1 ? ` (${st.map(x => Math.round(x / 60)).join(" + ")})` : "");
 }
-// texto do PDF: junta as linhas quebradas pela largura da página; linhas curtas, falas ("Man:") e marcadores começam linha nova
+// texto do material de origem: junta as linhas quebradas pela largura da página; linhas curtas, falas ("Man:") e marcadores começam linha nova
 function reflow(lines) {
   let out = "", prev = "";
   (lines || []).forEach(l => { l = String(l);
@@ -999,7 +1006,7 @@ function reflow(lines) {
     prev = l; });
   return out;
 }
-function rich(s) { // escapa + **Nome (hora)** em negrito (cadeia de mensagens; duas marcas do PDF não fecham)
+function rich(s) { // escapa + **Nome (hora)** em negrito (cadeia de mensagens; duas marcas do original não fecham)
   return esc(s).replace(/\*\*([^*]+?)\*\*/g, "<b>$1</b>").replace(/\*\*([^*\n]*?\))/g, "<b>$1</b>").replace(/\*\*/g, "").replace(/\n/g, "<br>");
 }
 const parasHTML = paras => (paras || []).map(p => `<p>${rich(reflow(p))}</p>`).join("");
@@ -1086,7 +1093,7 @@ function simFinishStep() {
   if (stepTimed(s)) { if (T.total) A.left = Math.max(0, T.left); A.used[s] = Math.round(stepSecs(t, s) - A.left); }
   T.stop(); T.total = 0; simStopAudio();
   if (s === "WE" || s === "WD") { const text = (A.txt[s] || "").trim();
-    if (text) { const id = "e" + Date.now(); P.redacoes.push({ id, t: now(), tarefa: s === "WE" ? "email" : "disc", tema: -1, titulo: simAbbr(A.test) + " · " + (s === "WE" ? "Email" : L("Discussão", "Discussion")) + " (ETS)", texto: text, palavras: words(text), segundos: A.used[s] || 0, nota: "", enunciado: simEssayPrompt(t, s) }); A.essays[s] = id; } }
+    if (text) { const id = "e" + Date.now(); P.redacoes.push({ id, t: now(), tarefa: s === "WE" ? "email" : "disc", tema: -1, titulo: simAbbr(A.test) + " · " + (s === "WE" ? "Email" : L("Discussão", "Discussion")) + " (" + L("simulado", "practice test") + ")", texto: text, palavras: words(text), segundos: A.used[s] || 0, nota: "", enunciado: simEssayPrompt(t, s) }); A.essays[s] = id; } }
   if (s[0] === "S" && (A.si + 1 >= A.steps.length || A.steps[A.si + 1][0] !== "S")) REC.release();
   A.si++; A.page = 0; A.sub = "";
   if (A.si >= A.steps.length) A.phase = "done";
@@ -1173,11 +1180,11 @@ function rSimList(A) {
   const rec = A ? null : simRecommended();
   let h = `<div class="card"><h2>${L("Simulados TOEFL iBT", "TOEFL iBT practice tests")}</h2><p class="mut" style="margin:0">${L("Simulados dos pacotes importados, no formato de 2026, com correção automática de Reading, Listening e Build a Sentence, áudio, cronômetro por módulo e progresso salvo. Faça o teste inteiro ou uma seção.", "Practice tests from your imported packs, in the 2026 format, with automatic scoring for Reading, Listening and Build a Sentence, audio, per-module timers and saved progress. Take the full test or one section.")}</p></div>`;
   if (A) { const s = A.steps[A.si], t = simTest(A.test);
-    h += `<div class="card resume" id="simresume"><div class="rt"><b>${L("Simulado em andamento", "Practice test in progress")}:</b> ${esc(SIM_SHORT[A.test] || t.title)} · ${A.phase === "done" ? L("falta salvar o resultado", "result not saved yet") : esc(SEC_NAME[stepSec(s)] + " · " + stepLbl(s)) + (stepTimed(s) ? ` · ${mmss(A.left)} ${L("restantes", "left")}` : "")}</div>
+    h += `<div class="card resume" id="simresume"><div class="rt"><b>${L("Simulado em andamento", "Practice test in progress")}:</b> ${esc(simName(A.test))} · ${A.phase === "done" ? L("falta salvar o resultado", "result not saved yet") : esc(SEC_NAME[stepSec(s)] + " · " + stepLbl(s)) + (stepTimed(s) ? ` · ${mmss(A.left)} ${L("restantes", "left")}` : "")}</div>
       <div class="row"><button class="btn pri" data-act="simresume">${L("Continuar", "Continue")}</button><button class="btn" data-act="simdiscard">${L("Descartar", "Discard")}</button></div></div>`; }
   h += `<div class="card"><table class="mid"><tr><th>${L("Teste", "Test")}</th><th>${L("Seções feitas", "Sections done")}</th><th>${L("Última tentativa", "Last attempt")}</th><th></th></tr>` +
     SIM_ORDER.filter(simTest).map(id => { const t = simTest(id), d = simDoneSecs(id), at = simAttempts(id), last = at[at.length - 1];
-      return `<tr data-test="${id}"><td><b>${esc(SIM_SHORT[id])}</b><div class="mut">${esc(t.kind)}</div></td><td>${SECS.map(s => `<span class="pill" style="${d.has(s) ? "" : "opacity:.45"}" title="${d.has(s) ? L("feito", "done") : L("pendente", "pending")}">${d.has(s) ? "✓ " : ""}${SEC_NAME[s]}</span>`).join(" ")}</td>
+      return `<tr data-test="${id}"><td><b>${esc(simAbbr(id))}</b><div class="mut">${esc([t.title, t.kind].filter(Boolean).join(" · "))}</div></td><td>${SECS.map(s => `<span class="pill" style="${d.has(s) ? "" : "opacity:.45"}" title="${d.has(s) ? L("feito", "done") : L("pendente", "pending")}">${d.has(s) ? "✓ " : ""}${SEC_NAME[s]}</span>`).join(" ")}</td>
         <td class="nw">${last ? fmtD(last.t) + " · " + esc(simRawLine(last)) : `<span class="mut">-</span>`}</td><td class="nw"><button class="btn ${id === rec ? "pri" : ""}" data-act="simopen" data-v="${id}">${id === rec ? L("Próximo do plano →", "Next in plan →") : L("Abrir", "Open")}</button></td></tr>`; }).join("") + `</table>
 </div>`;
   const all = (P.simulados || []).filter(r => r && simTest(r.test)).slice(-10).reverse();
@@ -1198,11 +1205,11 @@ function rSimDetail(t, A) {
     writing: () => `Build a Sentence (${t.writing.build.length}) · Write an Email · Academic Discussion`,
     speaking: () => `Listen and Repeat (${t.speaking.repeat.items.length}) · Take an Interview (${t.speaking.interview.items.length})` };
   const tm = {}; SECS.forEach(s => tm[s] = secDur(t, s));
-  let h = `<div class="card" id="simdetail"><div class="mhead"><h2>${esc(SIM_SHORT[t.id] || t.title)}</h2><button class="btn ghost" data-act="simlist">← ${L("Simulados", "Practice tests")}</button></div>${simHead(t)}</div>
+  let h = `<div class="card" id="simdetail"><div class="mhead"><h2>${esc(simName(t.id))}</h2><button class="btn ghost" data-act="simlist">← ${L("Simulados", "Practice tests")}</button></div>${simHead(t)}</div>
     <div class="card"><table class="mid"><tr><th>${L("Seção", "Section")}</th><th>${L("Tarefas", "Tasks")}</th><th>${L("Tempo", "Time")}</th><th>${L("Melhor resultado", "Best result")}</th><th></th></tr>` +
     SECS.map(s => { const best = simBest(t.id, s), br = simBestRec(t.id, s); return `<tr><td><b>${SEC_NAME[s]}</b>${d.has(s) ? ` <span class="pill">✓</span>` : ""}</td><td class="mut">${desc[s]()}</td><td class="nw">${tm[s]}</td><td class="nw">${best || "-"}${br ? ` <button class="btn sm" data-act="simrv" data-v="${esc(br.id)}" data-s="${s}" title="${L("Revisar o que acertou e errou na melhor tentativa", "Review what you got right and wrong in the best attempt")}">${L("Revisar", "Review")}</button>` : ""}</td><td class="nw"><button class="btn sm" data-act="simgo" data-v="${s}">${L("Só esta seção", "This section only")}</button></td></tr>`; }).join("") + `</table>
     <div class="row" style="margin-top:14px"><button class="btn pri" data-act="simgo" data-v="full">${L("Fazer o simulado completo", "Take the full test")} (~${full} min)</button><span class="mut">${L("Pode sair no meio: o progresso fica salvo e você continua de onde parou.", "You can leave midway: progress is saved and you continue where you stopped.")}</span></div>
-    <p class="mut" style="margin-bottom:0">${L("Tempo: a ETS publica só o tempo total de cada seção do teste real (Reading 30 min/50 itens, Listening 29 min/47 itens, Writing 23 min (6 + 7 + 10), Speaking ~8 min). Como estes simulados têm menos itens, cada módulo usa o mesmo ritmo por item. No teste real o Módulo 2 é adaptativo; aqui ele é fixo, como no PDF.", "Timing: ETS publishes only the total time of each section of the real test (Reading 30 min/50 items, Listening 29 min/47 items, Writing 23 min (6 + 7 + 10), Speaking ~8 min). These practice tests have fewer items, so each module uses the same pace per item. In the real test Module 2 is adaptive; here it is fixed, as in the PDF.")}</p></div>`;
+    <p class="mut" style="margin-bottom:0">${L("Tempo: a ETS publica só o tempo total de cada seção do teste real (Reading 30 min/50 itens, Listening 29 min/47 itens, Writing 23 min (6 + 7 + 10), Speaking ~8 min). Como estes simulados têm menos itens, cada módulo usa o mesmo ritmo por item. No teste real o Módulo 2 é adaptativo; aqui ele é fixo, como no material de origem.", "Timing: ETS publishes only the total time of each section of the real test (Reading 30 min/50 items, Listening 29 min/47 items, Writing 23 min (6 + 7 + 10), Speaking ~8 min). These practice tests have fewer items, so each module uses the same pace per item. In the real test Module 2 is adaptive; here it is fixed, as in the source material.")}</p></div>`;
   const atts = simAttempts(t.id).slice().reverse();
   if (atts.length) h += `<div class="card" id="simatts"><h3 style="margin-top:0">${L("Tentativas", "Attempts")}</h3><table class="mid"><tr><th>${L("Data", "Date")}</th><th>${L("Seções", "Sections")}</th><th>${L("Pontos brutos", "Raw scores")}</th><th>${L("Revisar", "Review")}</th></tr>${atts.map(r => `<tr data-rec="${esc(r.id)}"><td class="nw">${fmtDT(r.t)}</td><td>${(r.secoes || []).map(x => SEC_NAME[x]).join(", ")}</td><td>${esc(simRawLine(r))}</td><td class="nw">${SECS.filter(x => (r.secoes || []).includes(x)).map(x => `<button class="btn sm" data-act="simrv" data-v="${esc(r.id)}" data-s="${x}">${SEC_NAME[x]}</button>`).join(" ")}</td></tr>`).join("")}</table></div>`;
   if (A && A.test !== t.id) h += `<p class="mut">${L("Há outro simulado em andamento (", "Another practice test is in progress (")}${esc(simAbbr(A.test))}${L("); começar este descarta aquele.", "); starting this one discards it.")}</p>`;
@@ -1317,7 +1324,7 @@ function simEssayPrompt(t, s) { try { return htmlText(simEssayPromptHTML(t, s));
 function simEssayPromptHTML(t, s) {
   const w = t.writing;
   if (s === "WE") return parasHTML(w.email.paras);
-  return parasHTML(w.disc.head) + `<div class="prompt"><b>${w.disc.profName ? esc(w.disc.profName) : L("Professor", "Professor")}</b><br>${rich(w.disc.prof)}</div>` + w.disc.students.map((x, i) => `<div class="prompt"><b>${L("Aluno", "Student")} ${i + 1}</b> <span class="mut">${L("(no PDF o nome aparece só como imagem)", "(in the PDF the name is only shown as an image)")}</span><br>${rich(x)}</div>`).join("");
+  return parasHTML(w.disc.head) + `<div class="prompt"><b>${w.disc.profName ? esc(w.disc.profName) : L("Professor", "Professor")}</b><br>${rich(w.disc.prof)}</div>` + w.disc.students.map((x, i) => `<div class="prompt"><b>${L("Aluno", "Student")} ${i + 1}</b> <span class="mut">${L("(no material de origem o nome aparece só como imagem)", "(in the source material the name is only shown as an image)")}</span><br>${rich(x)}</div>`).join("");
 }
 function simEssay(A, t, s) {
   const txt = A.txt[s] || "", prompt = simEssayPromptHTML(t, s);
@@ -1390,12 +1397,12 @@ function simRubrics(sc) {
 }
 function rSimResult(A) {
   const t = simTest(A.test), sc = simScore(A);
-  return `<div class="card" id="simres"><h2>${L("Resultado", "Result")} · ${esc(SIM_SHORT[A.test])}</h2>${simResultTable(t, sc, false, A)}${simRubrics(sc)}
+  return `<div class="card" id="simres"><h2>${L("Resultado", "Result")} · ${esc(simName(A.test))}</h2>${simResultTable(t, sc, false, A)}${simRubrics(sc)}
     <div class="row" style="margin-top:12px"><button class="btn pri" data-act="simsave" data-confirm="1">${L("Salvar resultado", "Save result")}</button><span class="mut">${L("Preencha as autoavaliações (opcional) e salve.", "Fill in the self-scores (optional) and save.")}</span></div></div>` + simReviewHTML(t, A.steps, A.ans, A.bas, A.tr, A);
 }
 function rSimRecord(r) {
   const t = simTest(r.test), steps = [].concat(...(r.secoes || []).map(s => STEPS[s] || []));
-  return `<div class="card" id="simrec"><div class="mhead"><h2>${esc(SIM_SHORT[r.test])} · ${fmtDT(r.t)}</h2><button class="btn pri" data-act="simlist">← ${L("Simulados", "Practice tests")}</button></div>${simResultTable(t, r.pontos || {}, true)}<div class="row" id="simrecrv" style="margin-top:10px"><span class="mut">${L("Revisão item a item", "Item-by-item review")}:</span>${SECS.filter(x => (r.secoes || []).includes(x)).map(x => `<button class="btn sm" data-act="simrv" data-v="${esc(r.id)}" data-s="${x}">${SEC_NAME[x]}</button>`).join("")}</div></div>` + simReviewHTML(t, steps, (r.respostas || {}).ans || {}, (r.respostas || {}).bas || {}, (r.respostas || {}).tr || {}, r);
+  return `<div class="card" id="simrec"><div class="mhead"><h2>${esc(simName(r.test))} · ${fmtDT(r.t)}</h2><button class="btn pri" data-act="simlist">← ${L("Simulados", "Practice tests")}</button></div>${simResultTable(t, r.pontos || {}, true)}<div class="row" id="simrecrv" style="margin-top:10px"><span class="mut">${L("Revisão item a item", "Item-by-item review")}:</span>${SECS.filter(x => (r.secoes || []).includes(x)).map(x => `<button class="btn sm" data-act="simrv" data-v="${esc(r.id)}" data-s="${x}">${SEC_NAME[x]}</button>`).join("")}</div></div>` + simReviewHTML(t, steps, (r.respostas || {}).ans || {}, (r.respostas || {}).bas || {}, (r.respostas || {}).tr || {}, r);
 }
 function simReviewHTML(t, steps, ans, bas, tr, owner) {
   let h = `<div class="card" id="simreview"><h3 style="margin-top:0">${L("Revisão das respostas", "Answer review")}</h3>`;
@@ -1408,7 +1415,7 @@ function simReviewHTML(t, steps, ans, bas, tr, owner) {
       h += `<details><summary>Listening · ${stepLbl(s)}</summary>` + t.listening[+s[1] - 1].map((g, gi) => `<div class="rv" lang="en">${g.qs.map(x => `<div>${mark(a[x.n] === x.ans)} <b>${x.n}.</b> ${g.type === "response" ? esc(reflow(x.stem[0] || [])) : esc(reflow(x.stem[x.stem.length - 1] || []))}<br><span class="mut">${L("sua", "yours")}: ${a[x.n] == null ? "-" : LET(a[x.n]) + " " + esc(x.opts[a[x.n]])} · ${L("certa", "correct")}: ${LET(x.ans)} ${esc(x.opts[x.ans])}</span></div>`).join("")}
         ${g.stim && g.stim.length ? `<details><summary class="mut">${L("Transcrição", "Transcript")}</summary>${parasHTML(g.stim)}</details>` : ""}${tr[s + ":" + gi] ? `<span class="pill">${L("respondida lendo a transcrição", "answered from the transcript")}</span>` : ""}</div>`).join("") + `</details>`; }
     else if (s === "WB") h += `<details><summary>Build a Sentence</summary>` + t.writing.build.map(b => { const p = bas[b.n] || [], ok = basOk(b, p);
-      return `<div class="rv" lang="en">${mark(ok)} <b>${b.n}.</b> ${esc(b.ctx)}<br>${L("sua", "yours")}: ${basTplHTML(b, p, true)}<br><span class="mut">${L("certa", "correct")}: ${esc(b.answer)}${b.solution && b.solution.distractor != null ? ` · ${L("bloco extra", "extra chunk")}: <i>${esc(b.chips[b.solution.distractor])}</i>` : ""}</span>${b.tplPdf ? `<br><span class="pill">${L("O PDF de origem mostra uma lacuna a mais do que a resposta usa; o app usa uma lacuna a menos.", "The source PDF shows one more blank than the answer uses; the app uses one blank fewer.")}</span>` : ""}${b.solution && b.solution.exact === false ? `<br><span class="pill">${L("O gabarito do PDF difere de um bloco (provável erro de digitação no PDF); a correção usa os blocos.", "The PDF key differs from one chunk (likely a typo in the PDF); scoring uses the chunks.")}</span>` : ""}</div>`; }).join("") + `</details>`;
+      return `<div class="rv" lang="en">${mark(ok)} <b>${b.n}.</b> ${esc(b.ctx)}<br>${L("sua", "yours")}: ${basTplHTML(b, p, true)}<br><span class="mut">${L("certa", "correct")}: ${esc(b.answer)}${b.solution && b.solution.distractor != null ? ` · ${L("bloco extra", "extra chunk")}: <i>${esc(b.chips[b.solution.distractor])}</i>` : ""}</span>${b.tplPdf ? `<br><span class="pill">${L("O material de origem mostra uma lacuna a mais do que a resposta usa; o app usa uma lacuna a menos.", "The source material shows one more blank than the answer uses; the app uses one blank fewer.")}</span>` : ""}${b.solution && b.solution.exact === false ? `<br><span class="pill">${L("O gabarito do material de origem difere de um bloco (provável erro de digitação); a correção usa os blocos.", "The source answer key differs from one chunk (likely a typo); scoring uses the chunks.")}</span>` : ""}</div>`; }).join("") + `</details>`;
     else if (s === "SR" || s === "SI") { const part = s === "SR" ? t.speaking.repeat : t.speaking.interview;
       const g = owner && owner.gravacoes && Object.keys(owner.gravacoes).some(k => k.startsWith(s));
       if (g) h += `<details open class="sprv"><summary>${stepLbl(s)} · ${L("suas gravações", "your recordings")}</summary>${part.items.map((x, i) => spItemHTML(owner, s + (i + 1), i + 1, x.replace(/^\w+:\s*/, ""), owner.test + "/" + (s === "SR" ? "S_r" : "S_i") + (i + 1))).join("")}</details>`;
@@ -1462,7 +1469,7 @@ function rvSection(t, r, sec, wrongOnly) {
       body += `<div class="rvq ${g ? "ok" : "bad"}" data-n="${b.n}" lang="en"><div class="rvqh">${rvMark(g)} <b>${b.n}.</b> <span class="mut">${esc(b.ctx)}</span></div>
         <div class="rvbas"><span class="rvlbl">${L("Sua frase", "Your sentence")}</span><span class="${g ? "rvok" : "rvbad"}">${p.length ? basTplHTML(b, p, true) : `<span class="rvnone">${L("sem resposta", "no answer")}</span>`}</span></div>
         <div class="rvbas"><span class="rvlbl">${L("Correta", "Correct")}</span><span class="rvok">${esc(b.answer)}</span></div>
-        ${b.solution && b.solution.distractor != null ? `<p class="mut" style="margin:4px 0 0">${L("Bloco que sobrava", "Extra chunk")}: <i>${esc(b.chips[b.solution.distractor])}</i></p>` : ""}${b.tplPdf ? `<p class="mut" style="margin:4px 0 0">${L("O PDF de origem mostra uma lacuna a mais do que a resposta usa; o app usa uma lacuna a menos.", "The source PDF shows one more blank than the answer uses; the app uses one blank fewer.")}</p>` : ""}</div>`; });
+        ${b.solution && b.solution.distractor != null ? `<p class="mut" style="margin:4px 0 0">${L("Bloco que sobrava", "Extra chunk")}: <i>${esc(b.chips[b.solution.distractor])}</i></p>` : ""}${b.tplPdf ? `<p class="mut" style="margin:4px 0 0">${L("O material de origem mostra uma lacuna a mais do que a resposta usa; o app usa uma lacuna a menos.", "The source material shows one more blank than the answer uses; the app uses one blank fewer.")}</p>` : ""}</div>`; });
     out.html += modCard("WB", "Build a Sentence", ok, list.length, body);
     const pw = (r.pontos || {}).writing || {}, reds = r.redacoes || {};
     ["WE", "WD"].forEach(s => { const red = (P.redacoes || []).find(x => x.id === reds[s]), self = (s === "WE" ? pw.email : pw.disc) || {};
@@ -1499,7 +1506,7 @@ function rSimReview(V) {
   else if (scored && stOk != null && stOk !== all.ok) notes += `<p class="rvnote0" id="rvdiff">${L(`A nota salva era ${stOk}; recalculada com o pacote instalado agora dá ${all.ok}. O conteúdo do pacote mudou desde a tentativa.`, `The saved score was ${stOk}; recomputed with the installed pack it is ${all.ok}. The pack content changed since this attempt.`)}</p>`;
   const sum = scored ? `<div class="rvsum" id="rvsum"><span class="big">${all.ok}/${all.n}</span> <span class="mut">(${pct(all.ok, all.n)}%)</span>${all.mods.length > 1 ? all.mods.map(m => ` <span class="pill">${esc(sec === "writing" ? "Build a Sentence" : stepLbl(m.s))} ${m.ok}/${m.n}</span>`).join("") : ""} <span class="${all.wrong ? "badm" : "okm"}">${all.wrong ? `${all.wrong} ${all.wrong === 1 ? L("erro", "mistake") : L("erros", "mistakes")}` : L("nenhum erro", "no mistakes")}</span></div>`
     : `<div class="rvsum" id="rvsum"><span class="mut">${L("Speaking não tem correção automática: ouça as gravações e compare com o áudio original.", "Speaking has no automatic scoring: listen to your recordings and compare with the original audio.")}</span></div>`;
-  let h = `<div class="card" id="simrv" data-rec="${esc(r.id)}" data-sec="${sec}"><div class="mhead"><h2>${L("Revisão", "Review")} · ${esc(SIM_SHORT[r.test] || t.title)}</h2><button class="btn ghost" data-act="simopen" data-v="${esc(r.test)}">← ${esc(simAbbr(r.test))}</button></div>
+  let h = `<div class="card" id="simrv" data-rec="${esc(r.id)}" data-sec="${sec}"><div class="mhead"><h2>${L("Revisão", "Review")} · ${esc(simName(r.test))}</h2><button class="btn ghost" data-act="simopen" data-v="${esc(r.test)}">← ${esc(simAbbr(r.test))}</button></div>
     <div class="row rvbar">${atts.length > 1 ? `<label class="mut">${L("Tentativa", "Attempt")} <select id="rvatt">${atts.map(x => `<option value="${esc(x.id)}" ${x.id === r.id ? "selected" : ""}>${fmtDT(x.t)} · ${esc(simRawLine(x))}</option>`).join("")}</select></label>` : `<span class="mut">${L("Tentativa de", "Attempt from")} ${fmtDT(r.t)}</span>`}</div>
     ${secs.length > 1 ? `<div class="seg rvsecs">${secs.map(s => `<button class="btn sm ${s === sec ? "on" : ""}" data-act="simrvsec" data-v="${s}">${SEC_NAME[s]}</button>`).join("")}</div>` : ""}
     ${sum}${scored ? `<div class="seg rvfilt"><button class="btn sm ${V.wrong ? "" : "on"}" data-act="simrvf" data-v="all">${L("Todos os itens", "All items")}</button><button class="btn sm ${V.wrong ? "on" : ""}" data-act="simrvf" data-v="wrong">${L("Só os erros", "Wrong only")} (${all.wrong})</button></div>` : ""}${notes}</div>`;
@@ -1928,7 +1935,7 @@ function rProg() {
     <div class="grid2"><div class="card"><h3 style="margin-top:0">${L("Resumo", "Summary")}</h3><table>
     <tr><td>${L("Vocab: definições", "Vocab: definitions")}</td><td>${v.ok}/${v.n} (${pct(v.ok, v.n)}%)</td></tr><tr><td>${L("Vocab: frases TC/SE", "Vocab: TC/SE sentences")}</td><td>${f.ok}/${f.n} (${pct(f.ok, f.n)}%)</td></tr>
     <tr><td>Quant</td><td>${q.ok}/${q.n} (${pct(q.ok, q.n)}%)</td></tr><tr><td>Build a Sentence</td><td>${b.ok}/${b.n} (${pct(b.ok, b.n)}%)</td></tr>
-    <tr><td>${L("Redações salvas", "Saved essays")}</td><td>${P.redacoes.length}</td></tr><tr><td>${L("Sessões de Speaking", "Speaking sessions")}</td><td>${P.falas.length}</td></tr><tr><td>${L("Simulados oficiais salvos", "Saved official practice tests")}</td><td>${(P.simulados || []).length}</td></tr><tr><td>${L("Marcos concluídos", "Milestones done")}</td><td>${doneMs}/${DATA.milestones.length}</td></tr></table></div>
+    <tr><td>${L("Redações salvas", "Saved essays")}</td><td>${P.redacoes.length}</td></tr><tr><td>${L("Sessões de Speaking", "Speaking sessions")}</td><td>${P.falas.length}</td></tr><tr><td>${L("Simulados salvos", "Saved practice tests")}</td><td>${(P.simulados || []).length}</td></tr><tr><td>${L("Marcos concluídos", "Milestones done")}</td><td>${doneMs}/${DATA.milestones.length}</td></tr></table></div>
     <div class="card"><h3 style="margin-top:0">${L("Palavras para revisar", "Words to review")} (${pend.length})</h3>${pend.length ? `<table><tr><th>${L("Palavra", "Word")}</th><th>${L("Erros", "Mistakes")}</th><th></th></tr>${pend.slice(0, 30).map(([w, e]) => `<tr><td>${wordBlock(w, true)} ${en ? "" : `<span class="mut">${esc((VOCAB_BY_WORD[w.toLowerCase()] || {}).pt || "")}</span>`}</td><td>${e.n}</td><td><button class="btn sm" data-act="wok" data-v="${esc(w)}">${L("Já sei", "Got it")}</button></td></tr>`).join("")}</table>
     <button class="btn" style="margin-top:8px" data-act="toreview">${L("Treinar revisão agora", "Practise review now")}</button>` : `<p class="mut">${L("Nenhuma. Erros no Vocab entram aqui automaticamente.", "None. Vocab mistakes show up here automatically.")}</p>`}</div></div>
     <div class="card"><h3 style="margin-top:0">${L("Marcos do plano (clique para marcar)", "Plan milestones (click to tick)")}</h3>${DATA.milestones.map((ms, i) => { const m = P.marcos[i]; return `<label class="ms ${m && m.feito ? "done" : ""}"><input type="checkbox" data-ms="${i}" ${m && m.feito ? "checked" : ""}><span><b>${esc(msWk(ms))}</b>: <span class="t">${esc(msTxt(ms))}</span>${m && m.feito ? ` <span class="mut">(${m.auto ? L("marcado sozinho em", "ticked automatically on") : L("feito em", "done on")} ${fmtD(m.t)})</span>` : ""}${msExtraHTML(i)}</span></label>`; }).join("")}</div>

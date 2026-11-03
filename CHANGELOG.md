@@ -2,6 +2,12 @@
 
 All notable changes to TalTech Prep Trainer (TreinoTalTech) will be documented in this file.
 
+## [1.6.1] - 2026-11-03
+
+### Changed
+- Wording cleanup: the "What's new" notes for earlier versions, the study-plan milestones and the Practice tests screens now use generic names ("Practice test 1", "Practice test 2"...) and "source material". When a content pack is imported, the screens show the title that comes with the pack.
+- First release meant to be installed through the in-app updater (Settings > Updates). Progress, recordings and packs are not touched.
+
 ## [1.6.0] - 2026-11-03
 
 ### Added

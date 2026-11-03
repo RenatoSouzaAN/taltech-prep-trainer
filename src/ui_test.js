@@ -1,14 +1,14 @@
-// Teste headless v1.6.0: pacotes de conteúdo (importar/listar/abrir/remover, Simulados pelo pacote de simulados), atualizações (aviso, Depois, baixar e instalar, reiniciar, erros), download do modelo de fala; v1.5.0: gravação do Speaking (microfone falso), teste do mic, revisão com whisper, IA (chave DPAPI simulada), migração 5→6, "Só esta seção" sem sobrescrever; v1.4.3: confirmações no modal do app (sem diálogo nativo), teste de som do Listening, botões sem quebra; v1.4.2: tempos dos Simulados num formato só; v1.4.1: TPT 3–5 nos Simulados, marcos S4/S6 ligados; v1.4.0: aba Simulados (testes oficiais ETS, conteúdo local), migração schema 4→5; v1.3.2: nome do app muda com o idioma (TalTech Prep Trainer / Treino TalTech); v1.3.1: lista de conjuntos redesenhada (sem quebras, +N); v1.3: cabeçalho novo das questões; v1.2.1: sessões por modo (trocar de aba não zera), retomar após reabrir, filtros, migração schema 3→4; confirmação, migração (v1.0 e v1.1), tema, idioma, exportar/importar, zerar
+// Teste headless v1.6.1 (nomes genéricos dos simulados; novidades sem nomes de testes oficiais) + v1.6.0: pacotes de conteúdo (importar/listar/abrir/remover, Simulados pelo pacote de simulados), atualizações (aviso, Depois, baixar e instalar, reiniciar, erros), download do modelo de fala; v1.5.0: gravação do Speaking (microfone falso), teste do mic, revisão com whisper, IA (chave DPAPI simulada), migração 5→6, "Só esta seção" sem sobrescrever; v1.4.3: confirmações no modal do app (sem diálogo nativo), teste de som do Listening, botões sem quebra; v1.4.2: tempos dos Simulados num formato só; v1.4.1: TPT 3–5 nos Simulados, marcos S4/S6 ligados; v1.4.0: aba Simulados (testes oficiais ETS, conteúdo local), migração schema 4→5; v1.3.2: nome do app muda com o idioma (TalTech Prep Trainer / Treino TalTech); v1.3.1: lista de conjuntos redesenhada (sem quebras, +N); v1.3: cabeçalho novo das questões; v1.2.1: sessões por modo (trocar de aba não zera), retomar após reabrir, filtros, migração schema 3→4; confirmação, migração (v1.0 e v1.1), tema, idioma, exportar/importar, zerar
 const puppeteer = require('puppeteer-core'); const fs = require('fs');
 const path = require('path');
 const SRC = path.join(__dirname);
 const html = fs.readFileSync(path.join(SRC, 'index.html'), 'utf8')
   .replace('/*__DATA__*/null', fs.readFileSync(path.join(SRC, 'data.json'), 'utf8').replace(/<\//g, '<\\/'))
-  .replace('/*__VER__*/"dev"', '"1.6.0"');
+  .replace('/*__VER__*/"dev"', '"1.6.1"');
 const D = JSON.parse(fs.readFileSync(path.join(SRC, 'data.json')));
 const ETSJ = JSON.parse(fs.readFileSync(path.join(SRC, 'ets', 'ets_tests.json'), 'utf8')); let etsMode = 'ok', opened = [], audioFail = () => false;
 const RECDIR = '/tmp/uirec'; fs.rmSync(RECDIR, { recursive: true, force: true }); let recFetched = [], recSaved = [], recDeleted = [], evalCalls = [], aiKeys = {}, aiCalls = [], sttOk = true, jobs = {}, jobN = 0;
-let packs = [], packPick = null, packCalls = [], packFolderErr = '', updMock = false, updLatest = '1.6.0', updErr = '', updInstallErr = '', updCalls = [], mdlCalls = 0;
+let packs = [], packPick = null, packCalls = [], packFolderErr = '', updMock = false, updLatest = '1.6.1', updErr = '', updInstallErr = '', updCalls = [], mdlCalls = 0;
 let nativeDialogs = [], store = '', backups = [], named = [], exported = null, importFile = null, darkTitle = [], winTitles = [], savedAt = null, errors = [], pass = 0, fail = 0;
 const ok = (cond, msg) => { if (cond) pass++; else { fail++; console.log('  FALHOU:', msg); } };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -61,7 +61,7 @@ const covers = (txts, N) => { let next = 1; for (const x of txts) { const m = /^
     await p.exposeFunction('goPackOpenFolder', id => { packCalls.push('folder:' + id); if (packFolderErr) throw new Error(packFolderErr); return null; });
     // v1.6.0: atualizações (só expostas quando updMock, para não disparar a procura automática nos outros testes)
     if (updMock) {
-      await p.exposeFunction('goUpdateCheckStart', () => { updCalls.push('check'); return mkJob(() => { if (updErr) throw new Error(updErr); return { current: '1.6.0', latest: updLatest, tag: 'v' + updLatest, newer: updLatest !== '1.6.0', name: 'v' + updLatest, notes: '## Novidades\n- Melhorias nos Simulados\n- Correções', page: 'https://github.com/RenatoSouzaAN/taltech-prep-trainer/releases/tag/v' + updLatest, published: '2026-11-20T10:00:00Z', asset: { name: 'TreinoTalTech-v' + updLatest + '.zip', size: 10485760, url: 'https://github.com/x' }, sha256: 'ab'.repeat(32), shaFrom: 'arquivo' }; }); });
+      await p.exposeFunction('goUpdateCheckStart', () => { updCalls.push('check'); return mkJob(() => { if (updErr) throw new Error(updErr); return { current: '1.6.1', latest: updLatest, tag: 'v' + updLatest, newer: updLatest !== '1.6.1', name: 'v' + updLatest, notes: '## Novidades\n- Melhorias nos Simulados\n- Correções', page: 'https://github.com/RenatoSouzaAN/taltech-prep-trainer/releases/tag/v' + updLatest, published: '2026-11-20T10:00:00Z', asset: { name: 'TreinoTalTech-v' + updLatest + '.zip', size: 10485760, url: 'https://github.com/x' }, sha256: 'ab'.repeat(32), shaFrom: 'arquivo' }; }); });
       await p.exposeFunction('goUpdateInstallStart', () => { updCalls.push('install'); return mkJob(() => { if (updInstallErr) throw new Error(updInstallErr); return { version: updLatest, files: 12, verified: true }; }, 3, { bytes: 6 << 20, total: 10 << 20 }); });
       await p.exposeFunction('goUpdateRestart', () => { updCalls.push('restart:' + (store ? JSON.parse(store).settings.atualizacoes ? 'saved' : 'nocfg' : 'nostore')); return null; });
     }
@@ -103,7 +103,8 @@ const covers = (txts, N) => { let next = 1; for (const x of txts) { const m = /^
 
   console.log('1) Instalação nova');
   let p = await open();
-  ok(await p.$eval('#ver', e => e.textContent.includes('1.6.0')), 'versão v1.6.0 no cabeçalho');
+  ok(await p.$eval('#ver', e => e.textContent.includes('1.6.1')), 'versão v1.6.1 no cabeçalho');
+  ok(await p.evaluate(() => { const n = JSON.stringify(NOVIDADES), d = JSON.stringify(DATA.milestones || []) + JSON.stringify(DATA); return !!NOVIDADES['1.6.1'] && NOVIDADES['1.6.1'].pt.length === 2 && NOVIDADES['1.6.1'].en.length === 2 && !/Teacher|TPT|FLPT|Full-Length|PDF da ETS|ETS PDF|\\bPDF\\b/.test(n) && !/Teacher Practice|Full-Length Practice/.test(d); }), 'v1.6.1: novidades (PT+EN) e plano sem nomes de testes oficiais nem PDF; entrada 1.6.1 presente');
   ok(!(await p.modal()), 'sem painel de novidades em instalação nova');
   ok(backups.length === 0, 'sem backup em instalação nova');
 
@@ -192,7 +193,7 @@ const covers = (txts, N) => { let next = 1; for (const x of txts) { const m = /^
   }
   await sleep(900);
   const fresh = JSON.parse(store);
-  ok(fresh.schemaVersion === 6 && fresh.appVersion === '1.6.0' && fresh.ultimaVersaoVista === '1.6.0' && fresh.settings.theme === 'system' && fresh.settings.language === 'pt', 'instalação nova salva schemaVersion 6 / appVersion 1.6.0 / settings padrão');
+  ok(fresh.schemaVersion === 6 && fresh.appVersion === '1.6.1' && fresh.ultimaVersaoVista === '1.6.1' && fresh.settings.theme === 'system' && fresh.settings.language === 'pt', 'instalação nova salva schemaVersion 6 / appVersion 1.6.1 / settings padrão');
   console.log('   respostas registradas:', fresh.historico.length);
   await p.close();
 
@@ -205,12 +206,12 @@ const covers = (txts, N) => { let next = 1; for (const x of txts) { const m = /^
   ok(backups.length === 1 && backups[0].old === 1 && backups[0].content === original, 'backup chamado (v1) com o arquivo original, antes de salvar');
   await sleep(300);
   let s = JSON.parse(store);
-  ok(s.schemaVersion === 6 && s.appVersion === '1.6.0' && s.settings && s.settings.theme === 'system' && s.settings.language === 'pt', 'v1.0 migrado direto para schemaVersion 5 com settings');
+  ok(s.schemaVersion === 6 && s.appVersion === '1.6.1' && s.settings && s.settings.theme === 'system' && s.settings.language === 'pt', 'v1.0 migrado direto para schemaVersion 5 com settings');
   ok(JSON.stringify(s.campoFuturo) === JSON.stringify(v10.campoFuturo) && s.historico[0].extraX === 42, 'campos desconhecidos preservados');
   ok(['historico', 'rodadas', 'redacoes', 'falas', 'rascunhos', 'erros', 'marcos', 'criado'].every(k => JSON.stringify(s[k]) === JSON.stringify(v10[k])), 'todo o progresso v1.0 intacto (histórico, rodadas, redações, falas, rascunhos, erros, marcos)');
   ok(await p.modal() && await p.$eval('#modalc', e => /O que há de novo/.test(e.innerText) && /v1\.2/.test(e.innerText) && /v1\.1/.test(e.innerText) && /progresso-v1\.bak/.test(e.innerText)), 'painel "O que há de novo" aparece, cita o backup');
     await p.enter(); await sleep(300);
-  ok(!(await p.modal()) && JSON.parse(store).ultimaVersaoVista === '1.6.0', 'Enter fecha o painel e grava ultimaVersaoVista=1.6.0');
+  ok(!(await p.modal()) && JSON.parse(store).ultimaVersaoVista === '1.6.1', 'Enter fecha o painel e grava ultimaVersaoVista=1.6.1');
   await p.close();
   backups = []; p = await open();
   ok(!(await p.modal()) && backups.length === 0, 'reabrindo: painel não reaparece, sem novo backup');
@@ -274,17 +275,17 @@ const covers = (txts, N) => { let next = 1; for (const x of txts) { const m = /^
 
   console.log('10) Idioma da interface');
   p = await open('light'); await p.click_('#gear');
-  ok(await p.$eval('#brand', e => e.textContent) === 'Treino TalTech' && await p.evaluate('document.title') === 'Treino TalTech v1.6.0 | GRE + TOEFL' && winTitles[winTitles.length - 1] === 'Treino TalTech v1.6.0 | GRE + TOEFL', 'v1.3.2: em PT o nome é Treino TalTech (topo, document.title, janela)');
+  ok(await p.$eval('#brand', e => e.textContent) === 'Treino TalTech' && await p.evaluate('document.title') === 'Treino TalTech v1.6.1 | GRE + TOEFL' && winTitles[winTitles.length - 1] === 'Treino TalTech v1.6.1 | GRE + TOEFL', 'v1.3.2: em PT o nome é Treino TalTech (topo, document.title, janela)');
   ok(await p.$eval('#s-about', e => /Treino TalTech/.test(e.innerText)), 'v1.3.2: Sobre mostra Treino TalTech em PT');
   winTitles = [];
   await p.click_('[data-act=lang][data-v=en]'); await sleep(300);
   ok(JSON.parse(store).settings.language === 'en' && await p.evaluate('document.documentElement.lang') === 'en', 'English salvo; <html lang=en>');
   ok(await p.$eval('#nav', e => /Progress\b/.test(e.innerText) && !/Progresso/.test(e.innerText)) && await p.$eval('#gear', e => e.title === 'Settings'), 'menu e engrenagem em inglês');
-  ok(await p.$eval('#brand', e => e.textContent) === 'TalTech Prep Trainer' && await p.evaluate('document.title') === 'TalTech Prep Trainer v1.6.0 | GRE + TOEFL' && winTitles[winTitles.length - 1] === 'TalTech Prep Trainer v1.6.0 | GRE + TOEFL', 'v1.3.2: trocar para EN muda o nome na hora (topo, document.title, goSetTitle)');
+  ok(await p.$eval('#brand', e => e.textContent) === 'TalTech Prep Trainer' && await p.evaluate('document.title') === 'TalTech Prep Trainer v1.6.1 | GRE + TOEFL' && winTitles[winTitles.length - 1] === 'TalTech Prep Trainer v1.6.1 | GRE + TOEFL', 'v1.3.2: trocar para EN muda o nome na hora (topo, document.title, goSetTitle)');
   ok(await p.$eval('#s-about', e => /TalTech Prep Trainer/.test(e.innerText) && !/Treino TalTech/.test(e.innerText)), 'v1.3.2: Sobre mostra TalTech Prep Trainer em EN');
   ok(await p.$eval('header', e => !/Treino TalTech/.test(e.innerText)), 'v1.3.2: nenhum "Treino TalTech" no topo em EN');
   await p.click_('[data-act=lang][data-v=pt]'); await sleep(200);
-  ok(await p.$eval('#brand', e => e.textContent) === 'Treino TalTech' && winTitles[winTitles.length - 1] === 'Treino TalTech v1.6.0 | GRE + TOEFL', 'v1.3.2: voltar para PT restaura o nome na hora');
+  ok(await p.$eval('#brand', e => e.textContent) === 'Treino TalTech' && winTitles[winTitles.length - 1] === 'Treino TalTech v1.6.1 | GRE + TOEFL', 'v1.3.2: voltar para PT restaura o nome na hora');
   await p.click_('[data-act=lang][data-v=en]'); await sleep(200);
   ok(await p.$eval('#app', e => /Saved data/.test(e.innerText) && /Interface language/.test(e.innerText) && !/Dados salvos/.test(e.innerText)), 'tela de configurações em inglês');
   await p.click_('[data-act=tab][data-v=vocab]'); await p.click_('[data-act=vmode][data-v=def]'); await p.click_('[data-act=vset][data-v="1"]');
@@ -411,7 +412,7 @@ const covers = (txts, N) => { let next = 1; for (const x of txts) { const m = /^
   s = JSON.parse(store);
   ok(named.length === 1 && named[0].tag === 'antes-de-zerar' && JSON.parse(named[0].content).historico.length === pre.historico.length, '.bak com o progresso completo feito ANTES de zerar');
   ok(s.historico.length === 0 && s.redacoes.length === 0 && s.falas.length === 0 && Object.keys(s.erros).length === 0 && Object.keys(s.marcos).length === 0 && s.rodadas.length === 0, 'progresso zerado');
-  ok(s.settings.theme === 'system' && s.settings.language === 'pt' && s.schemaVersion === 6 && s.ultimaVersaoVista === '1.6.0' && Object.keys(s.sessoes).length === 0, 'tema/idioma mantidos, sessões limpas; sem painel de novidades depois');
+  ok(s.settings.theme === 'system' && s.settings.language === 'pt' && s.schemaVersion === 6 && s.ultimaVersaoVista === '1.6.1' && Object.keys(s.sessoes).length === 0, 'tema/idioma mantidos, sessões limpas; sem painel de novidades depois');
   await p.close(); p = await open('light'); ok(!(await p.modal()) && await p.evaluate('P.historico.length') === 0, 'reabrindo após zerar: vazio, sem novidades');
   await p.close();
 
@@ -634,7 +635,7 @@ const covers = (txts, N) => { let next = 1; for (const x of txts) { const m = /^
   store = JSON.stringify(v12); const orig12 = store; backups = [];
   p = await open('light'); await sleep(300); s = JSON.parse(store);
   ok(backups.length === 1 && backups[0].old === 3 && backups[0].content === orig12, 'v1.2: backup progresso-v3.bak do arquivo original antes de converter');
-  ok(s.schemaVersion === 6 && s.appVersion === '1.6.0' && s.sessoes && typeof s.sessoes === 'object' && !Array.isArray(s.sessoes), 'v1.2 → schema 5 com sessoes');
+  ok(s.schemaVersion === 6 && s.appVersion === '1.6.1' && s.sessoes && typeof s.sessoes === 'object' && !Array.isArray(s.sessoes), 'v1.2 → schema 5 com sessoes');
   ok(['historico', 'rodadas', 'redacoes', 'falas', 'erros', 'marcos', 'rascunhos', 'settings', 'campoDaV12', 'criado'].every(k => k === 'settings' ? JSON.stringify({ ...s[k], gravar: undefined, ia: undefined }) === JSON.stringify({ ...v12[k], gravar: undefined, ia: undefined }) : JSON.stringify(s[k]) === JSON.stringify(v12[k])) || console.log('   difere: ' + ['historico', 'rodadas', 'redacoes', 'falas', 'erros', 'marcos', 'rascunhos', 'settings', 'campoDaV12', 'criado'].filter(k => JSON.stringify(s[k]) !== JSON.stringify(v12[k])).join(',')), 'v1.2: todo o progresso e campos desconhecidos intactos');
   ok(await p.modal() && await p.$eval('#modalc', e => /v1\.3\.1\n/.test(e.innerText) && /v1\.3\n/.test(e.innerText) && /v1\.2\.1/.test(e.innerText) && !/v1\.2\n/.test(e.innerText) && /não zera mais a sessão/.test(e.innerText) && /Visual novo nas questões/.test(e.innerText) && /progresso-v3\.bak/.test(e.innerText)), 'novidades da v1.3 e v1.2.1 (sem v1.2, em PT), cita progresso-v3.bak');
   await p.enter(); await sleep(200);
@@ -660,7 +661,7 @@ const covers = (txts, N) => { let next = 1; for (const x of txts) { const m = /^
   ok(await p.modal() && await p.$eval('#modalc', e => /v1\.4\.0\n/.test(e.innerText) && /Practice tests tab/.test(e.innerText) && /v1\.3\.2\n/.test(e.innerText) && /v1\.3\.1\n/.test(e.innerText) && /v1\.3\n/.test(e.innerText) && !/v1\.2\.1/.test(e.innerText) && /TalTech Prep Trainer/.test(e.innerText) && /New question look/.test(e.innerText) && /Redesigned performance by set/.test(e.innerText)), 'v1.2.1 → v1.4.0: novidades da v1.4.0, v1.3.2, v1.3.1 e v1.3 (em EN)');
   ok(backups.length === 1 && backups[0].old === 4 && JSON.parse(store).schemaVersion === 6 && Array.isArray(JSON.parse(store).simulados) && JSON.parse(store).simuladoAtual === null, 'v1.2.1 → v1.4.0: schema 4 → 5 com backup e simulados vazios');
   await p.enter(); await sleep(200);
-  ok(!(await p.modal()) && JSON.parse(store).ultimaVersaoVista === '1.6.0', 'Enter fecha e grava ultimaVersaoVista=1.6.0');
+  ok(!(await p.modal()) && JSON.parse(store).ultimaVersaoVista === '1.6.1', 'Enter fecha e grava ultimaVersaoVista=1.6.1');
   await p.click_('[data-act=tab][data-v=vocab]');
   ok(await p.has('#resume') && await p.$eval('#resume', e => /Definitions · set 3/.test(e.innerText) && !/Definições|conjunto/.test(e.innerText)), 'aviso "Session in progress" com o nome da sessão em inglês');
   ok(await p.evaluate("roundLabel({key:'quant:MC'}) === 'Quant · Multiple choice' && roundLabel({key:'revisao'}) === 'Mistake review' && roundLabel({key:'frase:0'}) === 'TC/SE sentences · all'"), 'roundLabel traduz todas as chaves');
@@ -695,6 +696,7 @@ const covers = (txts, N) => { let next = 1; for (const x of txts) { const m = /^
   await p.evaluate('window.__simRate = 16');
   await p.click_('[data-act=tab][data-v=sim]'); await sleep(100);
   ok(JSON.stringify(await p.$$eval('tr[data-test]', a => a.map(e => e.dataset.test))) === '["flpt1","tpt1","tpt2","tpt3","flpt2","tpt4","tpt5"]', 'v1.4.1: lista com os 7 testes na ordem do plano (FLPT 1, TPT 1, TPT 2, TPT 3, FLPT 2, TPT 4, TPT 5)');
+  ok(await p.$eval('tr[data-test=tpt3] td b', e => e.innerText === 'Simulado 4') && await p.$eval('tr[data-test=flpt1] td b', e => e.innerText === 'Simulado 1') && await p.$eval('#app', e => !/\bTPT\b|FLPT/.test(e.innerText)), 'v1.6.1: lista usa nomes genéricos (Simulado N) e o título do pacote embaixo');
   await p.screenshot({ path: '/workspace/treino-app/shots/v141-lista.png', fullPage: true });
   ok(await p.$eval('tr[data-test=flpt1] .btn', e => e.classList.contains('pri')), 'próximo do plano (FLPT 1) é o botão principal');
   ok(await p.$eval('#app', e => !/Não incluídos/.test(e.innerText)), 'v1.4.1: a nota "Não incluídos: TPT 3–5" saiu');
@@ -961,7 +963,7 @@ const covers = (txts, N) => { let next = 1; for (const x of txts) { const m = /^
   ok(await p.$eval('#simscore', (e, n) => new RegExp('Build a Sentence\\s+' + n + '/10').test(e.innerText), nOkB), 'Build a Sentence corrigido (' + nOkB + '/10)');
   await p.select('#self-email', '4'); await p.select('#self-disc', '3');
   await p.click_('[data-act=simsave]'); await sleep(120);
-  S = JSON.parse(store); const essays = S.redacoes.filter(r => /TPT 2/.test(r.titulo));
+  S = JSON.parse(store); const essays = S.redacoes.filter(r => /Simulado 3/.test(r.titulo));
   ok(essays.length === 2 && essays.find(r => r.tarefa === 'email').nota === '4' && essays.find(r => r.tarefa === 'disc').nota === '3' && essays[0].palavras === 19, 'Email e Discussão vão para Redações com a autoavaliação');
   await p.click_('#simrec .btn.pri');
 
@@ -992,12 +994,12 @@ const covers = (txts, N) => { let next = 1; for (const x of txts) { const m = /^
   // 18f) marcos com link
   await p.click_('[data-act=tab][data-v=prog]'); await sleep(80);
   ok(await p.$eval('label.ms:nth-of-type(3)', e => e.classList.contains('done') && /marcado sozinho/.test(e.innerText)), 'Progresso mostra S3 marcado sozinho');
-  ok(await p.$eval('label.ms:nth-of-type(1)', e => /FLPT 1: 1\/4/.test(e.innerText) && !!e.querySelector('[data-act=simopen][data-v=flpt1]')), 'S1: estado do FLPT 1 e botão Iniciar');
+  ok(await p.$eval('label.ms:nth-of-type(1)', e => /Simulado 1: 1\/4/.test(e.innerText) && !!e.querySelector('[data-act=simopen][data-v=flpt1]')), 'S1: estado do FLPT 1 e botão Iniciar');
   await p.screenshot({ path: SH('marcos'), fullPage: true });
   opened = []; await p.click_('label.ms:nth-of-type(7) [data-act=simurl]'); await sleep(50);
   ok(opened[0] && /powerprep/.test(opened[0]) && !(await p.$eval('[data-ms="6"]', e => e.checked)), 'link POWERPREP abre a ETS sem marcar o marco');
   await p.click_('label.ms:nth-of-type(5) [data-act=simopen]'); await sleep(80);
-  ok(await p.evaluate('TAB') === 'sim' && await p.has('#simdetail') && await p.$eval('#simdetail', e => /Full-Length Practice Test 2/.test(e.innerText)), 'Iniciar no marco S5 abre o FLPT 2');
+  ok(await p.evaluate('TAB') === 'sim' && await p.has('#simdetail') && await p.$eval('#simdetail', (e, t) => e.innerText.includes(t), await p.evaluate(() => simName('flpt2'))) && await p.evaluate(() => simName('flpt2') === (simTest('flpt2').title || 'Simulado 5')), 'Iniciar no marco S5 abre o FLPT 2');
   // manual continua funcionando
   await p.click_('[data-act=tab][data-v=prog]'); await p.click_('[data-ms="0"]'); await sleep(700);
   ok(JSON.parse(store).marcos[0].feito === true, 'marcar à mão continua funcionando');
@@ -1005,12 +1007,12 @@ const covers = (txts, N) => { let next = 1; for (const x of txts) { const m = /^
   // 18h) v1.4.1: TPT 3 (Reading pela tela, Writing com o item corrigido), marcos S4/S6 ligados
   const SH1 = n => '/workspace/treino-app/shots/v141-' + n + '.png';
   await p.click_('[data-act=tab][data-v=prog]'); await sleep(80);
-  ok(await p.$eval('label.ms:nth-of-type(4)', e => /TPT 3: 0\/4/.test(e.innerText) && !!e.querySelector('[data-act=simopen][data-v=tpt3]') && /marca sozinho/.test(e.innerText)), 'S4: estado do TPT 3, botão Iniciar e "marca sozinho"');
-  ok(await p.$eval('label.ms:nth-of-type(6)', e => /TPT 4: 0\/4/.test(e.innerText) && !!e.querySelector('[data-act=simopen][data-v=tpt4]')), 'S6: estado do TPT 4 e botão Iniciar');
+  ok(await p.$eval('label.ms:nth-of-type(4)', e => /Simulado 4: 0\/4/.test(e.innerText) && !!e.querySelector('[data-act=simopen][data-v=tpt3]') && /marca sozinho/.test(e.innerText)), 'S4: estado do TPT 3, botão Iniciar e "marca sozinho"');
+  ok(await p.$eval('label.ms:nth-of-type(6)', e => /Simulado 6: 0\/4/.test(e.innerText) && !!e.querySelector('[data-act=simopen][data-v=tpt4]')), 'S6: estado do TPT 4 e botão Iniciar');
   const T3 = await p.evaluate('JSON.parse(JSON.stringify(simTest("tpt3")))');
   ok(['tpt3', 'tpt4', 'tpt5'].every(x => true) && T3.reading.length === 2 && T3.listening.length === 2 && T3.writing.build.length === 10, 'TPT 3: 2 módulos de Reading e Listening, 10 Build a Sentence');
   await p.click_('label.ms:nth-of-type(4) [data-act=simopen]'); await sleep(80);
-  ok(await p.has('#simdetail') && await p.$eval('#simdetail', e => /Teacher Practice Test 3/.test(e.innerText)), 'Iniciar no marco S4 abre o TPT 3');
+  ok(await p.has('#simdetail') && await p.$eval('#simdetail', (e, t) => e.innerText.includes(t), await p.evaluate(() => simName('tpt3'))) && await p.evaluate(() => simName('tpt3') === (simTest('tpt3').title || 'Simulado 4')), 'Iniciar no marco S4 abre o TPT 3');
   await p.click_('[data-act=simgo][data-v=reading]'); await p.enter(); await sleep(100);
   ok(await p.has('input.ctw'), 'TPT 3 Reading: Complete the Words');
   await p.screenshot({ path: SH1('tpt3-reading') });
@@ -1050,7 +1052,7 @@ const covers = (txts, N) => { let next = 1; for (const x of txts) { const m = /^
   A = await simA(p); ok(A.mode === 'full' && A.steps.join() === 'R1,R2,L1,L2,WB,WE,WD,SR,SI', 'simulado completo: 9 etapas na ordem oficial');
   await p.enter(); await sleep(5800); await p.close(); // fecha sem beforeunload (como um fechamento abrupto)
   p = await open('light'); await sleep(100); await p.click_('[data-act=tab][data-v=sim]'); await sleep(80);
-  ok(await p.has('#simresume') && await p.$eval('#simresume', e => /Full-Length Practice Test 2/.test(e.innerText) && /Reading · Módulo 1/.test(e.innerText)), 'reabrir o app: aviso de simulado em andamento');
+  ok(await p.has('#simresume') && await p.$eval('#simresume', (e, t) => e.innerText.includes(t) && /Reading · Módulo 1/.test(e.innerText), await p.evaluate(() => simName('flpt2'))), 'reabrir o app: aviso de simulado em andamento');
   await onePri(p, 'lista com simulado em andamento'); await p.screenshot({ path: SH('retomar') });
   await p.click_('[data-act=simresume]'); await sleep(100);
   ok(await p.has('input.ctw') && await p.$eval('#tmr', e => e.textContent < '12:00'), 'continuar: volta ao Reading com o tempo que restava');
@@ -1076,7 +1078,7 @@ const covers = (txts, N) => { let next = 1; for (const x of txts) { const m = /^
   await p.click_('#modal [data-act=cfok]'); await sleep(80); ok(JSON.parse(store).simuladoAtual === null, 'descartar (EN) confirma pelo modal');
   await p.click_('[data-act=tab][data-v=sim]'); await sleep(60);
   // exportar e validação da importação
-  const txt = await p.evaluate('exportText()'); console.log('   ' + (txt.match(/PRACTICE TESTS \(raw[^\n]*/) || [''])[0]); ok(/\nPRACTICE TESTS \(raw scores\): 9/.test(txt) && /TPT 3/.test(txt) && /TPT 2/.test(txt), 'exportar texto inclui os simulados');
+  const txt = await p.evaluate('exportText()'); console.log('   ' + (txt.match(/PRACTICE TESTS \(raw[^\n]*/) || [''])[0]); ok(/\nPRACTICE TESTS \(raw scores\): 9/.test(txt) && /Simulado 4/.test(txt) && /Simulado 3/.test(txt), 'exportar texto inclui os simulados');
   ok(await p.evaluate(`(() => { try { validateImport({ ...JSON.parse(JSON.stringify(P)), simulados: {} }); return false; } catch (e) { return true; } })()`), 'importar recusa simulados inválido');
   await p.evaluate('P.settings.language = "pt"; persist(true)');
   await p.close();
@@ -1193,7 +1195,7 @@ const covers = (txts, N) => { let next = 1; for (const x of txts) { const m = /^
   const ETS_PV = { id: 'ets-toefl', name: 'Simulados TOEFL (local)', version: '2026.11', type: 'ets', description: 'Pacote local de simulados', files: 412, bytes: 10321000, tests: ETSJ.tests.map(t => t.id), file: 'simulados-toefl.zip', existing: '' };
   const ARQ_PV = { id: 'meus-arquivos', name: 'Meus materiais', version: '1', type: 'arquivos', files: 4, bytes: 3456789, file: 'meus-arquivos.zip', existing: '',
     list: [{ path: 'Gramática/conectivos.pdf', size: 1200000, ext: 'pdf', open: true }, { path: 'Speaking/modelo-resposta.mp3', size: 2200000, ext: 'mp3', open: true }, { path: 'notas.txt', size: 789, ext: 'txt', open: true }, { path: 'ferramentas/script.bat', size: 56000, ext: 'bat', open: false }] };
-  etsMode = 'none'; packs = []; packCalls = []; store = JSON.stringify(Object.assign(JSON.parse(store), { ultimaVersaoVista: '1.6.0' }));
+  etsMode = 'none'; packs = []; packCalls = []; store = JSON.stringify(Object.assign(JSON.parse(store), { ultimaVersaoVista: '1.6.1' }));
   p = await open('light'); await sleep(100);
   await p.click_('[data-act=tab][data-v=settings]'); await sleep(250);
   ok(await p.has('#s-content') && await p.has('#s-upd'), 'Configurações com Conteúdo (pacotes) e Atualizações');
@@ -1319,7 +1321,7 @@ const covers = (txts, N) => { let next = 1; for (const x of txts) { const m = /^
   ok(await p.$eval('#upderr', e => /Sem conexão com o GitHub/.test(e.innerText)), 'offline: mensagem no app');
   updErr = 'upd:limite'; await p.click_('[data-act=updcheck]'); await sleep(900);
   ok(await p.$eval('#upderr', e => /limitou/.test(e.innerText)), 'limite do GitHub: mensagem no app');
-  updErr = ''; updLatest = '1.6.0'; await p.click_('[data-act=updcheck]'); await sleep(900);
+  updErr = ''; updLatest = '1.6.1'; await p.click_('[data-act=updcheck]'); await sleep(900);
   ok(await p.has('#updnone') && await p.$eval('#updbar', e => e.hidden), 'mesma versão: "Você está na versão mais recente"');
   await p.click_('[data-act=updauto][data-v=off]'); await sleep(100);
   ok(JSON.parse(store).settings.atualizacoes.auto === false, 'desligar a procura automática');
